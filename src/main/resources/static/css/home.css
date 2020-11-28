@@ -1,0 +1,38 @@
+.wrapper {
+    background-color: #ccc;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+:root {
+    --main-color: #E60023;
+    --hover-main-color: #AD081B;
+}
+.btn {
+    outline: none;
+    border-radius: 16px;
+    width: 80px;
+    margin: 0 10px;
+  
+  
+}
+.btn.btn-login {
+    background-color: var(--main-color);
+    color: white;
+}
+.btn.btn-signup {
+    background-color: #efefef;
+    color: black;
+}
+.btn.btn-signup:hover {
+    background-color: var( --hover-main-color);
+    color: white;
+}
+.btn.btn-signup:hover {
+    background-color: #ddd;
+    color: black;
+}
+.wrapper-nav {
+    background-color: #f8f9fa;
+}
