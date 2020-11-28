@@ -87,7 +87,7 @@
 									aria-labelledby="add" aria-hidden="true">
 									<div class="modal-dialog">
 										<div class="modal-content">
-											<form class="" action="/admin" method="POST">
+											<form class="" action="/addP" method="POST">
 												<!-- Modal Header -->
 												<div class="modal-header">
 													<h4 class="modal-title" style="margin-left: auto">
@@ -101,22 +101,21 @@
 													<div class="form-group">
 														<h4 class="text-black-50">Title</h4>
 														<input class="form-control " id="title" type="text"
-															placeholder="Hoa hướng dương " required>
+															name="title" placeholder="Hoa hướng dương " required>
 													</div>
 													<!-- Tên thằng user -->
 													<!-- Phone user -->
 													<div class="form-group">
 														<h4 class="text-black-50">Categogy</h4>
 														<input class="form-control " id="category" type="text"
-															placeholder="Pets" title="" required>
+															placeholder="Pets" name="category" title="" required>
 													</div>
 													<!-- Phone user -->
 													<!-- Email User -->
 													<div class="form-group">
 														<h4 class="text-black-50">Date:</h4>
-														<input class="form-control " id="date" type="date"
-															name="Email" accept="" placeholder="20/11/2020"
-															title="Email is unvalid!" required>
+														<input class="form-control " id="date" type="text"
+															name="date" accept="" placeholder="20/11/2020" required>
 													</div>
 													<!-- Email User -->
 													<!-- Address User- Start -->
@@ -125,31 +124,13 @@
 														<input class="form-control " id="" type="text"
 															placeholder="Published" title="" required>
 													</div>
-													<!-- Address User- End -->
-													<!-- Set role-Start -->
-													<!--<div class="form-group">
-														<h4 class="text-black-50">Image:</h4>
-														<button type="button" class="btn btn-info float-center">Upload</button>
-														
-													</div>-->
-
-													<!-- <div class="form-group">
-                                                    <input id="toggle-event" type="checkbox" data-toggle="toggle"
-                                                        data-on="Customer" data-off="Ticket Seller" checked>
-                                                </div> -->
-													<!-- Set role-End -->
-													<form id="fileUploadForm">
-														<div class="form-group">
-															<input type="file" class="form-control-file border"
-																name="file">
-														</div>
-													</form>
-													<div class="modal-footer">
-														<button type="submit" id="submitAddPokestop"
-															class="btn btn-warning btn-lg" style="width: 100%;">
-															<span class="	fas fa-check-circle"></span>Add
-														</button>
+													
+													<div class="custom-file mb-4">
+														<input type="file" name="file" class="custom-file-input"
+															id="customFile"> <label class="custom-file-label"
+															for="customFile">Image</label>
 													</div>
+													<button class="btn btn-info btn-block" type="submit">add</button>
 
 												</div>
 												<!-- Modal để create new user-End -->

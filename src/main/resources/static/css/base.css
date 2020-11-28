@@ -1,0 +1,68 @@
+:root {
+    /* --primary-color:#ed5c3f;
+    --second-color:#fe6433; rgb(89,136,70)*/
+    /* --primary-color:#409e73; */
+    --main-color: #E60023;
+    --hover-main-color: #AD081B;
+
+    --second-color: rgb(82, 190, 136);
+    --third-color: #d1e9cd;
+    --white-color: #ffffff;
+    --black-color: #000;
+    --text-color: #333;
+    --star-gold-color: #FFCE3E;
+    --border-color: #dbdbdb;
+    --third-color: rgb(209,233,205);
+    --header-with-search: 76px;
+    --height-ul-nav: 1248px;
+    --color-item-product: #105f19;
+    --color-2: #199427;
+    --color-product:#767676;
+    --header: 188px;
+    --header-navbar: 60px;
+    --red-color:rgb(241, 45, 45);
+    --color-price: var( --color-2);
+    --header-navbar-scroll: calc(var(--header) - var(--header-navbar));
+}
+* {
+    box-sizing: inherit;
+}
+body{
+    font-family: 'Roboto', sans-serif;
+    
+}
+html {
+    /* 100% ~ 16px // HACK */
+    font-size: 62.5%;
+    line-height: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+.sticky {
+   
+    top: 0;
+    width: 100%;
+  }
+  
+.row {
+    padding: 20px 0;
+}
+
+.col {
+    padding-right: 8px;
+    padding-left: 8px;
+}
+@media (min-width: 992px) {
+    .navbar-expand-lg {
+        padding: 0.5rem 0 !important;
+        height: 70px;
+    }
+}
+@keyframes ani {
+    from {
+        transform: scale(0)
+    }
+    to {
+       transform: scale(1);
+    }
+}
