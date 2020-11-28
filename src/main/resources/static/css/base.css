@@ -27,16 +27,15 @@
 * {
     box-sizing: inherit;
 }
-body{
-    font-family: 'Roboto', sans-serif;
-    
-}
 html {
     /* 100% ~ 16px // HACK */
     font-size: 62.5%;
     line-height: 1.6rem;
     font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
+}
+.shadow {
+    box-shadow: 0 0rem 0rem rgba(0,0,0,.09)!important;
 }
 .sticky {
    
