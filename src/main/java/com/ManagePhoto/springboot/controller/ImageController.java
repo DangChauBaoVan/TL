@@ -39,6 +39,14 @@ public class ImageController {
 		modelAndView.setViewName("listImages"); 
 		return modelAndView;
 	}
+	@RequestMapping(value = { "/home" }, method = RequestMethod.GET)
+	public ModelAndView homeImages(Model model) {
+		List<Image> images = imageService.getAllImages();
+		model.addAttribute("images", images);
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("home"); 
+		return modelAndView;
+	}
 	
 
 }
