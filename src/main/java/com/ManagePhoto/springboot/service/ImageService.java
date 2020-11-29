@@ -21,18 +21,18 @@ public class ImageService {
 	{
 		return imageRepo.findAll();
 	}
-	public void saveImageToDB(String title, String category, String date) {
+	public void saveImageToDB(MultipartFile file ,String title, String category, String date) {
 		Image p = new Image();
-		// String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-		// if(fileName.contains(".."))
-		// {
-		// System.out.println("not a a valid file");
-		// }
-		// try {
-		// p.setImage(Base64.getEncoder().encodeToString(file.getBytes()));
-		// } catch (IOException e) {
-		// e.printStackTrace();
-		// }
+		 String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+		 if(fileName.contains(".."))
+		 {
+		 System.out.println("not a valid file");
+		 }
+		 try {
+		 p.setImage(Base64.getEncoder().encodeToString(file.getBytes()));
+		 } catch (IOException e) {
+		 e.printStackTrace();
+		 }
 		p.setTitle(title);
 		p.setCategory(category);
 		p.setDate(date);

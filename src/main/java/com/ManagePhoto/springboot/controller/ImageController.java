@@ -21,14 +21,14 @@ public class ImageController {
 	private ImageService imageService;
 	
 	@PostMapping("/addI")
-    public String saveImage(
+    public String saveImage(@RequestParam("file") MultipartFile file,
     		@RequestParam("title") String title,
     		@RequestParam("category") String category,
 			@RequestParam("date") String date
 		
 			)
     {
-    	imageService.saveImageToDB( title, category, date);
+    	imageService.saveImageToDB(file, title, category, date);
     	return "redirect:/listImages";
 	}
 	@RequestMapping(value = { "/listImages" }, method = RequestMethod.GET)

@@ -1,43 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="vendor/fontawesome/css/all.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"rel="stylesheet">
-<link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.6/animate.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link href="vendor/fontawesome/css/all.min.css" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="vendor/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.6/animate.min.css">
 <link rel="stylesheet" href="css/base.css">
 
 </head>
 <body>
-    <div class="card">
-        <form class="text-center border border-light p-5"  action="addI" method="POST">
-            <!-- <h4 class="text-black-50 text-left">Image: </h4>
+	<div class="card">
+		<form class="text-center border border-light p-5" action="addI"
+			method="POST" enctype="multipart/form-data">
+			<!-- <h4 class="text-black-50 text-left">Image: </h4>
             <div class="custom-file mb-4">
                 
                 <input type="file" name="file" class="custom-file-input"
                     id="customFile"> <label class="custom-file-label"
                     for="customFile">Image</label>
             </div> -->
-            <h4 class="text-black-50  text-left">Title: </h4>
-        
-            <input type="text" name="title" id="title" class="form-control mb-4"
-                placeholder="Mặt trời mọc">
-                <h4 class="text-black-50  text-left">Category: </h4>
-            <input type="text" name="category" id="category" class="form-control mb-4"
-                placeholder="natural">
-                <h4 class="text-black-50  text-left">Date: </h4>
-            <input class="form-control mb-4" id="date" name="date" type="text"
-                placeholder="20/10/2020">Date
-                </input>
-            
-            
-            <button class="btn btn-info btn-block" type="submit">add</button>
-        </form>
-    </div>
-    <script src="vendor/jquery/jquery.slim.min.js"></script>
-    <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+			<h4 class="text-black-50  text-left">Title:</h4>
+
+			<input type="text" name="title" id="title" class="form-control mb-4"
+				placeholder="Mặt trời mọc" required>
+			<h4 class="text-black-50  text-left">Category:</h4>
+			<input type="text" name="category" id="category"
+				class="form-control mb-4" placeholder="natural" required>
+			<h4 class="text-black-50  text-left">Date:</h4>
+			<input class="form-control mb-4" id="date" name="date" type="text"
+				placeholder="20/10/2020" required></input>
+			<div class="custom-file mb-4">
+				<input type="file" name="file" class="custom-file-input"
+					id="customFile"> <label class="custom-file-label"
+					for="customFile" required>Chose Image</label>
+			</div>
+
+
+			<button class="btn btn-info btn-block" type="submit">add</button>
+		</form>
+	</div>
+	<script src="vendor/jquery/jquery.slim.min.js"></script>
+	<script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
