@@ -107,6 +107,7 @@ div.table-responsive>div.dataTables_wrapper>div.row:first-child>div[class^="col-
 }
 .topbar .dropdown .dropdown-menu {
     background-color: #eeebeb;
+    font-size: 1.3rem !important;
 }
 p {
     margin: 0;
