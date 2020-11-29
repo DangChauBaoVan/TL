@@ -38,4 +38,19 @@ public class ImageService {
 		p.setDate(date);
 		imageRepo.save(p);
 	}
+	
+	public void deleteImagetById(Long id)
+    {
+		imageRepo.deleteById(id);
+    }
+	public void updateImage(Long id, String title,String category ,String date) {
+		Image p = new Image();
+		p = imageRepo.findById(id).get();
+		p.setTitle(title);
+		p.setCategory(category);
+		p.setDate(date);
+		imageRepo.save(p);
+	}
+	
+	
 }
