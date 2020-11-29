@@ -85,6 +85,7 @@ public class AuthenticationController {
 		modelAndView.setViewName("addImage"); 
 		return modelAndView;
 	}
+	
 
 
 	

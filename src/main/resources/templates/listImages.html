@@ -113,21 +113,12 @@
 											<td>[[*{image.category}]]</td>
 											<td>[[*{image.date}]]</td>
 											<td>
-												<p data-placement="top" data-toggle="tooltip" title="Edit">
-													<button class="btn btn-primary" data-title="Edit"
-														data-toggle="modal" onclick="editUser()">
-														<span class="	fa fa-edit"></span>
-													</button>
-												</p>
+												<a th:href="@{/editImg/{id}(id=${image.id})}" class="btn btn-danger mt-4">Edit</a>
 											</td>
-											<td>
-												<p data-placement="top" data-toggle="tooltip" title="Delete">
-													<button class="btn btn-danger" data-title="Delete"
-														data-toggle="modal" onclick="deleteUser()">
-														<span class="fa fa-trash"></span>
-													</button>
-												</p>
+											<td><a th:href="@{/deleteImg/{id}(id=${image.id})}" class="btn btn-danger mt-4">Delete</a>
+
 											</td>
+
 										</tr>
 
 
