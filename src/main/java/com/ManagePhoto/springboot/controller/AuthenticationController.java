@@ -65,12 +65,12 @@ public class AuthenticationController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value = { "/home" }, method = RequestMethod.GET)
-	public ModelAndView home() {
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("home");
-		return modelAndView;
-	}
+	// @RequestMapping(value = { "/home" }, method = RequestMethod.GET)
+	// public ModelAndView home() {
+	// 	ModelAndView modelAndView = new ModelAndView();
+	// 	modelAndView.setViewName("home");
+	// 	return modelAndView;
+	// }
 
 	
 	// @GetMapping("/listImages.html")

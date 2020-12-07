@@ -470,16 +470,17 @@ body.modal-open {
     background-color: white;
 }
 .card, .card-img-top {
-    border-top-left-radius: 0.4rem;
-    border-top-right-radius: 0.4rem;
-    border-bottom-left-radius: 0.4rem;
-    border-bottom-right-radius: 0.4rem;    
+    border-top-left-radius: 0.6rem;
+    border-top-right-radius: 0.6rem;
+    border-bottom-left-radius: 0.6rem;
+    border-bottom-right-radius: 0.6rem;    
 }
 .card {
     display: flex;
     justify-content: center;
     position: relative;
     align-items: center;
+    margin-bottom: 16px;
 }
 .card:hover .favourite {
     opacity: 1;

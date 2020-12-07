@@ -159,17 +159,18 @@
   
     <div class="wrapper">
         <div class="container">
-            <div class="row">
-                <div class="quote wow fadeInUp col col-md-2" data-wow-delay="0.35s">
-                    <div class="card">
-                        <img src="/images/show/anh1.jpg" class="card-img-top" alt="...">
+            <div class="row  row-cols-5">
+              
+                <div class="quote wow fadeInUp col  "   data-wow-delay="0.35s">
+                    <div class="card" th:each="image : ${images}">
+                        <img 	th:src="*{'data:image/jpeg;base64,'+{image.image}}" class="card-img-top" alt="not found image">
                         <a href="" class="favourite" title="yêu thích">
                           <i class="far fa-heart heart--transparent"></i>
                         </a>
-                        <div class="title-image">Hoa Hải Đường</div>
+                        <div class="title-image">[[*{image.title}]]</div>
                       </div>
                 </div>
-                <div class="quote wow fadeInUp col col-md-2" data-wow-delay="0.65s">
+                <div class="quote wow fadeInUp col " data-wow-delay="0.65s">
                   <div class="card">
                     <img src="/images/show/anh2.jpg" class="card-img-top" alt="...">
                     <a href="" class="favourite" title="yêu thích">
@@ -178,119 +179,26 @@
                     <div class="title-image">Xương rồng</div>
                   </div>
                 </div>
-                <div class="quote wow fadeInUp col col-md-2" data-wow-delay="0.95s">
+                <div class="quote wow fadeInUp col " data-wow-delay="0.95s">
                   <div class="card">
                     <img src="/images/show/anh3.jpg" class="card-img-top" alt="...">
                    
                   </div>
                 </div>
-                <div class="quote wow fadeInUp col col-md-2" data-wow-delay="1.2s">
+                <div class="quote wow fadeInUp col " data-wow-delay="1.2s">
                   <div class="card">
                     <img src="/images/show/anh4.jpg" class="card-img-top" alt="...">
                    
                   </div>
                 </div>
-                <div class="quote wow fadeInUp col col-md-2" data-wow-delay="1.5s">
+                <div class="quote wow fadeInUp col " data-wow-delay="1.2s">
                   <div class="card">
-                    <img src="/images/show/anh5.jpg" class="card-img-top" alt="...">
-                   
-                  </div>
-                </div>
-                <div class="quote wow fadeInUp col col-md-2" data-wow-delay="1.6s">
-                  <div class="card">
-                    <img src="/images/show/anh6.jpg" class="card-img-top" alt="...">
+                    <img src="/images/show/anh4.jpg" class="card-img-top" alt="...">
                    
                   </div>
                 </div>
             </div>
-            <div class="row">
-              <div class="quote wow fadeInUp col col-md-2" data-wow-delay="0.35s">
-                  <div class="card">
-                      <img src="/images/show/anh1.jpg" class="card-img-top" alt="...">
-                      <a href="" class="favourite" title="yêu thích">
-                        <i class="far fa-heart heart--transparent"></i>
-                      </a>
-                      <div class="title-image">Hoa Hải Đường</div>
-                    </div>
-              </div>
-              <div class="quote wow fadeInUp col col-md-2" data-wow-delay="0.65s">
-                <div class="card">
-                  <img src="/images/show/anh2.jpg" class="card-img-top" alt="...">
-                  <a href="" class="favourite" title="yêu thích">
-                    <i class="far fa-heart heart--transparent"></i>
-                  </a>
-                  <div class="title-image">Xương rồng</div>
-                </div>
-              </div>
-              <div class="quote wow fadeInUp col col-md-2" data-wow-delay="0.95s">
-                <div class="card">
-                  <img src="/images/show/anh3.jpg" class="card-img-top" alt="...">
-                 
-                </div>
-              </div>
-              <div class="quote wow fadeInUp col col-md-2" data-wow-delay="1.2s">
-                <div class="card">
-                  <img src="/images/show/anh4.jpg" class="card-img-top" alt="...">
-                 
-                </div>
-              </div>
-              <div class="quote wow fadeInUp col col-md-2" data-wow-delay="1.5s">
-                <div class="card">
-                  <img src="/images/show/anh5.jpg" class="card-img-top" alt="...">
-                 
-                </div>
-              </div>
-              <div class="quote wow fadeInUp col col-md-2" data-wow-delay="1.6s">
-                <div class="card">
-                  <img src="/images/show/anh6.jpg" class="card-img-top" alt="...">
-                 
-                </div>
-              </div>
-          </div>
-          <div class="row">
-            <div class="quote wow fadeInUp col col-md-2" data-wow-delay="0.35s">
-                <div class="card">
-                    <img src="/images/show/anh1.jpg" class="card-img-top" alt="...">
-                    <a href="" class="favourite" title="yêu thích">
-                      <i class="far fa-heart heart--transparent"></i>
-                    </a>
-                    <div class="title-image">Hoa Hải Đường</div>
-                  </div>
-            </div>
-            <div class="quote wow fadeInUp col col-md-2" data-wow-delay="0.65s">
-              <div class="card">
-                <img src="/images/show/anh2.jpg" class="card-img-top" alt="...">
-                <a href="" class="favourite" title="yêu thích">
-                  <i class="far fa-heart heart--transparent"></i>
-                </a>
-                <div class="title-image">Xương rồng</div>
-              </div>
-            </div>
-            <div class="quote wow fadeInUp col col-md-2" data-wow-delay="0.95s">
-              <div class="card">
-                <img src="/images/show/anh3.jpg" class="card-img-top" alt="...">
-               
-              </div>
-            </div>
-            <div class="quote wow fadeInUp col col-md-2" data-wow-delay="1.2s">
-              <div class="card">
-                <img src="/images/show/anh4.jpg" class="card-img-top" alt="...">
-               
-              </div>
-            </div>
-            <div class="quote wow fadeInUp col col-md-2" data-wow-delay="1.5s">
-              <div class="card">
-                <img src="/images/show/anh5.jpg" class="card-img-top" alt="...">
-               
-              </div>
-            </div>
-            <div class="quote wow fadeInUp col col-md-2" data-wow-delay="1.6s">
-              <div class="card">
-                <img src="/images/show/anh6.jpg" class="card-img-top" alt="...">
-               
-              </div>
-            </div>
-        </div>
+           
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
