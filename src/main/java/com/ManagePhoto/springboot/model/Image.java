@@ -1,11 +1,23 @@
 package com.ManagePhoto.springboot.model;
 
+
+
+
+import java.sql.Timestamp;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
+
+
 
 @Entity
 public class Image {
@@ -14,10 +26,18 @@ public class Image {
 	private Long id;
 	private String title;
 	private String category;
-	private String date;
+	
+	@CreationTimestamp
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "datetime")
+	private Date datetime;
+	
+	
 	@Lob
 	@Column(columnDefinition = "MEDIUMBLOB")
-	private String image; 
+	private String image;
+	
+	
 	
 
 	public Long getId() {
@@ -43,27 +63,29 @@ public class Image {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	
-	public String getDate() {
-		return date;
+
+	public Date getDatetime() {
+		return datetime;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
+	public void setDatetime(Date datetime) {
+		this.datetime = datetime;
 	}
-	
+
 	public String getImage() {
 		return image;
 	}
 	public void setImage(String image) {
 		this.image = image;
 	}
+	
+	
 
 	
 
 	@Override
 	public String toString() {
-		return "Image [id=" + id + ", Title=" + title + ", Category=" + category + ",Date=" + date + ", image="+image+ "]";
+		return "Image [id=" + id + ", Title=" + title + ", Category=" + category + ",Date=" + datetime + ", image="+image+ "]";
 	}
 
 }
