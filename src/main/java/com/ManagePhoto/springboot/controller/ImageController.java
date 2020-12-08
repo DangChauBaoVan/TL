@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import com.ManagePhoto.springboot.model.Image;
-import com.ManagePhoto.springboot.repository.ImageRepositry;
 
 import java.util.List;
 
@@ -24,18 +23,14 @@ public class ImageController {
 	@Autowired
 	private ImageService imageService;
 	
-	@Autowired
-	private ImageRepositry imageRepo;
+	
 	
 	@PostMapping("/addI")
     public String saveImage(@RequestParam("file") MultipartFile file,
     		@RequestParam("title") String title,
-    		@RequestParam("category") String category,
-			@RequestParam("date") String date
-		
-			)
+    		@RequestParam("category") String category)
     {
-    	imageService.saveImageToDB(file, title, category, date);
+    	imageService.saveImageToDB(file, title, category);
     	return "redirect:/listImages";
 	}
 	@RequestMapping(value = { "/listImages" }, method = RequestMethod.GET)
@@ -72,18 +67,26 @@ public class ImageController {
     }
 	
 	
-	  @GetMapping("/editImg/{id}") 
-	  public String showUpdateForm(@PathVariable("id") long id,Model model) {
-		  
-		  return "redirect:/updateImg"; 
-	  
-	  }
-	  
-	  @PostMapping("/updateImg/{id}")
-	  public String updateImage(@RequestParam("id") Long id ) {
-		  
-		  return "redirect:/listImages"; 
-	  }
+	
+	 
+	 @GetMapping("/showUpdateImg/{id}")
+	 public String showUpdateImg(@PathVariable (value = "id") long id, Model model) {
+		 
+		 Image image = imageService.getImageById(id);
+		 model.addAttribute("image", image);
+		 
+		 
+		 return "updateImg";
+	 } 	
+	 @PostMapping("/updateImage")
+		public String updateImage(@RequestParam("id") Long id,
+				@RequestParam("title") String title,
+	    		@RequestParam("category") String category
+				) {
+			
+			imageService.updateImage(id,title,category);
+			return "redirect:/listImages";
+		}
 	 
 	
 

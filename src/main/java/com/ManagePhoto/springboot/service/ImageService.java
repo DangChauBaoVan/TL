@@ -3,6 +3,7 @@ package com.ManagePhoto.springboot.service;
 import java.io.IOException;
 import java.util.Base64;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,36 +22,45 @@ public class ImageService {
 	{
 		return imageRepo.findAll();
 	}
-	public void saveImageToDB(MultipartFile file ,String title, String category, String date) {
+
+	public void saveImageToDB(MultipartFile file ,String title, String category) {
 		Image p = new Image();
-		 String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-		 if(fileName.contains(".."))
-		 {
-		 System.out.println("not a valid file");
-		 }
-		 try {
-		 p.setImage(Base64.getEncoder().encodeToString(file.getBytes()));
-		 } catch (IOException e) {
-		 e.printStackTrace();
-		 }
+		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+		if(fileName.contains(".."))
+		{
+			System.out.println("not a valid file");
+		}
+		try {
+			p.setImage(Base64.getEncoder().encodeToString(file.getBytes()));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		p.setTitle(title);
 		p.setCategory(category);
-		p.setDate(date);
 		imageRepo.save(p);
 	}
-	
+
 	public void deleteImagetById(Long id)
-    {
+	{
 		imageRepo.deleteById(id);
-    }
-	public void updateImage(Long id, String title,String category ,String date) {
-		Image p = new Image();
-		p = imageRepo.findById(id).get();
-		p.setTitle(title);
-		p.setCategory(category);
-		p.setDate(date);
-		imageRepo.save(p);
 	}
-	
-	
+
+	public void updateImage(Long id,String title, String category) {
+		Image image= imageRepo.findById(id).get();
+		image.setCategory(category);
+		image.setTitle(title);
+		imageRepo.save(image);
+	}
+	public Image getImageById(long id) {
+		Optional<Image> optional= imageRepo.findById(id);
+		Image image =null;
+		if(optional.isPresent()) {
+			image = optional.get();
+		}else {
+			throw new RuntimeException("Image Not Found For Id :: " + id);
+		}
+		return image;
+	}
+
+
 }

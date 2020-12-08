@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,15 +17,12 @@
 </head>
 <body>
 	<div class="card">
-		<form action="#" th:action="@{/updateImg/{id}(id=${image.id})}"
-			th:object="${image}" method="post">
-			<label for="title">Title</label> <input type="text" th:field="*{title}"
-				id="title" placeholder="Hoa Huong Duong"> <span
-				th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span> <label
-				for="email">Email</label> <input type="text" th:field="*{email}"
-				id="email" placeholder="Email"> <span
-				th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span> <input
-				type="submit" value="Update User">
+		<form th:action="@{/updateImage}" method="POST" th:object="${image}" enctype="multipart/form-data">
+			Id:<input type="text" th:field="*{id}" /> <br /> <br /> 
+			Title: <input type="text" th:field="*{title}" /> <br /> <br /> 
+			Category: <input type="text" th:field="*{category}" /> <br /> <br /> 
+			Date: <input type="text" th:field="*{datetime}" /> <br /> <br />
+			<button class="btn btn-info btn-block" type="submit">Update</button>
 		</form>
 	</div>
 	<script src="vendor/jquery/jquery.slim.min.js"></script>
