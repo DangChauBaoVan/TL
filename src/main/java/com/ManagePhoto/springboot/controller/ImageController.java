@@ -49,8 +49,17 @@ public class ImageController {
 	@RequestMapping(value = { "/home" }, method = RequestMethod.GET)
 	public ModelAndView homeImages(Model model) {
 		List<Image> images = imageService.getAllImages();
-		model.addAttribute("images", images);
-		ModelAndView modelAndView = new ModelAndView();
+		// System.out.println(images.size());
+		// int [] imageslist = new int [images.size()+1];
+
+		// for(int i = 0; i < images.size()/5; ++i)
+		// {
+		// 	imageslist[i] = imageService.getimage(images.get(i));
+		// }
+
+		model.addAttribute("images", images); // phần get dữ liệu
+
+		ModelAndView modelAndView = new ModelAndView(); //phần hiển thị
 		modelAndView.setViewName("home"); 
 		return modelAndView;
 	}
