@@ -66,9 +66,6 @@ public class ImageController {
     	return "redirect:/listImages";
     }
 	
-	
-	
-	 
 	 @GetMapping("/showUpdateImg/{id}")
 	 public String showUpdateImg(@PathVariable (value = "id") long id, Model model) {
 		 

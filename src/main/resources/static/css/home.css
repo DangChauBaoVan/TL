@@ -14,39 +14,12 @@
     margin: 0 auto;
 }
 
-.btn {
-    outline: none;
-    border-radius: 16px;
-    width: 80px;
-    margin: 0 10px;
-    height: 37px;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  
-}
+
 .nav-item {
     font-size: 14px;
     font-weight: bold;
 }
-.btn.btn-login {
-    background-color: var(--main-color);
-    color: white;
-}
 
-.btn.btn-signup {
-    background-color: #efefef;
-    color: black;
-}
-.btn.btn-signup:hover {
-    background-color: var( --hover-main-color);
-    color: white;
-}
-.btn.btn-signup:hover {
-    background-color: #ddd;
-    color: black;
-}
 
 body.modal-open {
     height: 100vh;
