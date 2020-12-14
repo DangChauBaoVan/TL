@@ -86,6 +86,13 @@ public class AuthenticationController {
 		return modelAndView;
 	}
 	
+	@RequestMapping(value = {"/addCategory"}, method = RequestMethod.GET)
+	public ModelAndView addCategory() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("addCategory"); 
+		return modelAndView;
+	}
+	
 
 
 	

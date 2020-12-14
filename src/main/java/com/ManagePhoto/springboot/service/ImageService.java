@@ -22,6 +22,8 @@ public class ImageService {
 	{
 		return imageRepo.findAll();
 	}
+	
+	
 
 	public void saveImageToDB(MultipartFile file ,String title, String category) {
 		Image p = new Image();
