@@ -1,47 +1,53 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-<title>Registration Form</title>
-<!-- link rel="stylesheet" type="text/css" th:href="@{/css/registration.css}" /-->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<body style="background-color: #ededed;">
-	<div style="background-color: #337ab7; height: 50px;"></div>
-	<div class="container-fluid" style="margin-top: 30px;">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Login-ManagePhoto</title>
+  <link rel="stylesheet"href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+  <link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/login.css">
+  </head>
 
-		<div class="row col-lg-4 col-lg-offset-4" style="margin-top: 40px; background-color: #fff; padding: 20px; border: solid 1px #ddd;">
-			<form autocomplete="off" action="#" th:action="@{/register}" th:object="${user}" method="post" class="form-signin" role="form">
-				<h3 class="form-signin-heading">Registration Form</h3>
-				<div class="form-group">
-					<div class="">
-						<input type="text" th:field="*{name}" placeholder="Name" class="form-control" />
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="">
-						<input type="text" th:field="*{lastName}" placeholder="Last Name" class="form-control" />
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="">
-						<input type="text" th:field="*{email}" placeholder="Email" class="form-control" />
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="">
-						<input type="password" th:field="*{password}" placeholder="Password" class="form-control" />
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="">
-						<button type="submit" class="btn btn-primary btn-block">Register User</button>
-					</div>
-				</div>
-				<span th:utext="${successMessage}"></span>
-			</form>
-		</div>
-	</div>
-</body>
+  <body>
+   
+  <div class="background" style="background-image: url(https://i.imgur.com/uEDv9gZ.jpg);">
+    <div class="container grid">
+      <div  class="navbar-- "> 
+        <h2 class="title">Daily Photos</h2>
+        <div class="wrapper-navbar">
+          <a class="btn btn-login" id="login-button" href="/login"> Login</a>
+            <a class="btn btn-signup" id="register-button" href="/register"> Sign up</a>
+        </div>
+      </div>
+      <div id="card-login"class="card-login">
+        <form th:action="@{/register}" th:object="${user}" method="POST" class="">
+			<div class="wrapper-input">
+           
+				<input type="text" th:field="*{name}" class="input-email" placeholder="Hoai Mi" />
+			  </div>
+			  <div class="wrapper-input">
+			   
+				<input class="input-email"  type="text" placeholder="Tran"  th:field="*{lastName}">
+			  </div>
+			  <div class="wrapper-input">
+				<input class="input-email" type="text" th:field="*{email}" placeholder="hoaimiqng@gmail.com" />
+			  </div>
+			  <div class="wrapper-input">
+				<input  class="input-email" type="password" th:field="*{password}" placeholder="********"/>
+			  </div>
+			
+			  <span class="success" th:utext="${successMessage}"></span>
+          	<button class="btn btn-primary btn-submit-login"type="Submit" >Sign up
+            <i class="fas fa-angle-right icon-angle-right"></i>
+          </button>
+        </form>
+        <div class="question">You have account? <a href="/login"class="signup">Sign in now</a> </div>
+      </div>
+     
+      </div>
+</div>
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </body>
 </html>
