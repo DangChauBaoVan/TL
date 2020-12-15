@@ -33,5 +33,19 @@ public class CategoryService {
 		p.setName(name);
 		categoryRepo.save(p);
 	}
+	
+	public List<Category> getAllCategory()
+	{
+		return categoryRepo.findAll();
+	}
+	public void deleteCategoryById(int id)
+	{
+		 categoryRepo.deleteById(id);
+	}
+	public void updateCate(int id,String name) {
+		Category category = categoryRepo.findById(id).get();
+		category.setName(name);
+		categoryRepo.save(category);
+	}
 
 }

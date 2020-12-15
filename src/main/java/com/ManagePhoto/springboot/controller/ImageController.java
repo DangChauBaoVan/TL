@@ -60,7 +60,6 @@ public class ImageController {
 	@GetMapping("/deleteImg/{id}")
     public String deleteImage(@PathVariable("id") Long id)
     {
-    	
     	imageService.deleteImagetById(id);
     	return "redirect:/listImages";
     }
@@ -70,8 +69,6 @@ public class ImageController {
 		 
 		 Image image = imageService.getImageById(id);
 		 model.addAttribute("image", image);
-		 
-		 
 		 return "updateImg";
 	 } 	
 	 @PostMapping("/updateImage")

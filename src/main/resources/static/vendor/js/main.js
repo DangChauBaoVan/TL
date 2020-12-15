@@ -3,23 +3,28 @@ window.addEventListener("load", function(){
    var btnupload = document.getElementById("btn-upload");
    var btnupload2 = document.getElementById("upload-2");
   var btndelete = document.getElementById('btn-delete');
+  var checkall = document.getElementById('checkAllItem');
 
  
    $('#checkAllItem').click(function() {
-
+     
       if (this.checked) {
+        console.log('checked');
+        btndelete.disabled = false;
         $(':checkbox').prop('checked', true);
       } else {
+        btndelete.disabled = true;
         $(':checkbox').prop('checked', false);
       }
   });
-  if($('#checkAllItem').prop('checked', true)){
-    
-      btndelete.attributes.disabled = false;
-  }
-  else {
-    btndelete.attributes.disabled = true;
-  }
+
+  // if(checkall.attributes.checked == true){
+  //   console.log('hi');
+  //     btndelete.attributes.disabled = false;
+  // }
+  // else {
+  //   btndelete.attributes.disabled = true;
+  // }
 
    btnupload.addEventListener('click',function(){
     modalid.style.display='flex' ;

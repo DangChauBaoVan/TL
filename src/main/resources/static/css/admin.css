@@ -233,12 +233,10 @@ p {
     border: none;
     height: 34px;
     width: 83px;
-    outline: none;
-    
+    outline: none;   
 }
-.btn-delete:active {
+.btn-delete:active, .btn-delete:focus {
     outline: none;
-
 }
 .img-logo {
     height: 50px;

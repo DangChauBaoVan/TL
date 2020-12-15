@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,5 +39,21 @@ public class CategoryController {
         modelAndView.setViewName("category"); 
         return modelAndView;
     }
-    
+   
+    @GetMapping("/deleteCategory/{id}")
+    public String deleteCategory(@PathVariable("id") int id)
+    {
+    	
+    	cateService.deleteCategoryById(id);
+    	return "redirect:/listImages";
+    }
+    @PostMapping("/updateCate")
+    public String updateCategory(@RequestParam("id") int id,
+            @RequestParam("name") String name
+          
+            ) {
+        
+        cateService.updateCate(id,name);
+        return "redirect:/listImages";
+    }
 }
