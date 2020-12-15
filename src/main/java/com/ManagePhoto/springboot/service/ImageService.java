@@ -45,6 +45,7 @@ public class ImageService {
 	public void deleteImagetById(Long id)
 	{
 		imageRepo.deleteById(id);
+		
 	}
 
 	public void updateImage(Long id,String title, String category) {
