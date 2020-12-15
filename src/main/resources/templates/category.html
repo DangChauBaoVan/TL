@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Management photo</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Category</title>
 <link href="vendor/fontawesome/css/all.min.css" rel="stylesheet">
 <link
 	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -17,11 +15,9 @@
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/admin.css">
 <link rel="stylesheet" href="css/login.css">
-
 </head>
-
-<body id="page-top">
-
+<body>
+	
 	<div id="wrapper">
 		<div class="container">
 			<div id="content-wrapper" class="d-flex flex-column">
@@ -39,12 +35,12 @@
 						</div>
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul class="navbar-nav mr-auto">
-							  <li class="nav-item active">
+							<li class="nav-item active">
 								<a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
-							  </li>
-							  <li class="nav-item active">
+							</li>
+							<li class="nav-item active">
 								<a class="nav-link" href="category">Category</a>
-							  </li>
+							</li>
 							</ul>
 						</div>
 						<button id="sidebarToggleTop"
@@ -74,35 +70,9 @@
 							</li>
 						</ul>
 					</nav>
-
 					<div class="container-fluid generalClass">
-						<div id="btn-upload" class="btn btn-primary upload" >Upload Image </div>
-						<!-- modal add image -->
-						<div class="modal" id="modal__layout">
-							<div class="modal__overlay"></div>
-								<div class="modal__body">
-									<button id="btn-close">x</button>
-									<form class="border border-light p-5 upload-form" action="addI"
-									method="POST" enctype="multipart/form-data">
-									
-
-									<h4 class="text-black-50  text-left">Title</h4>
-									<input type="text" name="title" id="title" class="form-control mb-4"
-										placeholder="Mặt trời mọc" required>
-									<h4 class="text-black-50  text-left">Category</h4>
-									<input type="text" name="category" id="category"
-										class="form-control mb-4" placeholder="natural" required>
-										
-									<div class="custom-file mb-4">
-										<label for="customFile" class="label-choose-image">Choose image</label>
-										<input type="file" name="file" class="custom-file-input" id="customFile"> 
-									</div>
-						
-						
-									<button class="btn btn-info" type="submit">Add</button>
-								</form>
-								</div>
-						</div>
+						<div  id="btn-upload--category" class="btn btn-primary upload" >Add Category </div>
+						<!-- modal add category -->
 						<div class="modal" id="modal__layout-addCategory">
 							<div class="modal__overlay"></div>
 								<div class="modal__body">
@@ -115,21 +85,22 @@
 											class="form-control mb-4" placeholder="natural" required>
 
 										<div class="custom-file mb-4">
+										<label for="customFileCategory" class="label-choose-image">Choose image</label>
+
 											<input type="file" name="file" class="custom-file-input"
-												id="customFileCategory"> <label class="custom-file-label"
-												for="customFileCategory" required>Chose Image</label>
+												id="customFileCategory"> 
 										</div>
 
 
 									<button class="btn btn-info btn-block" type="submit">Add</button>
 									</form>
 								</div>
-							</div>
+						</div>
 					</div>
-				</div>	
+				</div>
 				<div class="col-md-12">
 					<div class="table-responsive">
-						<button id ="btn-delete" class="btn-delete" disabled>Delete</button>
+						<button class="btn-delete" disabled>Delete</button>
 						<label>Select Categogy</label>
 						<select name="cars" id="cars" class="selectcategory">
 							<option value="volvo" class="item__select-categogy">Animals</option>
@@ -146,38 +117,25 @@
 						</select>
 						
 						<table id="mytable" class="table table-bordred table-striped">
-							<div th:if= "${images.empty}" class="not-images">
+							<div th:if= "${categories.empty}" class="not-images">
 								<img src="images/unnamed.png" alt="" class="img-not-found">
-								<p class="">Kho ảnh của bạn đang trống !</p> 
-								<div id="upload-2" class="btn btn-primary btn-upload-2" >Thêm ảnh </div>
+								<p class="">danh mục ảnh của bạn đang trống !</p> 
+								<div id="upload-2" class="btn btn-primary btn-upload-2" >Thêm danh mục </div>
 							</div>
 							
-							<thead  th:unless="${images.empty}">
+							<thead  th:unless="${categories.empty}">
 								<th><input type="checkbox" id="checkAllItem">
 								</th>
 								<th>Image</th>
-								<th>Title</th>
-								<th>Categogy</th>
-								<th>Published On</th>
-								<th class="th-btn">Edit</th>
-								<th class="th-btn">Delete</th>
+								<th>Name</th>
 								<tbody>
-									<tr th:each="image : ${images}">
+									<tr th:each="category : ${categories}">
 										<td><input type="checkbox" id="checkitem" name="">
 										</td>
 										<th scope="row"><img alt=""
-											th:src="*{'data:image/jpeg;base64,'+{image.image}}"
+											th:src="*{'data:image/jpeg;base64,'+{category.image}}"
 											style="width: 100px; height: 100px;"></th>
-										<td>[[*{image.title}]]</td>
-										<td>[[*{image.category}]]</td>
-										<td>[[*{image.datetime}]]</td>
-										<td>
-											<a th:href="@{/showUpdateImg/{id}(id=${image.id})}" class="btn btn-edit mt-4">Edit</a>
-										</td>
-										<td><a th:href="@{/deleteImg/{id}(id=${image.id})}" class="btn btn-danger mt-4">Delete</a>
-
-										</td>
-
+										<td>[[*{category.name}]]</td>
 									</tr>
 								</tbody>
 							</thead>
@@ -186,21 +144,18 @@
 					</div>
 				</div>
 			</div>
-
 		</div>
-			<footer class="bg-white footer">
-				<div class="container my-auto">
-					<div class="copyright text-center my-auto">
-						<span>Copyright &copy; Hoai Mi and Bao Van</span>
-					</div>
+		<footer class="bg-white footer">
+			<div class="container my-auto">
+				<div class="copyright text-center my-auto">
+					<span>Copyright &copy; Hoai Mi and Bao Van</span>
 				</div>
-			</footer>
+			</div>
+		</footer>
 	</div>
-
-
+	
 	<script src="vendor/jquery/jquery.slim.min.js"></script>
 	<script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="vendor/js/main.js"></script>
+	<script src="vendor/js/category.js"></script>
 </body>
-
 </html>
