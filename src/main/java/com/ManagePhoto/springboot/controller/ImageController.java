@@ -15,6 +15,7 @@ import com.ManagePhoto.springboot.model.Image;
 
 import java.util.List;
 
+import com.ManagePhoto.springboot.service.CategoryService;
 import com.ManagePhoto.springboot.service.ImageService;
 
 @Controller
@@ -22,6 +23,9 @@ public class ImageController {
 	
 	@Autowired
 	private ImageService imageService;
+	
+	@Autowired
+	private CategoryService cateService;
 	
 	
 	
@@ -48,7 +52,7 @@ public class ImageController {
 		// System.out.println(images.size());
 		// int [] imageslist = new int [images.size()+1];
 
-		// for(int i = 0; i < images.size()/5; ++i)
+		// for(int i = ; i g<ry images.size()/5; ++i)
 		// {
 		// 	imageslist[i] = imageService.getimage(images.get(i));
 		// }
@@ -85,7 +89,12 @@ public class ImageController {
 			imageService.updateImage(id,title,category);
 			return "redirect:/listImages";
 		}
+	 @PostMapping("/addCate")
+	    public String saveCategory(@RequestParam("file") MultipartFile file,
+	    		@RequestParam("name") String name)
+	    {
+	    	cateService.saveCategoryToDB(file, name);
+	    	return "redirect:/listImages";
+		}
 	 
-	
-
 }
