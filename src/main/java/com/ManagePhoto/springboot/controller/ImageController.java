@@ -1,6 +1,8 @@
 package com.ManagePhoto.springboot.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import com.ManagePhoto.springboot.model.Image;
+import com.ManagePhoto.springboot.model.User;
 
 import java.util.List;
 
@@ -39,7 +42,10 @@ public class ImageController {
 	}
 	@RequestMapping(value = { "/listImages" }, method = RequestMethod.GET)
 	public ModelAndView listImages(Model model) {
-		List<Image> images = imageService.getAllImages();
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		User user = (User)authentication.getPrincipal();
+		int userid= user.getId();
+		List<Image> images = imageService.getAllImagesById(userid);
 		model.addAttribute("images", images);
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("listImages"); 

@@ -23,6 +23,9 @@ public class ImageService {
 		return imageRepo.findAll();
 	}
 	
+	public List<Image> getAllImagesById(int user_id){
+		return imageRepo.findAllImagesByUserId(user_id);
+	}
 	
 
 	public void saveImageToDB(MultipartFile file ,String title, String category) {

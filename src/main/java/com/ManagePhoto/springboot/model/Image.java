@@ -38,6 +38,8 @@ public class Image {
 	private String image;
 	
 	
+	@Column(name="user_id")
+	private int user_id;
 	
 
 	public Long getId() {
@@ -78,10 +80,14 @@ public class Image {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	
-	
 
-	
+	public int getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
+	}
 
 	@Override
 	public String toString() {
