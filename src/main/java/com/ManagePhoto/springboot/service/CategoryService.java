@@ -9,6 +9,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ManagePhoto.springboot.model.Category;
+import com.ManagePhoto.springboot.model.Image;
 import com.ManagePhoto.springboot.repository.CategoryRepository;
 
 @Service
@@ -32,6 +33,11 @@ public class CategoryService {
 		}
 		p.setName(name);
 		categoryRepo.save(p);
+	}
+	
+	public List<Category> getAllCategory()
+	{
+		return categoryRepo.findAll();
 	}
 
 }
