@@ -63,10 +63,18 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.sql2o</groupId>
+			<artifactId>sql2o</artifactId>
+			<version>1.5.4</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-configuration-processor</artifactId>
 			<optional>true</optional>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.sql2o/sql2o -->
+
+
 	</dependencies>
 
 	<build>

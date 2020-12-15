@@ -44,6 +44,7 @@ public class ImageController {
 	@RequestMapping(value = { "/home" }, method = RequestMethod.GET)
 	public ModelAndView homeImages(Model model) {
 		List<Image> images = imageService.getAllImages();
+
 		// System.out.println(images.size());
 		// int [] imageslist = new int [images.size()+1];
 
