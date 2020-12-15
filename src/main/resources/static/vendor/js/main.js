@@ -19,9 +19,7 @@ window.addEventListener("load", function(){
    btnupload.addEventListener('click',function(){
     modalid.style.display='flex' ;
    });
-   btnupload2.addEventListener('click',function(){
-    modalid.style.display='flex' ;
-   });
+  
   
    var btnclose = document.getElementById("btn-close");
   
@@ -34,6 +32,8 @@ window.addEventListener("load", function(){
    function closeModalCate() {
     modaladdCategory.style.display ='none' ;
    }
-
+   btnupload2.addEventListener('click',function(){
+    modalid.style.display='flex' ;
+   });
 
  });
