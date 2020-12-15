@@ -2,7 +2,7 @@ package com.ManagePhoto.springboot.service;
 
 import java.io.IOException;
 import java.util.Base64;
-
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -15,7 +15,9 @@ import com.ManagePhoto.springboot.repository.CategoryRepository;
 public class CategoryService {
 	@Autowired
 	private CategoryRepository categoryRepo;
-	
+	public List<Category> GetAllCategory() {
+		return categoryRepo.findAll();
+	}
 	public void saveCategoryToDB(MultipartFile file ,String name) {
 		Category p = new Category();
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());

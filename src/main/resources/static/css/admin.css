@@ -21,18 +21,18 @@ body {
    
 }
 .sidebar-brand-text{
-    color: rgb(245, 164, 13);
+    color: var(--main-color);
 }
 .text-nav {
-    color: rgb(245, 164, 13);
+    color: var(--main-color);
 }
 .btn-primary:hover{
-    background-color: rgb(236, 155, 4);
-    border-color: rgb(223, 150, 14);
+    background-color:var(--main-color);
+    border-color: var(--main-color);
     color:white;
 }
 .btn.upload {
-    font-size: 1.65rem !important;
+    font-size: 16px !important;
     margin-left: 1060px;
     width: 126px;
 }
@@ -49,8 +49,8 @@ body {
     width: 155px;
 }
 .btn-primary{
-    background-color: rgb(245, 164, 13);
-    border-color: rgb(223, 150, 14);
+    background-color: var(--main-color);
+    border-color: var(--main-color);
     color:  white;
 }
 .img-profile {
@@ -78,12 +78,12 @@ body {
     font-size: 16px;
 }
 .page-item.active .page-link{
-    background-color: rgb(245, 164, 13);
-    border-color: rgb(223, 150, 14);
+    background-color: var(--main-color);
+    border-color: var(--main-color);
 }
 .page-item.active .page-link:hover{
-    background-color: rgb(236, 155, 4);
-    border-color: rgb(223, 150, 14);
+    background-color:var(--main-color);
+    border-color: var(--main-color);
 }
 .btn-warning{
     background-color:  rgba(97, 95, 95, 0.877);
@@ -144,8 +144,9 @@ div.table-responsive>div.dataTables_wrapper>div.row:first-child>div[class^="col-
     background-color: #ccc;
 }
 .navbar-expand .navbar-nav {
-    margin-left: 823px;
+    /* margin-left: 823px; */
 }
+
 .topbar .dropdown .dropdown-menu {
     background-color: #eeebeb;
     font-size: 1.3rem !important;
@@ -188,7 +189,7 @@ p {
     position: relative;
     width: 425px;
     height: 450px;
-    animation: growth linear 0.1s;
+    animation: growth linear 0.2s;
     border-radius: 4px;
    
 }
@@ -200,7 +201,11 @@ p {
     float: right;
     background-color: white;
     width: 32px;
-    border: 1px solid;
+    border: 1px solid #ccc;
+}
+#btn-close:active {
+    outline: none;
+
 }
 #btn-close-cate {
     font-size: 18px;
@@ -216,9 +221,9 @@ p {
 .label-choose-image {
     border: 1px solid;
     background-color: #ccc;
-    display: inline-block;
     margin-bottom: .5rem;
     padding: 4px;
+    float: left;
 }
 .th-btn {
     width: 100px;
@@ -234,4 +239,32 @@ p {
 .btn-delete:active {
     outline: none;
 
+}
+.img-logo {
+    height: 50px;
+    width: 50px;
+    border-radius: 6px;
+}
+.navbar-expand .navbar-nav .nav-link {
+    padding-right: .5rem;
+    padding-left: 1.5rem;
+}
+.navbar-expand .navbar-nav .nav-link:hover {
+    color: var(--main-color);
+}
+.not-link:hover {
+   cursor: pointer;
+}
+.web-title {
+    color: #1c2b44;
+    font-weight: 700;
+    font-size: 26px;
+    margin-left: 10px;
+}
+.web-title:hover {
+    text-decoration: none;
+    color: #1c2b44;
+}
+.container-fluid {
+    margin-top: 16px;
 }

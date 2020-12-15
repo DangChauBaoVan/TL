@@ -15,7 +15,6 @@ import com.ManagePhoto.springboot.model.Image;
 
 import java.util.List;
 
-import com.ManagePhoto.springboot.service.CategoryService;
 import com.ManagePhoto.springboot.service.ImageService;
 
 @Controller
@@ -23,11 +22,6 @@ public class ImageController {
 	
 	@Autowired
 	private ImageService imageService;
-	
-	@Autowired
-	private CategoryService cateService;
-	
-	
 	
 	@PostMapping("/addI")
     public String saveImage(@RequestParam("file") MultipartFile file,
@@ -89,12 +83,6 @@ public class ImageController {
 			imageService.updateImage(id,title,category);
 			return "redirect:/listImages";
 		}
-	 @PostMapping("/addCate")
-	    public String saveCategory(@RequestParam("file") MultipartFile file,
-	    		@RequestParam("name") String name)
-	    {
-	    	cateService.saveCategoryToDB(file, name);
-	    	return "redirect:/listImages";
-		}
+	
 	 
 }

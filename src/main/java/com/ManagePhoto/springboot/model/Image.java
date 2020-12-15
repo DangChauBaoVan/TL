@@ -37,9 +37,6 @@ public class Image {
 	@Column(columnDefinition = "MEDIUMBLOB")
 	private String image;
 	
-	
-	
-
 	public Long getId() {
 		return id;
 	}

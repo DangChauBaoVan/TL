@@ -1,9 +1,7 @@
 :root {
-  
-    --main-color: #E60023;
-    --hover-main-color: #AD081B;
-
-    --second-color: rgb(82, 190, 136);
+    --main-color: rgb(245, 164, 13);
+    --hover-main-color: rgb(199, 133, 12);
+    --second-color:rgb(199, 133, 12);
     --third-color: #d1e9cd;
     --white-color: #ffffff;
     --black-color: #000;
