@@ -64,7 +64,9 @@
 
 				<div class="container-fluid generalClass">
 					<div id="btn-upload" class="btn btn-primary upload" >Upload Image </div>
-				
+					<div  id="btn-upload--category" class="btn btn-primary upload" >Add Category </div>
+
+					<!-- modal add image -->
 					<div class="modal" id="modal__layout">
 						<div class="modal__overlay"></div>
 							<div class="modal__body">
@@ -89,6 +91,29 @@
 								<button class="btn btn-info" type="submit">Add</button>
 							</form>
 							</div>
+					</div>
+					<div class="modal" id="modal__layout-addCategory">
+						<div class="modal__overlay"></div>
+							<div class="modal__body">
+								<button id="btn-close-cate">x</button>
+								<form class="text-center border border-light p-5" action="addCate"
+									method="POST" enctype="multipart/form-data">
+									
+									<h4 class="text-black-50  text-left">Category Name:</h4>
+									<input type="text" name="name" id="addcategory"
+										class="form-control mb-4" placeholder="natural" required>
+
+									<div class="custom-file mb-4">
+										<input type="file" name="file" class="custom-file-input"
+											id="customFileCategory"> <label class="custom-file-label"
+											for="customFileCategory" required>Chose Image</label>
+									</div>
+
+
+								<button class="btn btn-info btn-block" type="submit">Add</button>
+								</form>
+							</div>
+						</div>
 					</div>
 				</div>	
 						<div class="col-md-12">

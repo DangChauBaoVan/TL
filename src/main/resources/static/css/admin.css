@@ -195,7 +195,14 @@ p {
 .upload-form {
     overflow: hidden;
 }
-#btn-close {
+#btn-close{
+    font-size: 18px;
+    float: right;
+    background-color: white;
+    width: 32px;
+    border: 1px solid;
+}
+#btn-close-cate {
     font-size: 18px;
     float: right;
     background-color: white;

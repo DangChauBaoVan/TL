@@ -1,9 +1,10 @@
 window.addEventListener("load", function(){
-   var modalid=document.getElementById("modal__layout");
+   var modalid=  document.getElementById("modal__layout");
+   var modaladdCategory = document.getElementById("modal__layout-addCategory");
    
    var btnupload = document.getElementById("btn-upload");
    var btnupload2 = document.getElementById("upload-2");
-   
+   var btnaddCategory = document.getElementById("btn-upload--category");
    $('#checkAllItem').click(function(event) {
 
    if (this.checked) {
@@ -12,6 +13,9 @@ window.addEventListener("load", function(){
      $(':checkbox').prop('checked', false);
    }
  });
+ btnaddCategory.addEventListener('click', function() {
+  modaladdCategory.style.display = 'flex';
+ })
    btnupload.addEventListener('click',function(){
     modalid.style.display='flex' ;
    });
@@ -20,10 +24,16 @@ window.addEventListener("load", function(){
    });
   
    var btnclose = document.getElementById("btn-close");
+  
+   var btnclose2 = document.getElementById("btn-close-cate");
+   btnclose.addEventListener('click', closeModal);
    function closeModal() {
     modalid.style.display ='none' ;
    }
-   btnclose.addEventListener('click', closeModal);
+   btnclose2.addEventListener('click', closeModalCate);
+   function closeModalCate() {
+    modaladdCategory.style.display ='none' ;
+   }
 
 
  });
