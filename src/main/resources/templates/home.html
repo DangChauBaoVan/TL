@@ -16,77 +16,95 @@
 <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
-	<div class="wrapper-nav" id="navbar">
-		<div class="container">
-			<nav class="navbar navbar-expand-lg navbar-light bg-light">
-				<button class="navbar-toggler" type="button" data-toggle="collapse"
-					data-target="#navbarTogglerDemo01"
-					aria-controls="navbarTogglerDemo01" aria-expanded="false"
-					aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-
-					<a class="navbar-brand" href="#">Management Photos</a>
-					<div class="header-search">
-						<div class="header-search-input-wrap">
-							<input type="text" class="header-search-input"
-								placeholder="Tìm kiếm">
-							<!-- search history -->
-							<div class="header-search-history">
-								<h4 class="header-search-history-heading">Lịch sử tìm kiếm</h4>
-								<ul class="header-search-history-list">
-									<li class="header-search-history-item"><a href="">Cat</a>
-									</li>
-									<li class="header-search-history-item"><a href="">Flowers</a>
-									</li>
-									<li class="header-search-history-item"><a href="">Wallet</a>
-									</li>
-									<li class="header-search-history-item "><a href="">Jeans</a>
-									</li>
-								</ul>
+	<div class="container">
+		<div class="wrapper-nav" id="navbar">
+		
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+					<button class="navbar-toggler" type="button" data-toggle="collapse"
+						data-target="#navbarTogglerDemo01"
+						aria-controls="navbarTogglerDemo01" aria-expanded="false"
+						aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+	
+						<a class="navbar-brand" href="#">Daily Photos</a>
+						<div class="header-search">
+							<div class="header-search-input-wrap">
+								<input type="text" class="header-search-input"
+									placeholder="Tìm kiếm">
+								<!-- search history -->
+								<div class="header-search-history">
+									<h4 class="header-search-history-heading">Lịch sử tìm kiếm</h4>
+									<ul class="header-search-history-list">
+										<li class="header-search-history-item"><a href="">Cat</a>
+										</li>
+										<li class="header-search-history-item"><a href="">Flowers</a>
+										</li>
+										<li class="header-search-history-item"><a href="">Wallet</a>
+										</li>
+										<li class="header-search-history-item "><a href="">Jeans</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="header-search-icon-btn ">
+								<i class="search fas fa-search search-icon"></i>
 							</div>
 						</div>
-						<div class="header-search-icon-btn ">
-							<i class="search fas fa-search search-icon"></i>
-						</div>
 					</div>
-				</div>
-
-				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-					<li class="nav-item active"><a class="nav-link" href="#">About
-							<span class="sr-only">(current)</span>
-					</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Business</a>
-					</li>
-					<li class="nav-item"><a class="nav-link" href="#"
-						tabindex="-1" aria-disabled="true">Blog</a> <!-- modal layout-->
-				</ul>
-			</nav>
+	
+					<!-- <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+						<li class="nav-item active"><a class="nav-link" href="#">About
+								<span class="sr-only">(current)</span>
+						</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">Business</a>
+						</li>
+						<li class="nav-item"><a class="nav-link" href="#"
+							tabindex="-1" aria-disabled="true">Blog</a> 
+					</ul> -->
+				</nav>
+			
 		</div>
-	</div>
 
-	<div class="wrapper">
-		<div class="container">
-			<div class="grid">
-				<div class="grid-col grid-col--1"></div>
-				<div class="grid-col grid-col--2"></div>
-				<div class="grid-col grid-col--3"></div>
-				<div class="grid-col grid-col--4"></div>
-			</div>
-			<div class="grid-item" th:each="image : ${images}">
-                <div class="content">
-                    <h2>[[*{image.title}]]</h2>
-                </div>
-                <img th:src="*{'data:image/jpeg;base64,'+{image.image}}" alt="picture">
+        <div class="grid">
+            <div class="grid-col grid-col--1">
+
             </div>
-		</div>
-	</div>
+            <div class="grid-col grid-col--2">
 
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
-	<script src="vendor/jquery/jquery.slim.min.js"></script>
+            </div>
+            <div class="grid-col grid-col--3">
+
+            </div>
+            <div class="grid-col grid-col--4">
+
+			</div>
+			<div class="grid-col grid-col--5">
+
+            </div>
+			<div class="grid-item"th:each="image : ${images}">
+				<div class="content">
+					<h2 class="title-image">[[*{image.title}]]</h2>
+				</div>
+				<img th:src="*{'data:image/jpeg;base64,'+{image.image}}" alt="picture">
+			</div>
+
+           
+        </div>
+	</div>
+	 <script src="vendor/jquery/jquery.slim.min.js"></script>
 	<script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="https://unpkg.com/colcade@0/colcade.js"></script>	
+	
+    <script src="https://unpkg.com/colcade@0/colcade.js"></script>
+    <script>
+        var colc = new Colcade( '.grid', {
+        columns: '.grid-col',
+        items: '.grid-item'
+        });
+    </script>
+
+		
 </body>
 </html>

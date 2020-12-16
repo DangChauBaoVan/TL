@@ -44,6 +44,7 @@ public class ImageController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 		String username = userDetails.getUsername();
+		
 		List<Image> images = imageService.getAllImagesByUser(username);
 		model.addAttribute("images", images);
 		User user = userService.getUsername(username);
