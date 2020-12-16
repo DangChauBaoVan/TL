@@ -13,7 +13,7 @@ import com.ManagePhoto.springboot.model.Image;
 @Repository
 public interface ImageRepositry extends JpaRepository<Image, Long> {
 	
-	 @Query("SELECT e FROM Image e WHERE e.user_id = :user_id")
-	 List<Image> findAllImagesByUserId(@Param("user_id") int user_id);
+	 @Query("SELECT e FROM Image e WHERE e.user_name = :user_name")
+	 List<Image> findAllImagesByUserName(@Param("user_name") String user_name);
 
 }

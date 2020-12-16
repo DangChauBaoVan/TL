@@ -471,6 +471,21 @@ body.modal-open {
 .card:hover {
     background-color:rgba(0,0,0, 0.6);
 }
+.grid-col--2, .grid-col--3 {
+    display: none;
+}
+.content {
+    position: absolute;
+    background: rgba(0,0,0,.8);
+    color: white;
+    margin-top: 1em;
+    
+    
+}
+ h2 {
+        margin: .2em .5em;
+        font-size: 1em;
+    }
 .favourite {
     top: 20px;
     right: -22px;
@@ -497,6 +512,17 @@ body.modal-open {
     margin: auto;
     font-size: 2rem;
     color: var(--white-color);
+}
+img {
+    width: 100%;
+}
+.grid {
+    display: flex;
+}
+
+.grid-col {
+    flex: 1;
+    padding: 0 .1em;
 }
 .title-image {
     position: absolute;

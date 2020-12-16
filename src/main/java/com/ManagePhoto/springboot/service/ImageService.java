@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,11 +26,10 @@ public class ImageService {
 		return imageRepo.findAll();
 	}
 	
-	public List<Image> getAllImagesById(int user_id){
-		return imageRepo.findAllImagesByUserId(user_id);
+	public List<Image> getAllImagesByUser(String username){
+		return imageRepo.findAllImagesByUserName(username);
 	}
 	
-
 	public void saveImageToDB(MultipartFile file ,String title, String category) {
 		Image p = new Image();
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
@@ -42,6 +44,10 @@ public class ImageService {
 		}
 		p.setTitle(title);
 		p.setCategory(category);
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		String username = userDetails.getUsername();
+		p.setUser_name(username);
 		imageRepo.save(p);
 	}
 
