@@ -37,6 +37,13 @@ public class Image {
 	@Column(columnDefinition = "MEDIUMBLOB")
 	private String image;
 	
+
+	
+	@Column(name="user_name")
+	private String user_name;
+	
+
+
 	public Long getId() {
 		return id;
 	}
@@ -75,10 +82,13 @@ public class Image {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	
-	
+	public String getUser_name() {
+		return user_name;
+	}
 
-	
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
+	}
 
 	@Override
 	public String toString() {

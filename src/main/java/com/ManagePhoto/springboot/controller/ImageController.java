@@ -1,6 +1,9 @@
 package com.ManagePhoto.springboot.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,16 +15,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import com.ManagePhoto.springboot.model.Image;
+import com.ManagePhoto.springboot.model.User;
 
 import java.util.List;
 
 import com.ManagePhoto.springboot.service.ImageService;
+import com.ManagePhoto.springboot.service.UserService;
 
 @Controller
 public class ImageController {
 	
 	@Autowired
 	private ImageService imageService;
+	
+	@Autowired
+	private UserService userService;
 	
 	@PostMapping("/addI")
     public String saveImage(@RequestParam("file") MultipartFile file,
@@ -33,25 +41,25 @@ public class ImageController {
 	}
 	@RequestMapping(value = { "/listImages" }, method = RequestMethod.GET)
 	public ModelAndView listImages(Model model) {
-		List<Image> images = imageService.getAllImages();
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		String username = userDetails.getUsername();
+		List<Image> images = imageService.getAllImagesByUser(username);
 		model.addAttribute("images", images);
+		User user = userService.getUsername(username);
+		model.addAttribute("user", user);
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("listImages"); 
 		return modelAndView;
 	}
 	@RequestMapping(value = { "/home" }, method = RequestMethod.GET)
 	public ModelAndView homeImages(Model model) {
-		List<Image> images = imageService.getAllImages();
-
-		// System.out.println(images.size());
-		// int [] imageslist = new int [images.size()+1];
-
-		// for(int i = ; i g<ry images.size()/5; ++i)
-		// {
-		// 	imageslist[i] = imageService.getimage(images.get(i));
-		// }
-
-		model.addAttribute("images", images); // phần get dữ liệu
+		
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		String username = userDetails.getUsername();
+		List<Image> images = imageService.getAllImagesByUser(username);
+		model.addAttribute("images", images);
 
 		ModelAndView modelAndView = new ModelAndView(); //phần hiển thị
 		modelAndView.setViewName("home"); 
@@ -71,8 +79,8 @@ public class ImageController {
 		 model.addAttribute("image", image);
 		 return "updateImg";
 	 } 	
-	 @PostMapping("/updateImage")
-		public String updateImage(@RequestParam("id") Long id,
+	 @PostMapping("/updateImage/{id}")
+		public String updateImage(@PathVariable (value = "id") long id,
 				@RequestParam("title") String title,
 	    		@RequestParam("category") String category
 				) {

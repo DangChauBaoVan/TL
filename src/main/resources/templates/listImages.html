@@ -63,13 +63,13 @@
 								class="dropdown-toggle not-link" id="userDropdown"
 								role="button" data-toggle="dropdown" aria-haspopup="true"
 								aria-expanded="false"> <span
-									class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
+									class="mr-2 d-none d-lg-inline text-gray-600 small" th:text="Hello + ' ' + ${user.lastName}+ ' ' +${user.Name}"> </span>
 									<img class="img-profile rounded-circle"
 									src="images/avt/acc.jpg">
 							</div>
 								<div class="dropdown-menu" aria-labelledby="userDropdown">
 									<a class="dropdown-item" href="#">Thông tin tài khoản</a> <a
-										class="dropdown-item" href="#">Đăng xuất</a>
+										class="dropdown-item" href="/login">Đăng xuất</a>
 								</div>
 							</li>
 						</ul>

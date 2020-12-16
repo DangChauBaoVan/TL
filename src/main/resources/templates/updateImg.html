@@ -17,8 +17,7 @@
 </head>
 <body>
 	<div class="card">
-		<form th:action="@{/updateImage}" method="POST" th:object="${image}" enctype="multipart/form-data">
-			Id:<input type="text" th:field="*{id}" /> <br /> <br /> 
+		<form th:action="@{/updateImage/{id}(id=${image.id})}" method="POST" th:object="${image}" enctype="multipart/form-data">
 			Title: <input type="text" th:field="*{title}" /> <br /> <br /> 
 			Category: <input type="text" th:field="*{category}" /> <br /> <br /> 
 			Date: <input type="text" th:field="*{datetime}" /> <br /> <br />

@@ -37,5 +37,11 @@ public class UserServiceImp implements UserService {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	@Override
+	public User getUsername(String user_name) {
+		 
+		return userRepository.findName(user_name);
+	}
 
 }
