@@ -63,10 +63,10 @@
 				</ul> -->
 			</nav>
 		</div>
-		<div class="categories" th:each="category : ${categories}">
-			<a href="#" class="categogy" >
-				<img th:src="*{'data:image/jpeg;base64,'+{category.image}}" alt="not found" class="category__img">
-				<span class="category__title">[[*{category.name}]]</span>
+		<div class="categories" >
+			<a href="#" class="categogy" th:each="cate : ${cate}" >
+				<img th:src="*{'data:image/jpeg;base64,'+{cate.image}}" alt="not found" class="category__img">
+				<span class="category__title">[[*{cate.name}]]</span>
 			</a>
 		</div>
         <div class="grid">
