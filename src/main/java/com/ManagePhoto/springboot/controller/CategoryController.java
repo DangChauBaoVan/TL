@@ -39,6 +39,16 @@ public class CategoryController {
         modelAndView.setViewName("category"); 
         return modelAndView;
     }
+     @RequestMapping(value = { "/home" },  method = RequestMethod.GET)
+    public ModelAndView getallCategoryHome(Model model) {
+        
+        List<Category> categories = cateService.GetAllCategory();
+        model.addAttribute("categories", categories); // phần get dữ liệu
+
+        ModelAndView modelAndView = new ModelAndView(); //phần hiển thị
+        modelAndView.setViewName("home"); 
+        return modelAndView;
+    }
    
     @GetMapping("/deleteCategory/{id}")
     public String deleteCategory(@PathVariable("id") int id)

@@ -562,4 +562,32 @@ body {
       margin: 5em 0;
     }
   }
-  
+.categogy {
+    height: 42px;
+    box-shadow:0 3px 5px 0 rgba(0,0,0,.08);
+    padding: -5px 24px;
+    border-radius: 26px;
+    display: inline-flex;
+    background-color: white;
+    cursor: pointer;
+    margin: 18px 0;
+    align-items: center;
+    
+}
+.categogy:hover {
+    background-color: #e8e8e8;
+    box-shadow: none;
+    text-decoration: none;
+}
+.category__img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    margin: auto 6px;
+}
+.category__title {
+    font-size: 14px;
+    color: #5e5e5e;
+    margin: 0 10px;
+    font-weight: 700;
+}
