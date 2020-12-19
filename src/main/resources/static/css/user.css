@@ -11,6 +11,7 @@ label {
 .user__input-name {
     width: 394px;
     border: none;
+    padding: 0 14px;
     height: 46px;
     border-radius: 10px;
     background-color: rgb(248, 245, 245);
@@ -41,7 +42,9 @@ label {
     border: none;
     border-radius: 50%;
 }
-
+.user__btn-upload:focus {
+    outline: none;
+}
 .user__photos {
 
 }
@@ -63,8 +66,16 @@ label {
 .btn + .btn  {
     margin-left: 20px;
 }
-.btn-cancel {
+.btn.btn-cancel {
     margin-left: 169px;
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    background-color: #efefef;
+    color: black;
+}
+.user-icon {
+    margin-right: 8px;
 }
 .btn--update {
     background-color: rgb(245, 164, 13);

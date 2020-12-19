@@ -27,7 +27,7 @@
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-				<a class="navbar-brand" href="#">Daily Photos</a>
+				<a class="navbar-brand" href="/home">Daily Photos</a>
 				<div class="header-search">
 					<form action="/home" class="header-search-input-wrap">
 						<input type="text" class="header-search-input"name="keyword" id="keyword"th:value="${keyword}"
@@ -55,13 +55,11 @@
 			</div>
 
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-				<li class="nav-item active"><a class="nav-link" href="#">About
+				<li class="nav-item active">
+					<a class="nav-link" href="listImages">List image
 						<span class="sr-only">(current)</span>
 				</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Business</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="#"
-					tabindex="-1" aria-disabled="true">Blog</a> 
+				
 			</ul>
 		</nav>
 	</div>
@@ -89,10 +87,12 @@
 			<div class="grid-col grid-col--5">
 
             </div>
-			<div class="grid-item"th:each="image : ${images}">
+			<div class="grid-item" th:each="image : ${images}">
 				<div class="content">
-					<h2 class="title-image">[[*{image.title}]]</h2>
+					<h4>[[*{image.title}]]</h4>
+				
 				</div>
+				<div class="favourite "><i class="far fa-heart heart--transparent" ></i></div>
 				<img th:src="*{'data:image/jpeg;base64,'+{image.image}}" alt="picture">
 			</div>
         </div>
