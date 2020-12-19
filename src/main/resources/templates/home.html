@@ -66,7 +66,11 @@
 	<div class="container">
 		
 		<div class="categories" id="categories">
+<<<<<<< HEAD
+			<a th:href="@{/home}" th:value="${cate.name}" class="categogy" th:each="cate : ${cate}" >
+=======
 			<a th:href="@{/search/{name}(name=${cate.name})}" class="category" id="category" th:each="cate : ${cate}" >
+>>>>>>> ff6916c3f4d60bb4c98afe0d2256a4218f11c898
 				<img th:src="*{'data:image/jpeg;base64,'+{cate.image}}" alt="not found" class="category__img">
 				<span class="category__title">[[*{cate.name}]]</span>
 			</a>

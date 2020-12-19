@@ -65,21 +65,24 @@ public class ImageController {
 	}
 
 
-	@RequestMapping(value = { "/home" }, method = RequestMethod.GET) 
-	public ModelAndView homeImages(Model model, @Param("keyword") String keyword) {
+	@RequestMapping(value = { "/home"}, method = RequestMethod.GET) 
+	public ModelAndView homeImages(Model model, @Param("keyword") String keyword, @Param("name") String name) {
 		Authentication authentication =SecurityContextHolder.getContext().getAuthentication(); 
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
-		String username = userDetails.getUsername(); 
-		List<Image> images = imageService.listAll(username,keyword);
-		model.addAttribute("images", images);
+		String username = userDetails.getUsername();
 		List<Category> cate = cateService.GetAllCategory();
 		model.addAttribute("cate", cate);
 		model.addAttribute("keyword", keyword);
+		List<Image> images = imageService.listAll(username, keyword, name);
+		model.addAttribute("images", images);
 		ModelAndView modelAndView = new ModelAndView(); 
 		modelAndView.setViewName("home"); 
 		return modelAndView; 
 	}
 	
+<<<<<<< HEAD
+	
+=======
 	// @RequestMapping( "/home/{name}" )
 	// public String homecateImages(@PathVariable("name") String name, Model model) {
 	// 	Authentication authentication =SecurityContextHolder.getContext().getAuthentication(); 
@@ -111,6 +114,7 @@ public class ImageController {
 		model.addAttribute("cate", cate);
 		return "home";
 	}
+>>>>>>> ff6916c3f4d60bb4c98afe0d2256a4218f11c898
 
 	@GetMapping("/{id}")
 	public String showUpdateImg(@PathVariable(value = "id") long id, Model model) {
