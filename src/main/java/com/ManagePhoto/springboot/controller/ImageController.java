@@ -70,7 +70,7 @@ public class ImageController {
 		Authentication authentication =SecurityContextHolder.getContext().getAuthentication(); 
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
 		String username = userDetails.getUsername(); 
-		List<Image> images = imageService.listAll(keyword);
+		List<Image> images = imageService.listAll(username,keyword);
 		model.addAttribute("images", images);
 		List<Category> cate = cateService.GetAllCategory();
 		model.addAttribute("cate", cate);

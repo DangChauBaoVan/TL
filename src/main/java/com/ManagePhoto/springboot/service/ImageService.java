@@ -78,11 +78,11 @@ public class ImageService {
 		return imageRepo.findAllImagesByCategory(name,userName);
 	}
 	
-	public List<Image> listAll(String keyword) {
+	public List<Image> listAll(String name,String keyword) {
         if (keyword != null) {
-            return imageRepo.search(keyword);
+            return imageRepo.search(name,keyword);
         }
-        return imageRepo.findAll();
+        return imageRepo.findAllImagesByUserName(name);
     }
 
 
