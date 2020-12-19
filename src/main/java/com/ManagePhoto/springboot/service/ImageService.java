@@ -73,6 +73,10 @@ public class ImageService {
 		}
 		return image;
 	}
+	
+	public List<Image> getImageByCategory(String name, String userName){
+		return imageRepo.findAllImagesByCategory(name,userName);
+	}
 
 
 }

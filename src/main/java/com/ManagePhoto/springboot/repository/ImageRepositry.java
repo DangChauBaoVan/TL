@@ -15,5 +15,8 @@ public interface ImageRepositry extends JpaRepository<Image, Long> {
 	
 	 @Query("SELECT e FROM Image e WHERE e.user_name = :user_name")
 	 List<Image> findAllImagesByUserName(@Param("user_name") String user_name);
+	 
+	 @Query("SELECT e FROM Image e WHERE e.category = :name AND e.user_name = :user_name")
+	 List<Image> findAllImagesByCategory(@Param("name") String name,@Param("user_name") String user_name);
 
 }
