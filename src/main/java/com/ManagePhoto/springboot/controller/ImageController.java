@@ -1,6 +1,7 @@
 package com.ManagePhoto.springboot.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -65,31 +66,30 @@ public class ImageController {
 
 
 	@RequestMapping(value = { "/home" }, method = RequestMethod.GET) 
-	public ModelAndView homeImages(Model model) {
+	public ModelAndView homeImages(Model model, @Param("keyword") String keyword) {
 		Authentication authentication =SecurityContextHolder.getContext().getAuthentication(); 
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
 		String username = userDetails.getUsername(); 
-		List<Image> images = imageService.getAllImagesByUser(username); 
+		List<Image> images = imageService.listAll(keyword);
 		model.addAttribute("images", images);
 		List<Category> cate = cateService.GetAllCategory();
-		model.addAttribute("cate", cate); 
+		model.addAttribute("cate", cate);
+		model.addAttribute("keyword", keyword);
 		ModelAndView modelAndView = new ModelAndView(); 
 		modelAndView.setViewName("home"); 
 		return modelAndView; 
 	}
 	
-	@RequestMapping(value = { "/home/{name}" }, method = RequestMethod.GET)
-	public ModelAndView homecateImages(@PathVariable("name") String name, Model model) {
+	@RequestMapping( "/home/{name}" )
+	public String homecateImages(@PathVariable("name") String name, Model model) {
 		Authentication authentication =SecurityContextHolder.getContext().getAuthentication(); 
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
 		String username = userDetails.getUsername(); 
 		List<Image> images = imageService.getImageByCategory(name,username);
 		model.addAttribute("images", images);
 		List<Category> cate = cateService.GetAllCategory();
-		model.addAttribute("cate", cate); 
-		ModelAndView modelAndView = new ModelAndView(); 
-		modelAndView.setViewName("home"); 
-		return modelAndView;
+		model.addAttribute("cate", cate);
+		return "home";
 	}
 
 	@GetMapping("/deleteImg/{id}")

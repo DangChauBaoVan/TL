@@ -77,6 +77,13 @@ public class ImageService {
 	public List<Image> getImageByCategory(String name, String userName){
 		return imageRepo.findAllImagesByCategory(name,userName);
 	}
+	
+	public List<Image> listAll(String keyword) {
+        if (keyword != null) {
+            return imageRepo.search(keyword);
+        }
+        return imageRepo.findAll();
+    }
 
 
 }
