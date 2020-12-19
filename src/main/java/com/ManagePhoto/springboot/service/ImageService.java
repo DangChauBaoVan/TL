@@ -78,9 +78,12 @@ public class ImageService {
 		return imageRepo.findAllImagesByCategory(name,userName);
 	}
 	
-	public List<Image> listAll(String name,String keyword) {
+	public List<Image> listAll(String name,String keyword, String cateName) {
         if (keyword != null) {
             return imageRepo.search(name,keyword);
+        }
+        if(cateName != null) {
+        	return imageRepo.findAllImagesByCategory(cateName,name);
         }
         return imageRepo.findAllImagesByUserName(name);
     }

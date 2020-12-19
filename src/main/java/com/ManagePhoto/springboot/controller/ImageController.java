@@ -65,32 +65,22 @@ public class ImageController {
 	}
 
 
-	@RequestMapping(value = { "/home" }, method = RequestMethod.GET) 
-	public ModelAndView homeImages(Model model, @Param("keyword") String keyword) {
+	@RequestMapping(value = { "/home"}, method = RequestMethod.GET) 
+	public ModelAndView homeImages(Model model, @Param("keyword") String keyword, @Param("name") String name) {
 		Authentication authentication =SecurityContextHolder.getContext().getAuthentication(); 
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
-		String username = userDetails.getUsername(); 
-		List<Image> images = imageService.listAll(username,keyword);
-		model.addAttribute("images", images);
+		String username = userDetails.getUsername();
 		List<Category> cate = cateService.GetAllCategory();
 		model.addAttribute("cate", cate);
 		model.addAttribute("keyword", keyword);
+		List<Image> images = imageService.listAll(username, keyword, name);
+		model.addAttribute("images", images);
 		ModelAndView modelAndView = new ModelAndView(); 
 		modelAndView.setViewName("home"); 
 		return modelAndView; 
 	}
 	
-	@RequestMapping( "/home/{name}" )
-	public String homecateImages(@PathVariable("name") String name, Model model) {
-		Authentication authentication =SecurityContextHolder.getContext().getAuthentication(); 
-		UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
-		String username = userDetails.getUsername(); 
-		List<Image> images = imageService.getImageByCategory(name,username);
-		model.addAttribute("images", images);
-		List<Category> cate = cateService.GetAllCategory();
-		model.addAttribute("cate", cate);
-		return "home";
-	}
+	
 
 	@GetMapping("/deleteImg/{id}")
 	public String deleteImage(@PathVariable("id") Long id) {
