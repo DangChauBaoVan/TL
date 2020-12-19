@@ -54,6 +54,10 @@ public class ImageController {
 		model.addAttribute("images", images);
 		User user = userService.getUsername(username);
 		model.addAttribute("user", user);
+		
+		List<Category> cate = cateService.GetAllCategory();
+		model.addAttribute("cate", cate); 
+		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("listImages");
 		return modelAndView;
@@ -72,6 +76,20 @@ public class ImageController {
 		ModelAndView modelAndView = new ModelAndView(); 
 		modelAndView.setViewName("home"); 
 		return modelAndView; 
+	}
+	
+	@RequestMapping(value = { "/home/{name}" }, method = RequestMethod.GET)
+	public ModelAndView homecateImages(@PathVariable("name") String name, Model model) {
+		Authentication authentication =SecurityContextHolder.getContext().getAuthentication(); 
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
+		String username = userDetails.getUsername(); 
+		List<Image> images = imageService.getImageByCategory(name,username);
+		model.addAttribute("images", images);
+		List<Category> cate = cateService.GetAllCategory();
+		model.addAttribute("cate", cate); 
+		ModelAndView modelAndView = new ModelAndView(); 
+		modelAndView.setViewName("home"); 
+		return modelAndView;
 	}
 
 	@GetMapping("/deleteImg/{id}")

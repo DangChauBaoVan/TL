@@ -19,14 +19,18 @@
 	<div class="card">
 		<form class="text-center border border-light p-5" action="addI"
 			method="POST" enctype="multipart/form-data">
-		
+
 			<h4 class="text-black-50  text-left">Title:</h4>
 
 			<input type="text" name="title" id="title" class="form-control mb-4"
 				placeholder="Mặt trời mọc" required>
 			<h4 class="text-black-50  text-left">Category:</h4>
-			<input type="text" name="category" id="category"
-				class="form-control mb-4" placeholder="natural" required>
+			<select name="cars" id="cars">
+				<option value="volvo">Volvo</option>
+				<option value="saab">Saab</option>
+				<option value="opel">Opel</option>
+				<option value="audi">Audi</option>
+			</select>
 
 			<div class="custom-file mb-4">
 				<input type="file" name="file" class="custom-file-input"

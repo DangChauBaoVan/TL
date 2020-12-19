@@ -29,22 +29,17 @@
 					<nav
 						class="navbar navbar-expand navbar-light bg-white topbar mb-2 static-top shadow">
 						<div class="d-sm-flex align-items-center justify-content-between">
-							<a href="listImages">
-								<img src="images/logo.png" alt="" class="img-logo"></a>
-							
-							
-							<a href="listImages" class="web-title mb-0 ">
-								Photos
-							</a>
+							<a href="listImages"> <img src="images/logo.png" alt=""
+								class="img-logo"></a> <a href="listImages"
+								class="web-title mb-0 "> Photos </a>
 						</div>
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul class="navbar-nav mr-auto">
-							  <li class="nav-item active">
-								<a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
-							  </li>
-							  <li class="nav-item active">
-								<a class="nav-link" href="category">Category</a>
-							  </li>
+								<li class="nav-item active"><a class="nav-link" href="home">Home
+										<span class="sr-only">(current)</span>
+								</a></li>
+								<li class="nav-item active"><a class="nav-link"
+									href="category">Category</a></li>
 							</ul>
 						</div>
 						<button id="sidebarToggleTop"
@@ -60,141 +55,141 @@
 							</a>
 								<div class="topbar-divider d-none d-sm-block"></div>
 							<li class="nav-item dropdown no-arrow"><div
-								class="dropdown-toggle not-link" id="userDropdown"
-								role="button" data-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="false"> <span
-									class="mr-2 d-none d-lg-inline text-gray-600 small" th:text="Hi + ' ' + ${user.lastName}+ ' ' +${user.Name}"> </span>
-									<img class="img-profile rounded-circle"
-									src="images/avt/acc.jpg">
-							</div>
+									class="dropdown-toggle not-link" id="userDropdown"
+									role="button" data-toggle="dropdown" aria-haspopup="true"
+									aria-expanded="false">
+									<span class="mr-2 d-none d-lg-inline text-gray-600 small"
+										th:text="Hi + ' ' + ${user.lastName}+ ' ' +${user.Name}">
+									</span> <img class="img-profile rounded-circle"
+										src="images/avt/acc.jpg">
+								</div>
 								<div class="dropdown-menu" aria-labelledby="userDropdown">
 									<a class="dropdown-item" href="#">Thông tin tài khoản</a> <a
 										class="dropdown-item" href="/login">Đăng xuất</a>
-								</div>
-							</li>
+								</div></li>
 						</ul>
 					</nav>
 
 					<div class="container-fluid generalClass">
-						<div id="btn-upload" class="btn btn-primary upload" >Upload Image </div>
+						<div id="btn-upload" class="btn btn-primary upload">Upload
+							Image</div>
 						<!-- modal add image -->
 						<div class="modal" id="modal__layout">
 							<div class="modal__overlay"></div>
-								<div class="modal__body">
-									<button id="btn-close">x</button>
-									<form class="border border-light p-5 upload-form" action="addI"
+							<div class="modal__body">
+								<button id="btn-close">x</button>
+								<form class="border border-light p-5 upload-form" action="addI"
 									method="POST" enctype="multipart/form-data">
-									
+
 
 									<h4 class="text-black-50  text-left">Title</h4>
-									<input type="text" name="title" id="title" class="form-control mb-4"
-										placeholder="Mặt trời mọc" required>
+									<input type="text" name="title" id="title"
+										class="form-control mb-4" placeholder="Mặt trời mọc" required>
 									<h4 class="text-black-50  text-left">Category</h4>
-									<input type="text" name="category" id="category"
-										class="form-control mb-4" placeholder="natural" required>
-										
+									<select name="category" id="category" >
+										<option th:each="cate : ${cate}" th:value="*{cate.name}">[[*{cate.name}]]</option>
+									</select>
+
 									<div class="custom-file mb-4">
-										<label for="customFile" class="label-choose-image">Choose image</label>
-										<input type="file" name="file" class="custom-file-input" id="customFile"> 
+										<label for="customFile" class="label-choose-image">Choose
+											image</label> <input type="file" name="file"
+											class="custom-file-input" id="customFile">
 									</div>
-						
-						
+
+
 									<button class="btn btn-info" type="submit">Add</button>
 								</form>
-								</div>
+							</div>
 						</div>
 						<div class="modal" id="modal__layout-addCategory">
 							<div class="modal__overlay"></div>
-								<div class="modal__body">
-									<button id="btn-close-cate">x</button>
-									<form class="text-center border border-light p-5" action="addCate"
-										method="POST" enctype="multipart/form-data">
-										
-										<h4 class="text-black-50  text-left">Category Name:</h4>
-										<input type="text" name="name" id="addcategory"
-											class="form-control mb-4" placeholder="natural" required>
+							<div class="modal__body">
+								<button id="btn-close-cate">x</button>
+								<form class="text-center border border-light p-5"
+									action="addCate" method="POST" enctype="multipart/form-data">
 
-										<div class="custom-file mb-4">
-											<input type="file" name="file" class="custom-file-input"
-												id="customFileCategory"> <label class="custom-file-label"
-												for="customFileCategory" required>Chose Image</label>
-										</div>
+									<h4 class="text-black-50  text-left">Category Name:</h4>
+									<input type="text" name="name" id="addcategory"
+										class="form-control mb-4" placeholder="natural" required>
+
+									<div class="custom-file mb-4">
+										<input type="file" name="file" class="custom-file-input"
+											id="customFileCategory"> <label
+											class="custom-file-label" for="customFileCategory" required>Chose
+											Image</label>
+									</div>
 
 
 									<button class="btn btn-info btn-block" type="submit">Add</button>
-									</form>
-								</div>
+								</form>
 							</div>
+						</div>
 					</div>
-				</div>	
+				</div>
 				<div class="col-md-12">
 					<div class="table-responsive">
-						<button id ="btn-delete" class="btn-delete" disabled>Delete</button>
-						<label>Select Categogy</label>
-						<select name="cars" id="cars" class="selectcategory">
+						<button id="btn-delete" class="btn-delete" disabled>Delete</button>
+						<label>Select Categogy</label> <select name="cars" id="cars"
+							class="selectcategory">
 							<option value="volvo" class="item__select-categogy">Animals</option>
 							<option value="saab" class="item__select-categogy">Life</option>
 							<option value="opel" class="item__select-categogy">Pets</option>
-							<option value="audi" class="item__select-categogy">Sky
-							</option>
-						</select>
-						<label>Select Status</label>
-						<select name="cars" id="cars" class="selectcategory">
+							<option value="audi" class="item__select-categogy">Sky</option>
+						</select> <label>Select Status</label> <select name="cars" id="cars"
+							class="selectcategory">
 							<option value="volvo" class="item__select-categogy">Published</option>
 							<option value="saab" class="item__select-categogy">Not</option>
 
 						</select>
-						
+
 						<table id="mytable" class="table table-bordred table-striped">
-							<div th:if= "${images.empty}" class="not-images">
+							<div th:if="${images.empty}" class="not-images">
 								<img src="images/unnamed.png" alt="" class="img-not-found">
-								<p class="">Kho ảnh của bạn đang trống !</p> 
-								<div id="upload-2" class="btn btn-primary btn-upload-2" >Thêm ảnh </div>
+								<p class="">Kho ảnh của bạn đang trống !</p>
+								<div id="upload-2" class="btn btn-primary btn-upload-2">Thêm
+									ảnh</div>
 							</div>
-							
-							<thead  th:unless="${images.empty}">
-								<th><input type="checkbox" id="checkAllItem">
-								</th>
+
+							<thead th:unless="${images.empty}">
+								<th><input type="checkbox" id="checkAllItem"></th>
 								<th>Image</th>
 								<th>Title</th>
 								<th>Categogy</th>
 								<th>Published On</th>
 								<th class="th-btn">Edit</th>
 								<th class="th-btn">Delete</th>
-								<tbody>
-									<tr th:each="image : ${images}">
-										<td><input type="checkbox" id="checkitem" name="">
-										</td>
-										<th scope="row"><img alt=""
-											th:src="*{'data:image/jpeg;base64,'+{image.image}}"
-											style="width: 100px; height: 100px;"></th>
-										<td>[[*{image.title}]]</td>
-										<td>[[*{image.category}]]</td>
-										<td>[[*{image.datetime}]]</td>
-										<td>
-											<a th:href="@{/showUpdateImg/{id}(id=${image.id})}" class="btn btn-edit mt-4">Edit</a>
-										</td>
-										<td><a th:href="@{/deleteImg/{id}(id=${image.id})}" class="btn btn-danger mt-4">Delete</a>
+							<tbody>
+								<tr th:each="image : ${images}">
+									<td><input type="checkbox" id="checkitem" name="">
+									</td>
+									<th scope="row"><img alt=""
+										th:src="*{'data:image/jpeg;base64,'+{image.image}}"
+										style="width: 100px; height: 100px;"></th>
+									<td>[[*{image.title}]]</td>
+									<td>[[*{image.category}]]</td>
+									<td>[[*{image.datetime}]]</td>
+									<td><a th:href="@{/showUpdateImg/{id}(id=${image.id})}"
+										class="btn btn-edit mt-4">Edit</a></td>
+									<td><a th:href="@{/deleteImg/{id}(id=${image.id})}"
+										class="btn btn-danger mt-4">Delete</a></td>
 
-										</td>
-
-									</tr>
-								</tbody>
+								</tr>
+							</tbody>
 							</thead>
-							
+
 						</table>
 					</div>
 				</div>
 			</div>
 
 		</div>
-			<footer class="bg-white footer">
-				<div class="container my-auto">
-					<div class="copyright text-center my-auto">
-						<span>Copyright &copy; Hoai Mi and Bao Van</span>
-					</div>
+		<footer class="bg-white footer">
+			<div class="container my-auto">
+				<div class="copyright text-center my-auto">
+					<span>Copyright &copy; Hoai Mi and Bao Van</span>
 				</div>
-			</footer>
+			</div>
+		</footer>
 	</div>
 
 
