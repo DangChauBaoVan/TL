@@ -43,5 +43,6 @@ public class UserServiceImp implements UserService {
 		 
 		return userRepository.findName(user_name);
 	}
+	
 
 }

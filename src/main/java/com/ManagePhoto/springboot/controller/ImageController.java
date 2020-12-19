@@ -80,17 +80,17 @@ public class ImageController {
 		return modelAndView; 
 	}
 	
-	@RequestMapping( "/home/{name}" )
-	public String homecateImages(@PathVariable("name") String name, Model model) {
-		Authentication authentication =SecurityContextHolder.getContext().getAuthentication(); 
-		UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
-		String username = userDetails.getUsername(); 
-		List<Image> images = imageService.getImageByCategory(name,username);
-		model.addAttribute("images", images);
-		List<Category> cate = cateService.GetAllCategory();
-		model.addAttribute("cate", cate);
-		return "home";
-	}
+	// @RequestMapping( "/home/{name}" )
+	// public String homecateImages(@PathVariable("name") String name, Model model) {
+	// 	Authentication authentication =SecurityContextHolder.getContext().getAuthentication(); 
+	// 	UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
+	// 	String username = userDetails.getUsername(); 
+	// 	List<Image> images = imageService.getImageByCategory(name,username);
+	// 	model.addAttribute("images", images);
+	// 	List<Category> cate = cateService.GetAllCategory();
+	// 	model.addAttribute("cate", cate);
+	// 	return "home";
+	// }
 
 	@GetMapping("/deleteImg/{id}")
 	public String deleteImage(@PathVariable("id") Long id) {
@@ -98,7 +98,21 @@ public class ImageController {
 		return "redirect:/listImages";
 	}
 
-	@GetMapping("/showUpdateImg/{id}")
+	@GetMapping("/search/{name}")
+	public String showImageByCate(@PathVariable(value = "name") String name,  Model model) {
+
+		Authentication authentication =SecurityContextHolder.getContext().getAuthentication(); 
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
+		String username = userDetails.getUsername(); 
+
+		List<Image> images = imageService.getImageByCategory(name, username);
+		model.addAttribute("images", images);
+		List<Category> cate = cateService.GetAllCategory();
+		model.addAttribute("cate", cate);
+		return "home";
+	}
+
+	@GetMapping("/{id}")
 	public String showUpdateImg(@PathVariable(value = "id") long id, Model model) {
 
 		Image image = imageService.getImageById(id);

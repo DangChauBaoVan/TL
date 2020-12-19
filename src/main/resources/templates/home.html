@@ -9,11 +9,12 @@
 	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 	rel="stylesheet">
 <link rel="stylesheet"
-	href="vendor/bootstrap/dist/css/bootstrap.min.css">
+	th:href="@{/vendor/bootstrap/dist/css/bootstrap.min.css}">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.6/animate.min.css">
-<link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/home.css">
+
+<link rel="stylesheet" th:href="@{/css/base.css}">
+<link rel="stylesheet" th:href="@{/css/home.css}">
 
 </head>
 <body>
@@ -67,7 +68,7 @@
 	<div class="container">
 		
 		<div class="categories" id="categories">
-			<a th:href="@{/home/{name}(name=${cate.name})}" class="categogy" th:each="cate : ${cate}" >
+			<a th:href="@{/search/{name}(name=${cate.name})}" class="category" id="category" th:each="cate : ${cate}" >
 				<img th:src="*{'data:image/jpeg;base64,'+{cate.image}}" alt="not found" class="category__img">
 				<span class="category__title">[[*{cate.name}]]</span>
 			</a>
@@ -100,6 +101,8 @@
 	 <script src="/vendor/jquery/jquery.slim.min.js"></script>
 	<script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="https://unpkg.com/colcade@0/colcade.js"></script>
+	<script src="vendor/js/main.js"></script>
+
 	<!-- <script src="/vendor/js/jquery.slimscroll.js"></script> -->
 
     <script>

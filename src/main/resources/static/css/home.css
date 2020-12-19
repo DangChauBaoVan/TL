@@ -57,7 +57,7 @@ body.modal-open {
     font-size: 1.4rem;
     color: rgba(0,0,0, 0.5);
     border-radius: 19px;
-    padding: 11px 8px;
+    padding: 11px 16px;
     background-color: #efefef;
     position: absolute;
 }
@@ -195,9 +195,8 @@ body.modal-open {
     --height-search-icon: 30px;
     height: var(--height-search-icon);
     width: var(--width-search-icon);
-    background-color: #ccc;
-    margin: 5.9px 7px;
-    border-radius: 12px;
+    outline: none;
+    border: none;
     color: var(--white-color);
     float: right;
     display: flex;
@@ -206,12 +205,18 @@ body.modal-open {
     justify-content: center;
     position: relative;
 }
+.header-search-icon-btn:focus {
+    outline: none;
+}
+.header-search-icon-btn:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
 .search-icon {
-    font-size:1.3rem;
+    font-size: 18px;
     animation: rotate360 0.4s;
     animation-delay: 1s;
-    color: var(--white-color);
-    padding: 10px 10px;
+    color: #5e5e5e;
 }
 .input--search--2:focus ~.header-search-history--2 {
     display: block;
@@ -339,7 +344,6 @@ body.modal-open {
 .btn.control-back{
     font-size: 12px;
     margin-right: 16px;
-
     width: 120px;
     border-radius: 4px;
 }
@@ -426,15 +430,7 @@ body.modal-open {
 #form-login{
     display: none;
 }
-@keyframes growth {
-    from {
-        transform: scale(0);
-    }
 
-    to {
-        transform: scale(1);
-    }
-}
 .wrapper-nav {
     z-index: 2;
     width: 100%;
@@ -443,10 +439,16 @@ body.modal-open {
 .navbar-light .navbar-nav .nav-link {
     color: white;
 }
+.navbar-light .navbar-nav .nav-link:hover {
+    color: white;
+}
 .navbar-light .navbar-nav .active>.nav-link {
     color: white;
 }
 .navbar-light .navbar-brand {
+    color: white;
+}
+.navbar-light .navbar-brand:hover {
     color: white;
 }
 .card, .card-img-top {
@@ -526,10 +528,17 @@ body {
     display: none;
   }
   .content {
+  
     position: absolute;
     background: rgba(0, 0, 0, 0.8);
-    color: white;
+    color: white;   
     margin-top: 1em;
+    display: none;
+    top: 50%;
+    left: 50%;
+    animation: growth2 linear 0.7s;
+    /* translate: ; */
+
   }
   .content h2 {
     margin: 0.2em 0.5em;
@@ -543,7 +552,6 @@ body {
   }
 
   @media (min-width: 768px) {
-    
     h1 {
       margin: 3em 0;
     }
@@ -551,24 +559,21 @@ body {
       display: block;
     }
     .grid-col {
-      padding: 0 0.5em;
+      padding: 0 0.7em;
     }
     img {
-    border-radius: 15px;
-      margin-bottom: 0.8em;
+    border-radius: 16px;
+    margin-bottom: 1em;
     }
-    .content {
-      opacity: 0;
-      transform: translateX(-0.9em);
-      transition: all 1s;
-      will-change: opacity, transform;
+    .grid-item {
+        position: relative;
     }
     .grid-item:hover {
       cursor: pointer;
     }
     .grid-item:hover .content {
-      opacity: 1;
-      transform: translateX(0);
+        display: block;
+
     }
   }
   @media (min-width: 1080px) {
@@ -580,16 +585,25 @@ body {
       margin: 5em 0;
     }
   }
-.categogy {
+.category {
     height: 40px;
     box-shadow:0 3px 5px 0 rgba(0,0,0,.08);
     border-radius: 26px;
     display: inline-flex;
+    border: none;
     background-color: white;
     cursor: pointer;
     margin: 18px 0;
     align-items: center;
     
+}
+.category + .category {
+    margin-left: 16px ;
+
+}
+.category:hover {
+    text-decoration: none;
+    background-color: #e8e8e8;
 }
 ::-webkit-scrollbar {
     width: 5px;
@@ -635,4 +649,25 @@ body {
     color: #5e5e5e;
     margin: 0 10px;
     font-weight: 700;
+}
+@keyframes growth {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+@keyframes growth2 {
+    from {
+        transform: scale(0.7);
+        transform: translateX(-50%);
+    }
+
+    to {
+        transform: scale(1);
+        transform: translateX(-50%);
+
+    }
 }

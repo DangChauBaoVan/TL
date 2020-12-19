@@ -13,9 +13,12 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.6/animate.min.css">
 <link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet"  th:href="@{css/updateimg.css}">
+
 
 </head>
 <body>
+	<div class="name">hihi</div>
 	<div class="card">
 		<form th:action="@{/updateImage/{id}(id=${image.id})}" method="POST" th:object="${image}" enctype="multipart/form-data">
 			Title: <input type="text" th:field="*{title}" /> <br /> <br /> 
