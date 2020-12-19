@@ -18,6 +18,8 @@ window.addEventListener("load", function(){
       }
   });
 
+ 
+
   // if(checkall.attributes.checked == true){
   //   console.log('hi');
   //     btndelete.attributes.disabled = false;

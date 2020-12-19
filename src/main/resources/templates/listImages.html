@@ -64,7 +64,7 @@
 										src="images/avt/acc.jpg">
 								</div>
 								<div class="dropdown-menu" aria-labelledby="userDropdown">
-									<a class="dropdown-item" href="#">Thông tin tài khoản</a> <a
+									<a class="dropdown-item" href="/userInfo">Thông tin tài khoản</a> <a
 										class="dropdown-item" href="/login">Đăng xuất</a>
 								</div></li>
 						</ul>
@@ -168,7 +168,7 @@
 									<td>[[*{image.title}]]</td>
 									<td>[[*{image.category}]]</td>
 									<td>[[*{image.datetime}]]</td>
-									<td><a th:href="@{/showUpdateImg/{id}(id=${image.id})}"
+									<td><a th:href="@{/{id}(id=${image.id})}"
 										class="btn btn-edit mt-4">Edit</a></td>
 									<td><a th:href="@{/deleteImg/{id}(id=${image.id})}"
 										class="btn btn-danger mt-4">Delete</a></td>

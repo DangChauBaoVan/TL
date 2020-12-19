@@ -1,0 +1,72 @@
+.user__img {
+    height: 170px;
+    width: 170px;
+    border-radius: 50%;
+    margin: 30px;
+}
+label {
+    display: block;
+    margin: 20px 0;
+}
+.user__input-name {
+    width: 394px;
+    border: none;
+    height: 46px;
+    border-radius: 10px;
+    background-color: rgb(248, 245, 245);
+}
+.user__input-name:focus {
+    outline: none;
+}
+.user__input-textarea {
+    height: 100px;
+    padding: 0 10px;
+}
+.user__name{
+    font-size: 24px;
+    margin: 0 54px;
+    font-weight: 600;
+}
+.user__photos{
+    margin: 0 78px;
+}
+.user__left {
+    position: relative;
+}
+.user__btn-upload {
+    position: absolute;
+    top: 156px;
+    left: 171px;
+    padding: 1px 6px;
+    border: none;
+    border-radius: 50%;
+}
+
+.user__photos {
+
+}
+.user__description {
+    margin-top: 46px;
+    text-align: justify;
+}
+.btn {
+    font-size: 16px;
+    width: 100px;
+    height: 46px;
+    margin-top: 30px;
+    border-radius: 10px;
+    color: white;
+}
+.btn:hover {
+    opacity: 0.8;
+}
+.btn + .btn  {
+    margin-left: 20px;
+}
+.btn-cancel {
+    margin-left: 169px;
+}
+.btn--update {
+    background-color: rgb(245, 164, 13);
+
+}
