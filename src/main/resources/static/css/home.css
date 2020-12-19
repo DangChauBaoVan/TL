@@ -199,7 +199,9 @@ body.modal-open {
     margin: 5.9px 7px;
     border-radius: 12px;
     color: var(--white-color);
+    float: right;
     display: flex;
+    margin: 6px;
     align-items: center;
     justify-content: center;
     position: relative;
