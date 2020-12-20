@@ -14,7 +14,9 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.6/animate.min.css">
 
 <link rel="stylesheet" th:href="@{/css/base.css}">
+<link rel="stylesheet" th:href="@{/css/admin.css}">
 <link rel="stylesheet" th:href="@{/css/home.css}">
+
 
 </head>
 <body>
@@ -55,12 +57,20 @@
 			</div>
 
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-<<<<<<< HEAD
-				<li class="nav-item active"><a class="nav-link" href="listImages"> List Images
-=======
+				<li class="nav-item dropdown no-arrow">
+					<div
+						class="dropdown-toggle not-link" id="userDropdown"
+						role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false">
+						<span class="mr-2 d-none d-lg-inline text-gray-600 small"
+							th:text="Hi + ' ' + ${user.lastName}+ ' ' +${user.Name}">
+						</span> <img class="img-profile rounded-circle"
+							src="images/avt/acc.jpg">
+					</div>
+				
+				</li>
 				<li class="nav-item active">
 					<a class="nav-link" href="/listImages">List image
->>>>>>> ffd9a92591370dc0157f64110d5b210aee1c9026
 						<span class="sr-only">(current)</span>
 				</a></li>
 				
@@ -69,16 +79,6 @@
 	</div>
 	<div class="container">
 		
-<<<<<<< HEAD
-		<div class="categories" id="categories">
-
-			
-
-			<a th:href="@{/search/{name}(name=${cate.name})}" class="category" id="category" th:each="cate : ${cate}" >
-
-				<img th:src="*{'data:image/jpeg;base64,'+{cate.image}}" alt="not found" class="category__img">
-				<span class="category__title">[[*{cate.name}]]</span>
-=======
 		<div class="message__not-found"th:if="${images.empty}">
 			Rất tiếc, chúng tôi không thể tìm thấy bất kỳ Ghim nào cho tìm kiếm này.</br>
 			Hay là thử một trong những từ khoá này?
@@ -89,14 +89,12 @@
 						<span class="category__title">[[*{cate2.name}]]</span>
 				</a>
 				</div>
-
 		</div>
 		<div  th:unless="${images.empty}">
 			<div class="categories" id="categories">
 			<a th:href="@{/search/{name}(name=${cate.name})}" class="category" id="category" th:each="cate : ${cate}" >
 					<img th:src="*{'data:image/jpeg;base64,'+{cate.image}}" alt="not found" class="category__img">
 					<span class="category__title">[[*{cate.name}]]</span>
->>>>>>> ffd9a92591370dc0157f64110d5b210aee1c9026
 			</a>
 			
 			</div>

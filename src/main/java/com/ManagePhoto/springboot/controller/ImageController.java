@@ -73,6 +73,8 @@ public class ImageController {
 		List<Category> cate = cateService.GetAllCategory();
 		model.addAttribute("cate", cate);
 		
+		User user = userService.getUsername(username);
+		model.addAttribute("user", user);
 
 		model.addAttribute("keyword", keyword);
 		List<Image> images = imageService.listAll(username, keyword, name);
@@ -85,19 +87,6 @@ public class ImageController {
 		modelAndView.setViewName("home"); 
 		return modelAndView; 
 	}
-	
-	// @RequestMapping( "/home/{name}" )
-	// public String homecateImages(@PathVariable("name") String name, Model model) {
-	// 	Authentication authentication =SecurityContextHolder.getContext().getAuthentication(); 
-	// 	UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
-	// 	String username = userDetails.getUsername(); 
-	// 	List<Image> images = imageService.getImageByCategory(name,username);
-	// 	model.addAttribute("images", images);
-	// 	List<Category> cate = cateService.GetAllCategory();
-	// 	model.addAttribute("cate", cate);
-	// 	return "home";
-	// }
-
 	@GetMapping("/deleteImg/{id}")
 	public String deleteImage(@PathVariable("id") Long id) {
 		imageService.deleteImagetById(id);
