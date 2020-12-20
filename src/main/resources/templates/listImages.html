@@ -11,12 +11,12 @@
 	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 	rel="stylesheet">
 <link rel="stylesheet"
-	href="vendor/bootstrap/dist/css/bootstrap.min.css">
+	th:href="@{/vendor/bootstrap/dist/css/bootstrap.min.css}">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.6/animate.min.css">
-<link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/admin.css">
-<link rel="stylesheet" href="css/login.css">
+<link rel="stylesheet" th:href="@{/css/base.css}">
+<link rel="stylesheet" th:href="@{/css/admin.css}">
+<link rel="stylesheet" th:href="@{/css/login.css}">
 
 </head>
 
@@ -54,7 +54,8 @@
 								aria-expanded="false"> <i class="fas fa-search fa-fw"></i>
 							</a>
 								<div class="topbar-divider d-none d-sm-block"></div>
-							<li class="nav-item dropdown no-arrow"><div
+							<li class="nav-item dropdown no-arrow">
+								<div
 									class="dropdown-toggle not-link" id="userDropdown"
 									role="button" data-toggle="dropdown" aria-haspopup="true"
 									aria-expanded="false">
@@ -66,7 +67,8 @@
 								<div class="dropdown-menu" aria-labelledby="userDropdown">
 									<a class="dropdown-item" href="/userInfo">Thông tin tài khoản</a> <a
 										class="dropdown-item" href="/login">Đăng xuất</a>
-								</div></li>
+								</div>
+							</li>
 						</ul>
 					</nav>
 
@@ -129,17 +131,13 @@
 				<div class="col-md-12">
 					<div class="table-responsive">
 						<button id="btn-delete" class="btn-delete" disabled>Delete</button>
-						<label>Select Categogy</label> <select name="cars" id="cars"
+						<label>Select Categogy</label>
+						 <select name="cars" id="cars"
 							class="selectcategory">
 							<option value="volvo" class="item__select-categogy">Animals</option>
 							<option value="saab" class="item__select-categogy">Life</option>
 							<option value="opel" class="item__select-categogy">Pets</option>
 							<option value="audi" class="item__select-categogy">Sky</option>
-						</select> <label>Select Status</label> <select name="cars" id="cars"
-							class="selectcategory">
-							<option value="volvo" class="item__select-categogy">Published</option>
-							<option value="saab" class="item__select-categogy">Not</option>
-
 						</select>
 
 						<table id="mytable" class="table table-bordred table-striped">

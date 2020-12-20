@@ -22,18 +22,18 @@
       <div id="card-login"class="card-login">
         <form th:action="@{/register}" th:object="${user}" method="POST" class="">
 			<div class="wrapper-input">
-           
-				<input type="text" th:field="*{name}" class="input-email" placeholder="Hoai Mi" />
+           <label for="">First Name</label>
+				<input type="text" th:field="*{name}" class="input-email" placeholder="First Name" />
 			  </div>
 			  <div class="wrapper-input">
 			   
-				<input class="input-email"  type="text" placeholder="Tran"  th:field="*{lastName}">
+				<input class="input-email"  type="text" placeholder="Last Name"  th:field="*{lastName}">
 			  </div>
 			  <div class="wrapper-input">
-				<input class="input-email" type="text" th:field="*{email}" placeholder="hoaimiqng@gmail.com" />
+				<input class="input-email" type="text" th:field="*{email}" placeholder="email" />
 			  </div>
 			  <div class="wrapper-input">
-				<input  class="input-email" type="password" th:field="*{password}" placeholder="********"/>
+				<input  class="input-email" type="password" th:field="*{password}" placeholder="password"/>
 			  </div>
 			
 			  <span class="success" th:utext="${successMessage}"></span>

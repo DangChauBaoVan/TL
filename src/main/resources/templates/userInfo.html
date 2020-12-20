@@ -12,9 +12,9 @@
         href="vendor/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.6/animate.min.css">
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/admin.css">
-    <link rel="stylesheet" href="css/user.css">
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+    <link rel="stylesheet" th:href="@{/css/user.css}">
 </head>
 <body>
     <div id="wrapper">
@@ -22,10 +22,13 @@
                 <div class="infor">
                    <div class="row">
                         <div class="col-6 col-md-6 user__left">
-                            <img src="images/avt/default.png" alt="not found" class="user__img">
+                            <form action="">
+                                <img src="images/avt/default.png" alt="not found" class="user__img">
+                            </form>
+                           
                             <button class="user__btn-upload"><i class="fas fa-camera"></i></button>
                             <div class="user__name">Trần Hoài Mi</div>
-                            <div class="user__photos">Photos: 102</div>
+                            <div class="user__photos">102 Photos</div>
                             <div class="user__description">
                             Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                             Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
@@ -36,8 +39,12 @@
                         <div class="col-6 col-md-6">
                             <form action="">
                             <div class="user__group-input">
-                                <label for="">Full Name</label>
-                                <input class ="user__input-name"type="text"  name = "name">
+                                <label for="">First Name</label>
+                                <input class ="user__input-name"type="text"  name = "firstname">
+                            </div>
+                            <div class="user__group-input">
+                                <label for="">Last Name</label>
+                                <input class ="user__input-name"type="text"  name = "lastname">
                             </div>
                             <div class="user__group-input">
                                 <label for="">Email</label>
@@ -45,12 +52,16 @@
                             </div>
                             <div class="user__group-input">
                                 <label for="">Description</label>
-                                <textarea class ="user__input-name user__input-textarea" name = "description" placeholder="text...">
+                                <textarea row="6" class ="user__input-name user__input-textarea" name = "description" placeholder="text...">
 
                                 </textarea>
                                
                             </div>
+<<<<<<< HEAD
                             <a href="listImages" class="btn btn-cancel"><i class="fas fa-long-arrow-alt-left"></i>Back</a>
+=======
+                            <a href="listImages" class="btn btn-cancel "><i class="fas fa-long-arrow-alt-left user-icon"></i>Back</a>
+>>>>>>> ffd9a92591370dc0157f64110d5b210aee1c9026
                             <button class="btn btn--update" type="submit">Update</button>
 
                         </form>
