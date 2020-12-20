@@ -24,21 +24,22 @@
     box-sizing: inherit;
 }
 html {
-    /* 100% ~ 16px // HACK */
+    /* 100% ~ 16px */
     font-size: 62.5%;
     line-height: 1.6rem;
-    font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .shadow {
     box-shadow: 0 0rem 0rem rgba(0,0,0,.09)!important;
 }
 .sticky {
-   
     top: 0;
     width: 100%;
-  }
-  
+}
 .row {
     padding: 20px 0;
 }
@@ -47,20 +48,30 @@ html {
     padding-right: 8px;
     padding-left: 8px;
 }
+.form-control {
+    font-size: 16px !important;
+}
+
 @media (min-width: 992px) {
     .navbar-expand-lg {
         padding: 0.5rem 0 !important;
         height: 70px;
     }
 }
+@keyframes growth {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
 @keyframes ani {
     from {
-        transform: scale(0.7)
+        transform: scale(0)
     }
     to {
        transform: scale(1);
     }
-}
-.form-control {
-    font-size: 16px !important;
 }

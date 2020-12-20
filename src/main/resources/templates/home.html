@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Management photo</title>
-<link href="vendor/fontawesome/css/all.min.css" rel="stylesheet">
+<link th:href="@{/vendor/fontawesome/css/all.min.css}" rel="stylesheet">
 <link
 	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 	rel="stylesheet">
@@ -56,7 +56,7 @@
 
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 				<li class="nav-item active">
-					<a class="nav-link" href="listImages">List image
+					<a class="nav-link" href="/listImages">List image
 						<span class="sr-only">(current)</span>
 				</a></li>
 				
@@ -65,41 +65,46 @@
 	</div>
 	<div class="container">
 		
-		<div class="categories" id="categories">
-<<<<<<< HEAD
-			<a th:href="@{/home}" th:value="${cate.name}" class="categogy" th:each="cate : ${cate}" >
-=======
-			<a th:href="@{/search/{name}(name=${cate.name})}" class="category" id="category" th:each="cate : ${cate}" >
->>>>>>> ff6916c3f4d60bb4c98afe0d2256a4218f11c898
-				<img th:src="*{'data:image/jpeg;base64,'+{cate.image}}" alt="not found" class="category__img">
-				<span class="category__title">[[*{cate.name}]]</span>
-			</a>
+		<div class="message__not-found"th:if="${images.empty}">
+			Rất tiếc, chúng tôi không thể tìm thấy bất kỳ Ghim nào cho tìm kiếm này.</br>
+			Hay là thử một trong những từ khoá này?
+
 		</div>
-        <div class="grid">
-            <div class="grid-col grid-col--1">
-
-            </div>
-            <div class="grid-col grid-col--2">
-
-            </div>
-            <div class="grid-col grid-col--3">
-
-            </div>
-            <div class="grid-col grid-col--4">
-
+		<div  th:unless="${images.empty}">
+			<div class="categories" id="categories">
+			
+			<a th:href="@{/search/{name}(name=${cate.name})}" class="category" id="category" th:each="cate : ${cate}" >
+					<img th:src="*{'data:image/jpeg;base64,'+{cate.image}}" alt="not found" class="category__img">
+					<span class="category__title">[[*{cate.name}]]</span>
+			</a>
+			
 			</div>
-			<div class="grid-col grid-col--5">
+			<div class="grid">
+				<div class="grid-col grid-col--1">
 
-            </div>
-			<div class="grid-item" th:each="image : ${images}">
-				<div class="content">
-					<h4>[[*{image.title}]]</h4>
-				
 				</div>
-				<div class="favourite "><i class="far fa-heart heart--transparent" ></i></div>
-				<img th:src="*{'data:image/jpeg;base64,'+{image.image}}" alt="picture">
+				<div class="grid-col grid-col--2">
+
+				</div>
+				<div class="grid-col grid-col--3">
+
+				</div>
+				<div class="grid-col grid-col--4">
+
+				</div>
+				<div class="grid-col grid-col--5">
+
+				</div>
+				<div class="grid-item" th:each="image : ${images}">
+					<div class="title-image">
+						[[*{image.title}]]
+					</div>
+					<div class="favourite "><i class="far fa-heart heart--transparent" ></i></div>
+					<img th:src="*{'data:image/jpeg;base64,'+{image.image}}" class="card-img-top" alt="picture">
+				</div>
+				
 			</div>
-        </div>
+		</div>
 	</div>
 
 	 <script src="/vendor/jquery/jquery.slim.min.js"></script>
