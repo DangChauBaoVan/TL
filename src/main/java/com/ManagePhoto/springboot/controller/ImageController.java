@@ -72,9 +72,15 @@ public class ImageController {
 		String username = userDetails.getUsername();
 		List<Category> cate = cateService.GetAllCategory();
 		model.addAttribute("cate", cate);
+		
+
 		model.addAttribute("keyword", keyword);
 		List<Image> images = imageService.listAll(username, keyword, name);
 		model.addAttribute("images", images);
+	
+		List<Category> cate2 = cateService.getRandomElement(5);
+		model.addAttribute("cate2", cate2);
+		
 		ModelAndView modelAndView = new ModelAndView(); 
 		modelAndView.setViewName("home"); 
 		return modelAndView; 
@@ -128,5 +134,6 @@ public class ImageController {
 		imageService.updateImage(id, title, category);
 		return "redirect:/listImages";
 	}
+	
 
 }
