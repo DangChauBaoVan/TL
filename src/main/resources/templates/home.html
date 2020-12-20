@@ -30,14 +30,13 @@
 				<a class="navbar-brand" href="/home">Daily Photos</a>
 				<div class="header-search">
 					<form action="/home" class="header-search-input-wrap">
-						<input type="text" class="header-search-input"name="keyword" id="keyword"th:value="${keyword}"
-							placeholder="Tìm kiếm">
+						<input type="text" class="header-search-input" name="keyword"
+							id="keyword" th:value="${keyword}" placeholder="Tìm kiếm">
 						<!-- search history -->
 						<div class="header-search-history">
 							<h4 class="header-search-history-heading">Lịch sử tìm kiếm</h4>
 							<ul class="header-search-history-list">
-								<li class="header-search-history-item"><a href="">Cat</a>
-								</li>
+								<li class="header-search-history-item"><a href="">Cat</a></li>
 								<li class="header-search-history-item"><a href="">Flowers</a>
 								</li>
 								<li class="header-search-history-item"><a href="">Wallet</a>
@@ -50,92 +49,72 @@
 							<i class="search fas fa-search search-icon"></i>
 						</button>
 					</form>
-					
+
 				</div>
 			</div>
 
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-<<<<<<< HEAD
-				<li class="nav-item active"><a class="nav-link" href="listImages"> List Images
-=======
-				<li class="nav-item active">
-					<a class="nav-link" href="/listImages">List image
->>>>>>> ffd9a92591370dc0157f64110d5b210aee1c9026
-						<span class="sr-only">(current)</span>
+
+
+
+				<li class="nav-item active"><a class="nav-link"
+					href="/listImages">List image <span class="sr-only">(current)</span>
 				</a></li>
-				
+
 			</ul>
 		</nav>
 	</div>
+
 	<div class="container">
-		
-<<<<<<< HEAD
-		<div class="categories" id="categories">
 
-			
-
-			<a th:href="@{/search/{name}(name=${cate.name})}" class="category" id="category" th:each="cate : ${cate}" >
-
-				<img th:src="*{'data:image/jpeg;base64,'+{cate.image}}" alt="not found" class="category__img">
-				<span class="category__title">[[*{cate.name}]]</span>
-=======
-		<div class="message__not-found"th:if="${images.empty}">
-			Rất tiếc, chúng tôi không thể tìm thấy bất kỳ Ghim nào cho tìm kiếm này.</br>
-			Hay là thử một trong những từ khoá này?
+		<div class="message__not-found" th:if="${images.empty}">
+			Rất tiếc, chúng tôi không thể tìm thấy bất kỳ Ghim nào cho tìm kiếm
+			này.</br> Hay là thử một trong những từ khoá này?
 
 		</div>
-		<div  th:unless="${images.empty}">
+		<div th:unless="${images.empty}">
 			<div class="categories" id="categories">
-			
-			<a th:href="@{/search/{name}(name=${cate.name})}" class="category" id="category" th:each="cate : ${cate}" >
-					<img th:src="*{'data:image/jpeg;base64,'+{cate.image}}" alt="not found" class="category__img">
-					<span class="category__title">[[*{cate.name}]]</span>
->>>>>>> ffd9a92591370dc0157f64110d5b210aee1c9026
-			</a>
-			
+
+				<a th:href="@{/search/{name}(name=${cate.name})}" class="category"
+					id="category" th:each="cate : ${cate}"> <img
+					th:src="*{'data:image/jpeg;base64,'+{cate.image}}" alt="not found"
+					class="category__img"> <span class="category__title">[[*{cate.name}]]</span>
+				</a>
+
 			</div>
 			<div class="grid">
-				<div class="grid-col grid-col--1">
-
-				</div>
-				<div class="grid-col grid-col--2">
-
-				</div>
-				<div class="grid-col grid-col--3">
-
-				</div>
-				<div class="grid-col grid-col--4">
-
-				</div>
-				<div class="grid-col grid-col--5">
-
-				</div>
+				<div class="grid-col grid-col--1"></div>
+				<div class="grid-col grid-col--2"></div>
+				<div class="grid-col grid-col--3"></div>
+				<div class="grid-col grid-col--4"></div>
+				<div class="grid-col grid-col--5"></div>
 				<div class="grid-item" th:each="image : ${images}">
-					<div class="title-image">
-						[[*{image.title}]]
+					<div class="title-image">[[*{image.title}]]</div>
+					<div class="favourite ">
+						<i class="far fa-heart heart--transparent"></i>
 					</div>
-					<div class="favourite "><i class="far fa-heart heart--transparent" ></i></div>
-					<img th:src="*{'data:image/jpeg;base64,'+{image.image}}" class="card-img-top" alt="picture">
+					<img th:src="*{'data:image/jpeg;base64,'+{image.image}}"
+						class="card-img-top" alt="picture">
 				</div>
-				
+
 			</div>
 		</div>
 	</div>
 
-	 <script src="/vendor/jquery/jquery.slim.min.js"></script>
+	<script src="/vendor/jquery/jquery.slim.min.js"></script>
 	<script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="https://unpkg.com/colcade@0/colcade.js"></script>
 	<script src="vendor/js/main.js"></script>
 
 	<!-- <script src="/vendor/js/jquery.slimscroll.js"></script> -->
 
-    <script>
+	<script>
         var colc = new Colcade( '.grid', {
         columns: '.grid-col',
         items: '.grid-item'
         });
 	</script>
-	  <!-- <script>
+	<!-- <script>
 		  
 		$(document).ready(function () {
 		  $('#categories').slimScroll({
@@ -145,7 +124,5 @@
 		  });
 		})
 		</script> -->
-
-		
 </body>
 </html>

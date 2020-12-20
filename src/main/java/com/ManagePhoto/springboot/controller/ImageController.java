@@ -80,10 +80,7 @@ public class ImageController {
 		return modelAndView; 
 	}
 	
-<<<<<<< HEAD
 
-=======
->>>>>>> ffd9a92591370dc0157f64110d5b210aee1c9026
 	// @RequestMapping( "/home/{name}" )
 	// public String homecateImages(@PathVariable("name") String name, Model model) {
 	// 	Authentication authentication =SecurityContextHolder.getContext().getAuthentication(); 
