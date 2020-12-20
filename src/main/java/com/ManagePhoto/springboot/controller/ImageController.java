@@ -72,7 +72,7 @@ public class ImageController {
 		String username = userDetails.getUsername();
 		List<Category> cate = cateService.GetAllCategory();
 		model.addAttribute("cate", cate);
-		
+
 		User user = userService.getUsername(username);
 		model.addAttribute("user", user);
 
@@ -87,6 +87,8 @@ public class ImageController {
 		modelAndView.setViewName("home"); 
 		return modelAndView; 
 	}
+
+
 	@GetMapping("/deleteImg/{id}")
 	public String deleteImage(@PathVariable("id") Long id) {
 		imageService.deleteImagetById(id);
