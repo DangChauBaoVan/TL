@@ -76,22 +76,10 @@
 			</ul>
 		</nav>
 	</div>
-<<<<<<< HEAD
-	<div class="container">
-		
-=======
+
 
 	<div class="container">
 
-<<<<<<< HEAD
-		<div class="message__not-found" th:if="${images.empty}">
-			Rất tiếc, chúng tôi không thể tìm thấy bất kỳ Ghim nào cho tìm kiếm
-			này.</br> Hay là thử một trong những từ khoá này?
-=======
-				<img th:src="*{'data:image/jpeg;base64,'+{cate.image}}" alt="not found" class="category__img">
-				<span class="category__title">[[*{cate.name}]]</span>
-=======
->>>>>>> 8d924c7533025cf8a5639485cab12e6b4c4d111e
 		<div class="message__not-found"th:if="${images.empty}">
 			Rất tiếc, chúng tôi không thể tìm thấy bất kỳ Ghim nào cho tìm kiếm này.</br>
 			Hay là thử một trong những từ khoá này?
@@ -102,25 +90,11 @@
 						<span class="category__title">[[*{cate2.name}]]</span>
 				</a>
 				</div>
-<<<<<<< HEAD
-=======
->>>>>>> 19eb06f79600d35d397ec9c228d86e78c0d85e00
 
->>>>>>> 8d924c7533025cf8a5639485cab12e6b4c4d111e
+
 		</div>
 		<div th:unless="${images.empty}">
 			<div class="categories" id="categories">
-<<<<<<< HEAD
-=======
-			<a th:href="@{/search/{name}(name=${cate.name})}" class="category" id="category" th:each="cate : ${cate}" >
-					<img th:src="*{'data:image/jpeg;base64,'+{cate.image}}" alt="not found" class="category__img">
-					<span class="category__title">[[*{cate.name}]]</span>
-			</a>
-			
-			</div>
-			<div class="grid">
-				<div class="grid-col grid-col--1">
->>>>>>> 19eb06f79600d35d397ec9c228d86e78c0d85e00
 
 				<a th:href="@{/search/{name}(name=${cate.name})}" class="category"
 					id="category" th:each="cate : ${cate}"> <img
