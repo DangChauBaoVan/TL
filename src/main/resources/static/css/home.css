@@ -527,6 +527,7 @@ body.modal-open {
     text-decoration: none;
     background-color: #e8e8e8;
 }
+
 .categories{
     margin-top: 10px;
     margin-bottom: 30px;
@@ -555,6 +556,10 @@ body.modal-open {
     color: #5e5e5e;
     margin: 0 10px;
     font-weight: 700;
+}
+.img-profile {
+    height: 44px;
+    width: 44px;
 }
 /* Modify scrollbar */
 ::-webkit-scrollbar {
