@@ -72,15 +72,24 @@ public class ImageController {
 		String username = userDetails.getUsername();
 		List<Category> cate = cateService.GetAllCategory();
 		model.addAttribute("cate", cate);
+		
+
 		model.addAttribute("keyword", keyword);
 		List<Image> images = imageService.listAll(username, keyword, name);
 		model.addAttribute("images", images);
+	
+		List<Category> cate2 = cateService.getRandomElement(5);
+		model.addAttribute("cate2", cate2);
+		
 		ModelAndView modelAndView = new ModelAndView(); 
 		modelAndView.setViewName("home"); 
 		return modelAndView; 
 	}
 	
+<<<<<<< HEAD
 
+=======
+>>>>>>> 19eb06f79600d35d397ec9c228d86e78c0d85e00
 	// @RequestMapping( "/home/{name}" )
 	// public String homecateImages(@PathVariable("name") String name, Model model) {
 	// 	Authentication authentication =SecurityContextHolder.getContext().getAuthentication(); 
@@ -129,5 +138,6 @@ public class ImageController {
 		imageService.updateImage(id, title, category);
 		return "redirect:/listImages";
 	}
+	
 
 }
