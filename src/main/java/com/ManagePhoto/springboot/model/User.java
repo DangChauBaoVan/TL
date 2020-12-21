@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
@@ -52,9 +53,6 @@ public class User {
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "auth_user_role", joinColumns = @JoinColumn(name = "auth_user_id"), inverseJoinColumns = @JoinColumn(name = "auth_role_id"))
 	private Set<Role> roles;
-	
-	
-
 	public int getId() {
 		return id;
 	}
@@ -62,6 +60,9 @@ public class User {
 	public void setId(int id) {
 		this.id = id;
 	}
+	@Lob
+	@Column(columnDefinition = "MEDIUMBLOB", name = "avatar")
+	private String image;
 
 	public String getName() {
 		return name;
@@ -110,7 +111,12 @@ public class User {
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
-	
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
 	
 	
 

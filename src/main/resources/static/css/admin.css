@@ -143,10 +143,6 @@ div.table-responsive>div.dataTables_wrapper>div.row:first-child>div[class^="col-
     padding: 41px;
     background-color: #ccc;
 }
-.navbar-expand .navbar-nav {
-    /* margin-left: 823px; */
-}
-
 .topbar .dropdown .dropdown-menu {
     background-color: #eeebeb;
     font-size: 1.3rem !important;

@@ -16,7 +16,11 @@
     font-size: 14px;
     font-weight: bold;
 }
-
+.nav-item--user {
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+}
 body.modal-open {
     height: 100vh;
     overflow-y: hidden;
@@ -431,6 +435,9 @@ body.modal-open {
 .navbar-light .navbar-brand:hover {
     color: white;
 }
+.navbar-nav {
+    width: 170px;
+}
 .grid-item, .card-img-top {
     border-radius: 10px ;
 }
@@ -464,7 +471,7 @@ body.modal-open {
 .title-image {
     position: absolute;
     color: white;   
-    bottom: 32%;
+    bottom: 50%;
     font-size: 16px;
     margin: 0 auto;
     z-index: 3;
@@ -527,7 +534,6 @@ body.modal-open {
     text-decoration: none;
     background-color: #e8e8e8;
 }
-
 .categories{
     margin-top: 10px;
     margin-bottom: 30px;
@@ -558,8 +564,13 @@ body.modal-open {
     font-weight: 700;
 }
 .img-profile {
-    height: 44px;
-    width: 44px;
+    height: 42px;
+    display: block;
+    width: 42px;
+    margin-left: 5px;
+}
+.username {
+    display: block;
 }
 /* Modify scrollbar */
 ::-webkit-scrollbar {
@@ -571,11 +582,12 @@ body.modal-open {
 }  
 ::-webkit-scrollbar-thumb {
     background: rgb(236, 233, 233); 
-    border-radius: 13px;
+    border-radius: 20px;
 }
 ::-webkit-scrollbar-thumb:hover {
     background: #a5a3a3; 
 }
+
 .grid {
     display: flex;
 }

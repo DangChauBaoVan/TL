@@ -14,6 +14,7 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.6/animate.min.css">
     <link rel="stylesheet" th:href="@{/css/base.css}">
     <link rel="stylesheet" th:href="@{/css/admin.css}">
+    <link rel="stylesheet" th:href="@{/css/home.css}">
     <link rel="stylesheet" th:href="@{/css/user.css}">
 </head>
 <body>
@@ -22,11 +23,25 @@
                 <div class="infor">
                    <div class="row">
                         <div class="col-6 col-md-6 user__left">
-                            <form action="">
+                            <form action="" method="" enctype="multipart/form-data">
                                 <img src="images/avt/default.png" alt="not found" class="user__img">
+                               
+
+                                <button class="user__btn-upload" type ="button" id="user__btn-upload">
+                                    <i class="fas fa-camera"></i>
+                                </button>
+                                <div class="modal" id="modal__upload-image">
+                                    <div class="modal__overlay"></div>
+                                    <div class="modal__body">
+                                        <button id="btn-close-cate">x</button>
+                                         <div class="custom-file mb-4">
+                                    <label for="customFile" class="label-choose-image">Choose
+                                        image</label> <input type="file" name="file"
+                                        class="custom-file-input" id="customFile">
+                                </div> -->
+                                    </div>
+                                </div> 
                             </form>
-                           
-                            <button class="user__btn-upload"><i class="fas fa-camera"></i></button>
                             <div class="user__name">Trần Hoài Mi</div>
                             <div class="user__photos">102 Photos</div>
                             <div class="user__description">
@@ -57,11 +72,7 @@
                                 </textarea>
                                
                             </div>
-<<<<<<< HEAD
-                            <a href="listImages" class="btn btn-cancel"><i class="fas fa-long-arrow-alt-left"></i>Back</a>
-=======
                             <a href="listImages" class="btn btn-cancel "><i class="fas fa-long-arrow-alt-left user-icon"></i>Back</a>
->>>>>>> ffd9a92591370dc0157f64110d5b210aee1c9026
                             <button class="btn btn--update" type="submit">Update</button>
 
                         </form>
@@ -71,6 +82,15 @@
         </div>
     </div>
     <script src="vendor/jquery/jquery.slim.min.js"></script>
-	<script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script >
+       document.addEventListener("DOMContentLoaded",function(){
+           var btn = document.getElementById("user__btn-upload");
+           var modal = document.getElementById("modal__upload-image");
+           btn.addEventListener('click', function(){
+              
+           })
+       })
+    </script>
 </body>
 </html>
