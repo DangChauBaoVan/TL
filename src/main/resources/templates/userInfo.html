@@ -33,25 +33,33 @@
 
 
 							<button class="user__btn-upload" type="button"
-								id="user__btn-upload">
+								id="user__btn-upload" data-toggle="modal" data-target="#myModal">
 								<i class="fas fa-camera"></i>
 							</button>
-							<div class="custom-file mb-4">
-								<label for="customFile" class="label-choose-image">Choose
-									image</label> <input type="file" name="file" class="custom-file-input"
-									id="customFile">
-							</div>
-							<button class="btn btn-info" type="submit">Add</button>
 
-							<div class="modal" id="modal__upload-image">
-								<div class="modal__overlay"></div>
-								<div class="modal__body">
-									<button id="btn-close-cate">x</button>
-									<div class="custom-file mb-4">
-										<label for="customFile" class="label-choose-image">Choose
-											image</label> <input type="file" name="file"
-											class="custom-file-input" id="customFile">
+							<div class="modal fade" id="myModal" role="dialog">
+								<div class="modal-dialog">
+
+									<!-- Modal content-->
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+											<h4 class="modal-title">Thêm Avatar</h4>
+										</div>
+										<div class="modal-body">
+											<div class="custom-file mb-4">
+												<label for="customFile" class="label-choose-image">Choose
+													image</label> <input type="file" name="file"
+													class="custom-file-input" id="customFile">
+											</div>
+											<button class="btn btn-info" type="submit">Add</button>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default"
+												data-dismiss="modal">Close</button>
+										</div>
 									</div>
+
 								</div>
 							</div>
 						</form>
