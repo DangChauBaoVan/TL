@@ -3,11 +3,17 @@ package com.ManagePhoto.springboot.controller;
 import java.util.List;
 
 import com.ManagePhoto.springboot.model.Category;
+import com.ManagePhoto.springboot.model.User;
 import com.ManagePhoto.springboot.service.CategoryService;
+import com.ManagePhoto.springboot.service.UserService;
+
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +28,9 @@ public class CategoryController {
 	@Autowired
 	private CategoryService cateService;
 	
+	@Autowired
+	private UserService  userService;
+	
     @PostMapping("/addCate")
     public String saveCategory(@RequestParam("file") MultipartFile file,
             @RequestParam("name") String name)
@@ -32,10 +41,16 @@ public class CategoryController {
     @RequestMapping(value = { "/category" },  method = RequestMethod.GET)
     public ModelAndView getallCategory(Model model) {
         
+    	Authentication authentication =SecurityContextHolder.getContext().getAuthentication(); 
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
+		String username = userDetails.getUsername();
+		User user = userService.getUsername(username);
+		model.addAttribute("user", user);
         List<Category> categories = cateService.GetAllCategory();
-        model.addAttribute("categories", categories); // phần get dữ liệu
+        
+        model.addAttribute("categories", categories); 
 
-        ModelAndView modelAndView = new ModelAndView(); //phần hiển thị
+        ModelAndView modelAndView = new ModelAndView(); 
         modelAndView.setViewName("category"); 
         return modelAndView;
     }
@@ -46,15 +61,15 @@ public class CategoryController {
     {
     	
     	cateService.deleteCategoryById(id);
-    	return "redirect:/listImages";
+    	return "redirect:/category";
     }
-    @PostMapping("/updateCate")
+    @PostMapping("/updateCategory")
     public String updateCategory(@RequestParam("id") int id,
             @RequestParam("name") String name
           
             ) {
         
         cateService.updateCate(id,name);
-        return "redirect:/listImages";
+        return "redirect:/category";
     }
 }
