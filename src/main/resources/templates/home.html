@@ -54,24 +54,30 @@
 			</div>
 
 			<ul class="navbar-nav">
-				<li class="nav-item active nav-item--user">
-					<span class="nav-link username"th:text="Hi + ' ' + ${user.lastName}+ ' ' +${user.Name}">
-					</span>
-					<img class="img-profile rounded-circle"src="images/avt/acc.jpg">
+				<li class="nav-item active nav-item--user"><a
+					href="/listImages" class="nav-link username">Photo Manage </a> <img
+					class="img-profile rounded-circle" src="/images/avt/acc.jpg">
 				</li>
+				<li class="nav-item active nav-item--user"><span
+					 class="nav-link username"
+					th:text="Hi + ' ' + ${user.lastName}+ ' ' +${user.Name}"> </span> <img
+					class="img-profile rounded-circle" src="/images/avt/acc.jpg">
+				</li>
+
 			</ul>
 		</nav>
 	</div>
 	<div class="container">
 
-		<div class="message__not-found"th:if="${images.empty}">
-			Rất tiếc, chúng tôi không thể tìm thấy bất kỳ Ghim nào cho tìm kiếm này.</br>
-			Hay là thử một trong những từ khoá này?
-			
+		<div class="message__not-found" th:if="${images.empty}">
+			Rất tiếc, chúng tôi không thể tìm thấy bất kỳ Ghim nào cho tìm kiếm
+			này.</br> Hay là thử một trong những từ khoá này?
+
 			<div class="categories" id="categories">
-				<a th:href="@{/search/{name}(name=${cate2.name})}" class="category" id="category" th:each="cate2 : ${cate2}" >
-						<img th:src="*{'data:image/jpeg;base64,'+{cate2.image}}" alt="not found" class="category__img">
-						<span class="category__title">[[*{cate2.name}]]</span>
+				<a th:href="@{/search/{name}(name=${cate2.name})}" class="category"
+					id="category" th:each="cate2 : ${cate2}"> <img
+					th:src="*{'data:image/jpeg;base64,'+{cate2.image}}" alt="not found"
+					class="category__img"> <span class="category__title">[[*{cate2.name}]]</span>
 				</a>
 			</div>
 		</div>
@@ -107,6 +113,8 @@
 	<script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="https://unpkg.com/colcade@0/colcade.js"></script>
 	<script src="vendor/js/main.js"></script>
+	<script scr="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js">
+	</script>
 	<script>
         var colc = new Colcade( '.grid', {
         columns: '.grid-col',

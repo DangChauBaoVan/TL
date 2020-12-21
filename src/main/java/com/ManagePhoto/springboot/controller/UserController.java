@@ -31,17 +31,50 @@ public class UserController {
     @Autowired
     private UserService userService;
     
+    @Autowired
+    private ImageService imageService;
+    
     @RequestMapping(value = { "/userInfo" }, method = RequestMethod.GET)
     public ModelAndView getUserInfo(Model model) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 		String username = userDetails.getUsername();
+		
+		Long nImage = imageService.countImage(username);
+		
+		model.addAttribute("nImage", nImage);
 
 		User user = userService.getUsername(username);
-		model.addAttribute("user",user); 
+		if(user.getDecription() == null) {
+			String decription = "Input Something Here...!";
+			user.setDecription(decription);
+			
+		}
+		model.addAttribute("user",user);
 		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("userInfo");
 		return modelAndView;
 	}
+    
+    @PostMapping("/saveI")
+	public String saveUserImage(@RequestParam("file") MultipartFile file) {
+    	Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		String username = userDetails.getUsername();
+    	userService.saveUserImage(file, username);
+		return "redirect:/userInfo";
+	}
+    
+    @PostMapping("/updateUser")
+	public String updateUser(@RequestParam("name") String firstName,
+			@RequestParam("lastName") String lastName,
+			@RequestParam("decription") String decription) {
+    	Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		String username = userDetails.getUsername();
+    	userService.updateUser(username, firstName, lastName, decription);
+		return "redirect:/userInfo";
+	}
+    
 }

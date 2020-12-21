@@ -8,6 +8,7 @@ public interface UserService {
 	public void saveUser(User user);
 	public boolean isUserAlreadyPresent(User user);
 	public User getUsername(String username);
-	public void saveUserImage(MultipartFile file, int id);
+	public void saveUserImage(MultipartFile file, String user_name);
+	public void updateUser(String userName,String firstName, String lastName,String decription);
 
 }

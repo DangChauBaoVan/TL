@@ -1,96 +1,109 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Management photo</title>
-    <link href="vendor/fontawesome/css/all.min.css" rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-    <link rel="stylesheet"
-        href="vendor/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.6/animate.min.css">
-    <link rel="stylesheet" th:href="@{/css/base.css}">
-    <link rel="stylesheet" th:href="@{/css/admin.css}">
-    <link rel="stylesheet" th:href="@{/css/home.css}">
-    <link rel="stylesheet" th:href="@{/css/user.css}">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Management photo</title>
+<link href="vendor/fontawesome/css/all.min.css" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="vendor/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.6/animate.min.css">
+<link rel="stylesheet" th:href="@{/css/base.css}">
+<link rel="stylesheet" th:href="@{/css/admin.css}">
+<link rel="stylesheet" th:href="@{/css/home.css}">
+<link rel="stylesheet" th:href="@{/css/user.css}">
 </head>
 <body>
-    <div id="wrapper">
-        <div class="container">
-                <div class="infor">
-                   <div class="row">
-                        <div class="col-6 col-md-6 user__left">
-                            <form action="" method="" enctype="multipart/form-data">
-                                <img src="images/avt/default.png" alt="not found" class="user__img">
-                               
+	<div id="wrapper">
+		<div class="container">
+			<div class="infor">
+				<div class="row">
+					<div class="col-6 col-md-6 user__left">
+						<form action="/saveI" method="POST" enctype="multipart/form-data">
 
-                                <button class="user__btn-upload" type ="button" id="user__btn-upload">
-                                    <i class="fas fa-camera"></i>
-                                </button>
-                                <div class="modal" id="modal__upload-image">
-                                    <div class="modal__overlay"></div>
-                                    <div class="modal__body">
-                                        <button id="btn-close-cate">x</button>
-                                         <div class="custom-file mb-4">
-                                    <label for="customFile" class="label-choose-image">Choose
-                                        image</label> <input type="file" name="file"
-                                        class="custom-file-input" id="customFile">
-                                </div> -->
-                                    </div>
-                                </div> 
-                            </form>
-                            <div class="user__name">Trần Hoài Mi</div>
-                            <div class="user__photos">102 Photos</div>
-                            <div class="user__description">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                            It has survived not only five centuries, but also the leap into electronic typesetting,
-                            remaining essentially unchanged.
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-6">
-                            <form action="">
-                            <div class="user__group-input">
-                                <label for="">First Name</label>
-                                <input class ="user__input-name"type="text"  name = "firstname">
-                            </div>
-                            <div class="user__group-input">
-                                <label for="">Last Name</label>
-                                <input class ="user__input-name"type="text"  name = "lastname">
-                            </div>
-                            <div class="user__group-input">
-                                <label for="">Email</label>
-                                <input class ="user__input-name"type="email"  name = "name">
-                            </div>
-                            <div class="user__group-input">
-                                <label for="">Description</label>
-                                <textarea row="6" class ="user__input-name user__input-textarea" name = "description" placeholder="text...">
+							<img
+								th:src="${(user.image != null) ? 'data:image/jpeg;base64,'+{user.image} : '/images/avt/default.png'}"
+								alt="not found" class="user__img">
+
+
+
+
+							<button class="user__btn-upload" type="button"
+								id="user__btn-upload">
+								<i class="fas fa-camera"></i>
+							</button>
+							<div class="custom-file mb-4">
+								<label for="customFile" class="label-choose-image">Choose
+									image</label> <input type="file" name="file" class="custom-file-input"
+									id="customFile">
+							</div>
+							<button class="btn btn-info" type="submit">Add</button>
+
+							<div class="modal" id="modal__upload-image">
+								<div class="modal__overlay"></div>
+								<div class="modal__body">
+									<button id="btn-close-cate">x</button>
+									<div class="custom-file mb-4">
+										<label for="customFile" class="label-choose-image">Choose
+											image</label> <input type="file" name="file"
+											class="custom-file-input" id="customFile">
+									</div>
+								</div>
+							</div>
+						</form>
+						<div class="user__name"
+							th:text=" ${user.lastName}+ ' ' +${user.Name}"></div>
+						<div class="user__photos" th:text=" ${nImage} +' '+ Photo">
+						</div>
+						<div class="user__description" th:text="${user.decription}"></div>
+					</div>
+					<div class="col-6 col-md-6">
+						<form action="/updateUser" method="POST" th:object="${user}">
+							<div class="user__group-input">
+								<label for="">First Name</label> <input class="user__input-name"
+									type="text" name="firstname" th:field="*{name}">
+							</div>
+							<div class="user__group-input">
+								<label for="">Last Name</label> <input class="user__input-name"
+									type="text" name="lastname" th:field="*{lastName}">
+							</div>
+							<div class="user__group-input">
+								<label for="">Email</label> <input class="user__input-name"
+									type="email" name="name" th:field="*{email}" disabled>
+							</div>
+							<div class="user__group-input">
+								<label for="">Description</label>
+								<textarea row="6" class="user__input-name user__input-textarea"
+									name="decription" th:field="*{decription}">
 
                                 </textarea>
-                               
-                            </div>
-                            <a href="listImages" class="btn btn-cancel "><i class="fas fa-long-arrow-alt-left user-icon"></i>Back</a>
-                            <button class="btn btn--update" type="submit">Update</button>
 
-                        </form>
-                        </div>
-                   </div>
-                </div>
-        </div>
-    </div>
-    <script src="vendor/jquery/jquery.slim.min.js"></script>
-    <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script >
-       document.addEventListener("DOMContentLoaded",function(){
-           var btn = document.getElementById("user__btn-upload");
-           var modal = document.getElementById("modal__upload-image");
-           btn.addEventListener('click', function(){
-              
-           })
-       })
-    </script>
+
+							</div>
+							<a href="listImages" class="btn btn-cancel "><i
+								class="fas fa-long-arrow-alt-left user-icon"></i>Back</a>
+							<button class="btn btn--update" type="submit">Update</button>
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="vendor/jquery/jquery.slim.min.js"></script>
+	<script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			var btn = document.getElementById("user__btn-upload");
+			var modal = document.getElementById("modal__upload-image");
+			btn.addEventListener('click', function() {
+
+			})
+		})
+	</script>
 </body>
 </html>

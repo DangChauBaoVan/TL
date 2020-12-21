@@ -63,6 +63,10 @@ public class User {
 	@Lob
 	@Column(columnDefinition = "MEDIUMBLOB", name = "avatar")
 	private String image;
+	
+	
+	@Column(name ="Decription")
+	private String decription;
 
 	public String getName() {
 		return name;
@@ -116,6 +120,14 @@ public class User {
 	}
 	public void setImage(String image) {
 		this.image = image;
+	}
+
+	public String getDecription() {
+		return decription;
+	}
+
+	public void setDecription(String decription) {
+		this.decription = decription;
 	}
 	
 	

@@ -62,7 +62,7 @@
 									<span class="mr-2 d-none d-lg-inline text-gray-600 small"
 										th:text="Hi + ' ' + ${user.lastName}+ ' ' +${user.Name}">
 									</span>
-									 <img class="img-profile rounded-circle"src="images/avt/acc.jpg">
+									 <img class="img-profile rounded-circle" th:src="${(user.image != null) ? 'data:image/jpeg;base64,'+{user.image} : '/images/avt/default.png'}">
 								</div>
 								<div class="dropdown-menu" aria-labelledby="userDropdown">
 									<a class="dropdown-item" href="/userInfo">Thông tin tài khoản</a> <a

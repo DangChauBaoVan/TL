@@ -45,8 +45,8 @@ public class UserServiceImp implements UserService {
 		return userRepository.findName(user_name);
 	}
 	@Override
-	public void saveUserImage(MultipartFile file, int id) {
-		User u = userRepository.findById(id).get();
+	public void saveUserImage(MultipartFile file, String user_name) {
+		User u = userRepository.findName(user_name);
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 		if(fileName.contains(".."))
 		{
@@ -57,8 +57,16 @@ public class UserServiceImp implements UserService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		userRepository.save(u);	
+	}
+	
+	@Override
+	public void updateUser(String userName,String firstName, String lastName,String decription) {
+		User u = userRepository.findName(userName);
+		u.setName(firstName);
+		u.setLastName(lastName);
+		u.setDecription(decription);
 		userRepository.save(u);
-		
 	}
 	
 
