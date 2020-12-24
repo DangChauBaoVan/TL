@@ -614,6 +614,6 @@ body.modal-open {
         display: block;
     }
     .grid-col {
-        padding: 0 0.7em;
+        padding: 0 0.5em;
     }
 }

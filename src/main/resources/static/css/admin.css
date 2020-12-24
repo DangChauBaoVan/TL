@@ -183,11 +183,14 @@ p {
     background-color: var(--white-color);
     margin: auto;
     position: relative;
-    width: 425px;
+    width: 450px;
     height: 450px;
     animation: growth linear 0.2s;
     border-radius: 4px;
    
+}
+body.modal {
+    overflow: hidden;
 }
 .upload-form {
     overflow: hidden;
@@ -262,6 +265,16 @@ p {
 .container-fluid {
     margin-top: 16px;
 }
-button.close {
-    font-size: 25px;
+
+h3{
+    width: 100px !important;
+    margin: 12px auto !important;
+    font-size: 1.75rem;
+}
+.select-cate{
+    width: 202px;
+    display: inline-flex;
+}
+.required {
+    color: red !important;
 }

@@ -4,7 +4,8 @@ window.addEventListener("load", function(){
    var btnupload2 = document.getElementById("upload-2");
   var btndelete = document.getElementById('btn-delete');
   var checkall = document.getElementById('checkAllItem');
- 
+  
+
    $('#checkAllItem').click(function() {
      
       if (this.checked) {
@@ -16,11 +17,11 @@ window.addEventListener("load", function(){
         $(':checkbox').prop('checked', false);
       }
   });
-
    btnupload.addEventListener('click',function(){
     modalid.style.display='flex' ;
    });
   
+   
    var btnclose = document.getElementById("btn-close");
    btnclose.addEventListener('click', closeModal);
    function closeModal() {
@@ -30,5 +31,6 @@ window.addEventListener("load", function(){
    btnupload2.addEventListener('click',function(){
     modalid.style.display='flex' ;
    });
+   
 
  });

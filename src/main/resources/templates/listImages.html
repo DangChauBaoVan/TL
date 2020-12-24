@@ -6,7 +6,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Management photo</title>
-<link href="vendor/fontawesome/css/all.min.css" rel="stylesheet">
+<link th:href="@{/vendor/fontawesome/css/all.min.css}" rel="stylesheet">
 <link
 	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 	rel="stylesheet">
@@ -15,8 +15,8 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.6/animate.min.css">
 <link rel="stylesheet" th:href="@{/css/base.css}">
-<link rel="stylesheet" th:href="@{/css/admin.css}">
 <link rel="stylesheet" th:href="@{/css/login.css}">
+<link rel="stylesheet" th:href="@{/css/admin.css}">
 
 </head>
 
@@ -31,7 +31,7 @@
 						<div class="d-sm-flex align-items-center justify-content-between">
 							<a href="listImages"> <img src="images/logo.png" alt=""
 								class="img-logo"></a> <a href="listImages"
-								class="web-title mb-0 "> Photos </a>
+								class="web-title mb-0 "> Manage Photos </a>
 						</div>
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul class="navbar-nav mr-auto">
@@ -80,15 +80,25 @@
 							<div class="modal__overlay"></div>
 							<div class="modal__body">
 								<button id="btn-close">x</button>
-								<form class="border border-light p-5 upload-form" action="addI"
+								<h3 class="add-image" style="width: 100px;
+								margin: 12px auto;">Add Image</h3>
+								<form class="border border-light p-3 upload-form" action="addI"
 									method="POST" enctype="multipart/form-data">
-
 
 									<h4 class="text-black-50  text-left">Title</h4>
 									<input type="text" name="title" id="title"
 										class="form-control mb-4" placeholder="Mặt trời mọc" required>
+										<h4 class="text-black-50  text-left">
+											<label class="required" style="color: red">*
+												<!-- <label style="color: rgba(0,0,0,.5)"> -->
+													(Chúng tôi cần mô tả vài điều về bức ảnh của bạn)
+												<!-- </label> -->
+											</label>
+										</h4>
+										<input type="text" name="nameDescription" id=""
+										class="form-control mb-4" placeholder="" required>
 									<h4 class="text-black-50  text-left">Category</h4>
-									<select name="category" id="category" >
+									<select name="category" id="category" class="form-control mb-4">
 										<option th:each="cate : ${cate}" th:value="*{cate.name}">[[*{cate.name}]]</option>
 									</select>
 
@@ -109,11 +119,11 @@
 								<button id="btn-close-cate">x</button>
 								<form class="text-center border border-light p-5"
 									action="addCate" method="POST" enctype="multipart/form-data">
-
 									<h4 class="text-black-50  text-left">Category Name:</h4>
+
 									<input type="text" name="name" id="addcategory"
 										class="form-control mb-4" placeholder="natural" required>
-
+									
 									<div class="custom-file mb-4">
 										<input type="file" name="file" class="custom-file-input"
 											id="customFileCategory"> <label
@@ -132,14 +142,13 @@
 					<div class="table-responsive">
 						<button id="btn-delete" class="btn-delete" disabled>Delete</button>
 						<label>Select Categogy</label>
-						 <select name="cars" id="cars"
-							class="selectcategory">
-							<option value="volvo" class="item__select-categogy">Animals</option>
-							<option value="saab" class="item__select-categogy">Life</option>
-							<option value="opel" class="item__select-categogy">Pets</option>
-							<option value="audi" class="item__select-categogy">Sky</option>
+						<select name="category" id="category" class="form-control mb-4" style="width: 202px;
+						display: inline-flex;">
+							<option th:each="cate : ${cate}" th:value="*{cate.name}">[[*{cate.name}]]</option>
 						</select>
 
+						<input type="text" id="myInput" class="form-control mb-4" style="width: 202px;
+						display: inline-flex;" onkeyup="myFunction()" placeholder="Filter for names..">
 						<table id="mytable" class="table table-bordred table-striped">
 							<div th:if="${images.empty}" class="not-images">
 								<img src="images/unnamed.png" alt="" class="img-not-found">
@@ -199,14 +208,14 @@
 										<a data-toggle="modal" data-target="#modal-warning"  th:attr="data-target='#modal-warning'+${image.id}"
 										class="btn btn-danger mt-4">Delete</a>
 										
-										<div class="modal modal-warning fade" th:id="modal-warning+${image.id }" >
+										<div class="modal modal-warning fade" th:id="modal-warning+${image.id}" >
 											<div class="modal-dialog">
 												<div class="modal-content">
 													<div class="modal-header">
-														<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-															Close</button>
+														<button type="button" class="close" data-dismiss="modal" aria-label="Close" style="font-size: 25px;">
+															X</button>
 													</div>
-													<div class="modal-body">
+													<div class="modal-body" id="modal-body">
 														Are you sure want to delete this image?
 													</div>
 													<div class="modal-footer">
@@ -242,6 +251,28 @@
 	<script src="vendor/jquery/jquery.slim.min.js"></script>
 	<script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="vendor/js/main.js"></script>
+	<script>
+		
+		function myFunction() {
+		var input, filter, table, tr, td, i, txtValue;
+		input = document.getElementById("myInput");
+		filter = input.value.toUpperCase();
+		table = document.getElementById("mytable");
+		tr = table.getElementsByTagName("tr");
+	
+		for (i = 0; i < tr.length; i++) {
+		td = tr[i].getElementsByTagName("td")[1];
+		if (td) {
+			txtValue = td.textContent || td.innerText;
+			if (txtValue.toUpperCase().indexOf(filter) > -1) {
+			tr[i].style.display = "";
+			} else {
+			tr[i].style.display = "none";
+			}
+		}
+		}
+  }
+	</script>
 	
 </body>
 

@@ -47,6 +47,9 @@ img {
     color: white;
   
 }
+.btn:hover {
+    opacity: 0.7;
+}
 .btn.btn-submit-login {
     background-color: #413f49;
     opacity: 0.6;
