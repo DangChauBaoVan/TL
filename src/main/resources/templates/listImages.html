@@ -166,12 +166,60 @@
 									<td>[[*{image.title}]]</td>
 									<td>[[*{image.category}]]</td>
 									<td>[[*{image.datetime}]]</td>
-									<td><a th:href="@{/{id}(id=${image.id})}"
-										class="btn btn-edit mt-4">Edit</a></td>
-									<td><a th:href="@{/deleteImg/{id}(id=${image.id})}"
-										class="btn btn-danger mt-4">Delete</a></td>
-
+									<!-- th:href="@{/image/edit/{id}(id=${image.id})}" -->
+									<td>
+										<!-- <button id="btn-edit--image"
+										class="btn btn-edit mt-4">Edit</button>
+										<div class="modal" id="modal__layout-editCategory">
+											<div class="modal__overlay"></div>
+											<div class="modal__body">
+												<button id="btn-close-cate">x</button>
+												<form class="text-center border border-light p-5"
+												th:action="@{/updateImage/{id}(id=${image.id})}" method="POST" th:object="${image}" enctype="multipart/form-data">
+				
+													<h4 class="text-black-50  text-left">Title:</h4>
+													<input type="text"  th:field="*{title}"
+														class="form-control mb-4" required>
+	
+													<h4 class="text-black-50  text-left">Category:</h4>
+													<input type="text"   th:field="*{category}"
+														class="form-control mb-4" required>
+													<h4 class="text-black-50  text-left">Date:</h4>
+													<input type="text"   th:field="*{datetime}"
+														class="form-control mb-4" required>
+			
+													<button class="btn btn-info btn-block" type="submit">Update</button>
+												</form>
+											</div>
+										</div> -->
+									</td>
+									
+									<td>
+										
+										<a data-toggle="modal" data-target="#modal-warning"  th:attr="data-target='#modal-warning'+${image.id}"
+										class="btn btn-danger mt-4">Delete</a>
+										
+										<div class="modal modal-warning fade" th:id="modal-warning+${image.id }" >
+											<div class="modal-dialog">
+												<div class="modal-content">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+															Close</button>
+													</div>
+													<div class="modal-body">
+														Are you sure want to delete this image?
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+														<a type="button" class="btn btn-outline pull-right btn-yes" th:href="@{/deleteImg/{id}(id=${image.id})}"><i class="fas fa-check-circle"></i>&nbsp;Yes</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</td>
+									
 								</tr>
+								
 							</tbody>
 							</thead>
 
@@ -194,6 +242,7 @@
 	<script src="vendor/jquery/jquery.slim.min.js"></script>
 	<script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="vendor/js/main.js"></script>
+	
 </body>
 
 </html>

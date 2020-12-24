@@ -112,7 +112,7 @@ public class ImageController {
 	}
 
 
-	@GetMapping("/{id}")
+	@GetMapping("/image/edit/{id}")
 	public String showUpdateImg(@PathVariable(value = "id") long id, Model model) {
 
 		Image image = imageService.getImageById(id);

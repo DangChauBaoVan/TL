@@ -46,7 +46,7 @@ public class UserController {
 
 		User user = userService.getUsername(username);
 		if(user.getDecription() == null) {
-			String decription = "Input Something Here...!";
+			String decription = "Description short about you !";
 			user.setDecription(decription);
 			
 		}

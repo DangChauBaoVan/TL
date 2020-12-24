@@ -4,7 +4,6 @@ window.addEventListener("load", function(){
    var btnupload2 = document.getElementById("upload-2");
   var btndelete = document.getElementById('btn-delete');
   var checkall = document.getElementById('checkAllItem');
-
  
    $('#checkAllItem').click(function() {
      
@@ -18,29 +17,16 @@ window.addEventListener("load", function(){
       }
   });
 
- 
-
-  // if(checkall.attributes.checked == true){
-  //   console.log('hi');
-  //     btndelete.attributes.disabled = false;
-  // }
-  // else {
-  //   btndelete.attributes.disabled = true;
-  // }
-
    btnupload.addEventListener('click',function(){
     modalid.style.display='flex' ;
    });
   
-  
    var btnclose = document.getElementById("btn-close");
-  
- 
    btnclose.addEventListener('click', closeModal);
    function closeModal() {
     modalid.style.display ='none' ;
    }
-  
+
    btnupload2.addEventListener('click',function(){
     modalid.style.display='flex' ;
    });

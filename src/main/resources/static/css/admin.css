@@ -262,3 +262,6 @@ p {
 .container-fluid {
     margin-top: 16px;
 }
+button.close {
+    font-size: 25px;
+}
