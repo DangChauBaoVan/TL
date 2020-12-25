@@ -39,7 +39,9 @@ body {
 .btn.btn-info {
     color: #fff;
     font-size: 18px;
-    margin: 17px auto;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
     width: 165px;
     background-color: #17a2b8;
     border-color: #17a2b8;
@@ -184,14 +186,12 @@ p {
     margin: auto;
     position: relative;
     width: 450px;
-    height: 450px;
+    height: 470px;
     animation: growth linear 0.2s;
-    border-radius: 4px;
+    border-radius: 8px;
    
 }
-body.modal {
-    overflow: hidden;
-}
+
 .upload-form {
     overflow: hidden;
 }
@@ -201,6 +201,7 @@ body.modal {
     background-color: white;
     width: 32px;
     border: 1px solid #ccc;
+    margin: 7px;
 }
 #btn-close:active {
     outline: none;
@@ -214,8 +215,8 @@ body.modal {
     border: 1px solid;
 }
 .form-control {
-    height: 40px;
-    margin-bottom: 20px !important;
+    height: 38px;
+    margin-bottom: 16px !important;
 }
 .label-choose-image {
     border: 1px solid;
@@ -277,4 +278,7 @@ h3{
 }
 .required {
     color: red !important;
+}
+.dispaly-block {
+    display: block;
 }

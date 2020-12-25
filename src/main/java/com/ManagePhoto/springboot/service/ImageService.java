@@ -38,9 +38,12 @@ public class ImageService {
 			System.out.println("not a valid file");
 		}
 		try {
+
 			p.setImage(Base64.getEncoder().encodeToString(file.getBytes()));
+
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.out.println("not a valid file");
+
 		}
 		p.setTitle(title);
 		p.setCategory(category);

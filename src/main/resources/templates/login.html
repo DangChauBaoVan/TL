@@ -19,26 +19,28 @@
             <a class="btn btn-signup" id="register-button" href="/register"> Sign up</a>
         </div>
       </div>
-      <div id="card-login"class="card-login">
-        <form th:action="@{/login}" method="POST" class="">
-          <div class="wrapper-input">
-            <i class="far fa-envelope icon"></i>
-            <input type="text" class="input-email"  id="email" name="email" th:placeholder="Email">
-          </div>
-          <div class="wrapper-input">
-            <i class="fas fa-lock icon"></i>
-            <input class="input-email"  type="password" th:placeholder="Password"id="password"name="password">
-          </div>
-          <div class="error" th:if="${param.error}">
-          Email or Password is invalid
-          </div>
-          <button class="btn btn-primary btn-submit-login"type="Submit" th:text="Login">Login
-            <i class="fas fa-angle-right icon-angle-right"></i>
-          </button>
-        </form>
+      <div class="formlogin">
+        <h4 class="title-login">Login </h4>
+        <div id="card-login"class="card-login">
+          <form th:action="@{/login}" method="POST" class="">
+            <div class="wrapper-input">
+              <i class="far fa-envelope icon"></i>
+              <input type="text" class="input-email"  id="email" name="email" th:placeholder="Email" required>
+            </div>
+            <div class="wrapper-input">
+              <i class="fas fa-lock icon"></i>
+              <input class="input-email"  type="password" th:placeholder="Password"id="password"name="password" required>
+            </div>
+            <div class="error" th:if="${param.error}">
+            Email or Password is invalid!
+            </div>
+            <button class="btn btn-primary btn-submit-login"type="Submit" th:text="Login">Login
+              <i class="fas fa-angle-right icon-angle-right"></i>
+            </button>
+          </form>
+        </div>
         <div class="question">Don't have account? <a href="/register"class="signup">Sign up now</a> </div>
-      </div>
-     
+        </div>
       </div>
 </div>
    

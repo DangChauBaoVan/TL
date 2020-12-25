@@ -17,7 +17,7 @@
     justify-content: space-between;
     display: flex;
     align-items: center;
-    height: 86px;
+    height: 75px;
 }
 .img-bg {
     background-size: cover;
@@ -47,19 +47,16 @@ img {
     color: white;
   
 }
-.btn:hover {
-    opacity: 0.7;
-}
+
 .btn.btn-submit-login {
     background-color: #413f49;
     opacity: 0.6;
     position: relative;
-    width: 367px;
+    width: 357px;
     font-size: 20px;
-    margin-left: 0;
-    margin-right: 0;
     border-radius: 26px;
-    margin-top: 70px;
+    margin-top: 55px;
+    margin-bottom: 20px;
     height: 47px;
 }
 .btn-submit-login:active {
@@ -79,7 +76,7 @@ img {
 }
 .btn.btn-login:hover {
     background-color: #e6e8eb;
-    color: white;
+    color: black;
 }
 
 .btn:active, .btn:focus {
@@ -87,7 +84,10 @@ img {
 }
 .card-login, .card-register {
     width: 376px;
-    margin: 100px auto;
+    margin: 100px auto 60px;
+}
+.card-login.card-sign {
+    margin: 20px auto 0px;
 }
 .wrapper-input {
     margin-bottom: 14px;
@@ -95,7 +95,7 @@ img {
 }
 .input-email {
     width: 350px;
-    color: white !important;
+    color: #e6e8eb !important;
     font-size: 16px;
     padding: 0 10px;
     border: none;
@@ -110,13 +110,13 @@ img {
     font-size: 20px ;
 }
 .question {
-    padding: 20px;
+    padding: 0 20px 20px;
     color: #e6e8eb
 }
 .signup {
     text-decoration: underline;
-    margin: 0 16px;
-    font-size: 16px;
+    margin: 0 12px;
+    font-size: 14px;
     color: #e6e8eb;
 }
 .signup:hover {
@@ -125,5 +125,36 @@ img {
 .error, .success {
     /* padding:0 20px; */
     font-size: 15px;
-    color: #e6e8eb
+    color: red;
+}
+.success {
+    color: green;
+}
+.formlogin {
+    padding: 10px;
+    width: 36%;
+    margin: 0 auto;
+    box-shadow: 0 0 4px 5px rgba(0,0,0,0.6);
+}
+.title-login{
+    text-align: center;
+    font-size: 30px;
+    letter-spacing: 3.1px;
+    text-shadow: 5px 5px 5px rgba(0,0,0,0.9);
+    color: #fff;
+    margin: 9px;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #e6e8eb;
+}
+.label-sign-up {
+    color: #e6e8eb;
+    font-weight: 500;
+    margin: 0;
+}
+.input-sign-up {
+   height: 32px;
+}
+.btn-add-icon {
+    margin-left: 8px;
 }

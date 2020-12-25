@@ -31,19 +31,14 @@ public class Image {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "datetime")
 	private Date datetime;
-	
-	
+
 	@Lob
 	@Column(columnDefinition = "MEDIUMBLOB")
 	private String image;
 	
-
-	
 	@Column(name="user_name")
 	private String user_name;
 	
-
-
 	public Long getId() {
 		return id;
 	}
@@ -51,11 +46,9 @@ public class Image {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 	public String getTitle() {
 		return title;
 	}
-
 	public void setTitle(String title) {
 		this.title = title;
 	}
