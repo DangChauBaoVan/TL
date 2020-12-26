@@ -126,7 +126,7 @@
 										style="width: 100px; height: 100px;"></th>
 									<td>[[*{category.name}]]</td>
 									<td><button class="btn btn-edit mt-4" data-toggle="modal"
-											data-target="#myModal">Edit</button>
+											data-target="#myModal"><i class="far fa-edit"></i></button>
 										<div class="modal fade" id="myModal" role="dialog">
 											<div class="modal-dialog">
 
@@ -147,7 +147,7 @@
 											</div>
 										</div></td>
 									<td><a th:href="@{/deleteCate/{id}(id=${category.id})}"
-										class="btn btn-danger mt-4">Delete</a></td>
+										class="btn btn-danger mt-4"><i class="fas fa-trash"></i></a></td>
 								</tr>
 							</tbody>
 							</thead>
@@ -172,6 +172,8 @@
 	<script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="vendor/js/category.js"></script>
 	<script>
+		var x = document.getElementById("category").value;
+		console.log(x);
 		function myFunction() {
 		var input, filter, table, tr, td, i, txtValue;
 		input = document.getElementById("myInput");
@@ -191,6 +193,7 @@
 		}
 		}
   }
+  
 	</script>
 </body>
 </html>

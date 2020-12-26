@@ -2,60 +2,207 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
   <head>
     <title>Login-ManagePhoto</title>
-  <link rel="stylesheet"href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
-  <link rel="stylesheet" href="css/base.css">
-	<link rel="stylesheet" href="css/login.css">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/login.css" />
   </head>
 
   <body>
-   
-  <div class="background" style="background-image: url('images/bg7.gif');">
-    <div class="container grid">
-      <div  class="navbar-- "> 
-        <h2 class="title">Daily Photos</h2>
-        <div class="wrapper-navbar">
-          <a class="btn btn-login" id="login-button" href="/login"> Login</a>
-            <a class="btn btn-signup" id="register-button" href="/register"> Sign up</a>
+    <div class="background" style="background-image: url('images/bg7.gif')">
+      <div class="container grid">
+        <div class="navbar--">
+          <h2 class="title">Daily Photos</h2>
+          <div class="wrapper-navbar">
+            <a class="btn btn-login" id="login-button" href="/login"> Login</a>
+            <a class="btn btn-signup" id="register-button" href="/register">
+              Sign up</a
+            >
+          </div>
         </div>
-      </div>
-      <div class="formlogin">
-        <h4 class="title-login">Sign up </h4>
-        <div id="card-login"class="card-login card-sign">
-          <form th:action="@{/register}" th:object="${user}" method="POST" class="">
-        <div class="wrapper-input">
-            <label for="" class="label-sign-up">First Name</label>
-              <input type="text" th:field="*{name}" class="input-email input-sign-up" required />
+        <div class="formlogin form-sign-up">
+          <h4 class="title-login">Sign up</h4>
+          <div id="card-login" class="card-login card-sign">
+            <form
+              th:action="@{/register}"
+              th:object="${user}"
+              method="POST"
+              name="form1"
+            >
+              <div class="wrapper-input wrapper-input-sign-up">
+                <label for="" class="label-sign-up">First Name</label>
+                <input
+                  type="text"
+                  th:field="*{name}"
+                  class="input-email input-sign-up"
+                  name="fname"
+                  required
+                  id="fname"
+                  onblur="allLetter2()"
+                />
+              </div>
+              <div class="fnameInValid" id="fnameInValid">
+              </div>
+              <div class="wrapper-input wrapper-input-sign-up">
+                <label for="" class="label-sign-up">Last Name</label>
+                <input
+                  class="input-email input-sign-up"
+                  type="text"
+                  th:field="*{lastName}"
+                  name="lname"
+                  required
+                  id="lname"
+                  onblur="allLetter()"
+                />
+              </div>
+              <div class="lnameInValid" id="lnameInValid">
+               
+              </div>
+              <div class="wrapper-input wrapper-input-sign-up">
+                <label for="" class="label-sign-up">Your Email</label>
+                <input
+                  class="input-email input-sign-up"
+                  type="text"
+                  name="email"
+                  th:field="*{email}"
+                  required
+                  onblur="ValidateEmail()"
+                />
+              </div>
+              <div class="emailInValid" id="emailInValid">
+               
+              </div>
+              <div class="wrapper-input wrapper-input-sign-up">
+                <label for="" class="label-sign-up">Password</label>
+                <input
+                  class="input-email input-sign-up"
+                  type="password"
+                  name="password"
+                  id="password"
+                  th:field="*{password}"
+                  required
+                  onblur="minPassword()"
+                />
+              </div>
+              <div class="emailInValid" id="passwordInValid">
+              </div>
+              <div class="wrapper-input wrapper-input-sign-up">
+                <label for="" class="label-sign-up">Confirm Password</label>
+                <input
+                  class="input-email input-sign-up"
+                  type="password"
+                  id="confirmpassword"
+                  required
+                  onblur="confimPassword()"
+                />
+              </div>
+              <div class="emailInValid" id="confirmPasswordInValid">
+              </div>
+              <span class="success" th:utext="${successMessage}"></span>
+              <button
+                class="btn btn-primary btn-submit-login"
+                type="submit"
+              >
+                Sign up
+                <i class="fas fa-angle-right icon-angle-right"></i>
+              </button>
+            </form>
+            <div class="question">
+              You have account? <a href="/login" class="signup">Sign in now</a>
+            </div>
           </div>
-          <div class="wrapper-input">
-            <label for="" class="label-sign-up">Last Name</label>
-          <input class="input-email input-sign-up"  type="text"th:field="*{lastName}" required>
-          </div>
-          <div class="wrapper-input">
-            <label for="" class="label-sign-up">Your Email</label>
-          <input class="input-email input-sign-up" type="text" th:field="*{email}" required/>
-          </div>
-          <div class="wrapper-input">
-            <label for="" class="label-sign-up">Password</label>
-          <input  class="input-email input-sign-up" type="password" th:field="*{password}" required/>
-          </div>
-          <div class="wrapper-input">
-            <label for="" class="label-sign-up">Confirm Password</label>
-          <input  class="input-email input-sign-up" type="password" th:field="*{password}" required/>
-          </div>
-          <span class="success" th:utext="${successMessage}"></span>
-              <button class="btn btn-primary btn-submit-login" type="Submit"onclick="onValidate()">Sign up
-              <i class="fas fa-angle-right icon-angle-right"></i>
-            </button>
-          </form>
-          <div class="question">You have account? <a href="/login"class="signup">Sign in now</a> </div>
         </div>
       </div>
     </div>
-</div>
-   
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="vendor/js/signup"></script>
+    <script>
+      var fname = document.getElementById("fname");
+      var lname = document.getElementById("lname");
+      var email = document.getElementById("email");
+      var password = document.getElementById("password");
+      var confirmpassword = document.getElementById("confirmpassword");
+      var emailInValid = document.getElementById("emailInValid");
+      var fnameInValid = document.getElementById("fnameInValid");
+      var lnameInValid = document.getElementById("lnameInValid");
+      var confirmPasswordInvalid = document.getElementById("confirmPasswordInValid");
+      function ValidateEmail() {
+        var mailformat = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
+        if(email.value.length === 0) {
+          emailInValid.style.visibility = 'visible';
+          emailInValid.innerHTML = 'Email is required.'
+        }
+        else if (email.value.match(mailformat)) {
+          emailInValid.style.visibility = "hidden";
+        } else {
+          email.style.visibility = "visible";
+          emailInValid.innerHTML = 'Please enter a valid email !'
+        }
+      }
+      function allLetter() {
+        var letters = /^[A-Za-z]+$/;
+        if(lname.value.length === 0) {
+          lnameInValid.style.visibility = 'visible';
+          lnameInValid.innerHTML = 'Last name is required.'
+        }
+        else if(lname.value.match(letters)) {
+          lnameInValid.style.visibility = 'hidden';
+          
+        } 
+        else {
+          lnameInValid.style.visibility = 'visible';
+          lnameInValid.innerHTML = 'Last name must only text.'
+         
+        }
+      }
+      function allLetter2() {
+        var letters = /^[A-Za-z]+$/;
+        if(fname.value.length === 0) {
+          fnameInValid.style.visibility = 'visible';
+          fnameInValid.innerHTML = 'Firt name is required.'
+        }
+        else if(fname.value.match(letters)) {
+          fnameInValid.style.visibility = 'hidden';
+          return true;
+        } 
+        else {
+          fnameInValid.style.visibility = 'visible';
+          fnameInValid.innerHTML = 'Last name must only text.'
+          return false;
+        }
+      }
+      function minPassword() {
+        if(password.value.length === 0) {
+          passwordInValid.style.visibility = 'visible';
+          passwordInValid.innerHTML = 'Password is required.'
+        }
+        else if(password.value.length > 0 && password.value.length < 8){
+          passwordInValid.style.visibility = 'visible';
+          passwordInValid.innerHTML = 'Min Password is 8.'
+        }
+        else {
+          passwordInValid.style.visibility = 'hidden';
+        }
+      }
+      function confimPassword() {
+        if(confirmpassword.value.length === 0) {
+          confirmPasswordInvalid.style.visibility = 'visible';
+          confirmPasswordInvalid.innerHTML = 'Confirm Password is required.'
+        }
+        else if(confirmpassword.value != password.value) {
+          passwordInValid.style.visibility = 'visible';
+          confirmPasswordInvalid.innerHTML = 'Password not match.'
+        }
+        else {
+          confirmPasswordInvalid.style.visibility = 'hidden';
+        }
+      }
+    </script>
   </body>
 </html>

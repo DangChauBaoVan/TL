@@ -76,7 +76,8 @@
 			<artifactId>spring-boot-configuration-processor</artifactId>
 			<optional>true</optional>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.sql2o/sql2o -->
+		
+				<!-- https://mvnrepository.com/artifact/org.sql2o/sql2o -->
 
 
 	</dependencies>
@@ -87,6 +88,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			
 		</plugins>
 	</build>
 

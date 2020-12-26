@@ -55,7 +55,7 @@ img {
     width: 357px;
     font-size: 20px;
     border-radius: 26px;
-    margin-top: 55px;
+    margin-top: 20px;
     margin-bottom: 20px;
     height: 47px;
 }
@@ -65,6 +65,7 @@ img {
 .icon-angle-right {
   position: absolute;
   right: 20px;
+  font-size: 25px;
 }
 .btn.btn-signup {
     background-color: var(--main-color);
@@ -92,6 +93,9 @@ img {
 .wrapper-input {
     margin-bottom: 14px;
     border-bottom: 1px solid white;
+}
+.wrapper-input-sign-up {
+    margin-bottom: 6px;
 }
 .input-email {
     width: 350px;
@@ -151,10 +155,21 @@ img {
     color: #e6e8eb;
     font-weight: 500;
     margin: 0;
+    margin-bottom: 4px;
+    font-size: 13px;
 }
 .input-sign-up {
-   height: 32px;
+   height: 22px;
 }
 .btn-add-icon {
     margin-left: 8px;
+}
+.emailInValid, .fnameInValid, .lnameInValid {
+    color: red !important;
+    height: 20px;
+    visibility: hidden;
+    
+}
+.form-sign-up {
+    height: 556px;
 }

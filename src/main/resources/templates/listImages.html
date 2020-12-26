@@ -96,16 +96,16 @@
 									<input type="text" name="nameDescription" id=""
 									class="form-control mb-4" placeholder="" required>
 									<h4 class="text-black-50  text-left">Category</h4>
-									<select name="category" id="category" class="form-control mb-4">
+									<select name="category" class="form-control mb-4" >
 										<option th:each="cate : ${cate}" th:value="*{cate.name}">[[*{cate.name}]]</option>
 									</select>
 									<div class="custom-file mb-4 dispaly-block">
 										<label style =" display: block;" class="text-black-50">*
-												(.png, .jpg, .jpeg)</label>
+												(.png, .jpg, .jpeg, .gif)</label>
 										<label for="customFile" class="label-choose-image" style="display: block;">
 											Choose image <i class="far fa-file-image"></i>
 										</label>
-										<input type="file"accept=".png, .jpg, .jpeg" name="file"
+										<input type="file"accept=".png, .jpg, .jpeg, .gif" name="file"
 											class="custom-file-input" id="customFile">
 									</div>
 								</br>
@@ -136,7 +136,6 @@
 											Image</label>
 									</div>
 
-
 									<button class="btn btn-info btn-block" type="submit">Add</button>
 								</form>
 							</div>
@@ -149,6 +148,7 @@
 						<label>Select Categogy</label>
 						<select name="category" id="category" class="form-control mb-4" style="width: 202px;
 						display: inline-flex;">
+						     <!-- <option value="" selected disabled hidden>Choose here</option> -->
 							<option th:each="cate : ${cate}" th:value="*{cate.name}">[[*{cate.name}]]</option>
 						</select>
 
@@ -255,33 +255,35 @@
 
 	<script src="vendor/jquery/jquery.slim.min.js"></script>
 	<script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="vendor/js/main.js"></script>
 	<script>
-		$("#modal__layout").on("show", function () {
-		$("body").addClass("modal-open");
-		}).on("hidden", function () {
-		$("body").removeClass("modal-open")
-		});
+		var table = document.getElementById("mytable");
+		var tr = table.getElementsByTagName("tr");
 		function myFunction() {
-		var input, filter, table, tr, td, i, txtValue;
+		var input, filter, td, i, txtValue;
 		input = document.getElementById("myInput");
 		filter = input.value.toUpperCase();
-		table = document.getElementById("mytable");
-		tr = table.getElementsByTagName("tr");
-	
 		for (i = 0; i < tr.length; i++) {
-		td = tr[i].getElementsByTagName("td")[1];
-		if (td) {
-			txtValue = td.textContent || td.innerText;
-			if (txtValue.toUpperCase().indexOf(filter) > -1) {
-			tr[i].style.display = "";
-			} else {
-			tr[i].style.display = "none";
+			td = tr[i].getElementsByTagName("td")[1];
+			if (td) {
+				txtValue = td.textContent || td.innerText;
+				if (txtValue.toUpperCase().indexOf(filter) > -1) {
+				tr[i].style.display = "";
+				} else {
+				tr[i].style.display = "none";
+				}
 			}
 		}
-		}
-  }
+	}
+
+	
 	</script>
+	<script>  
+		$(document).ready(function(){
+			 alert('hi');
+		console.log("hihi");
+		});
+	</script>
+	<script src="vendor/js/main.js"></script>
 	
 </body>
 

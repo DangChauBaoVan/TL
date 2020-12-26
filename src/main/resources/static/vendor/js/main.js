@@ -28,9 +28,9 @@ window.addEventListener("load", function(){
     modalid.style.display ='none' ;
    }
 
-   btnupload2.addEventListener('click',function(){
-    modalid.style.display='flex' ;
-   });
+  //  btnupload2.addEventListener('click',function(){
+  //   modalid.style.display='flex' ;
+  //  });
    
 
  });
