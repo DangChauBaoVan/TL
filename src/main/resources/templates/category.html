@@ -73,9 +73,48 @@
 				<div id="content">
 
 					<div class="container-fluid generalClass">
-						<div id="btn-upload--category" class="btn btn-primary upload">Add
+						<button type="button" class="btn btn-primary upload" data-toggle="modal" data-target="#exampleModal">
+							Add Category
+						  </button>
+						  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+							  <div class="modal-content">
+								<div class="modal-header">
+								  <span  id="exampleModalLabel" style="margin: 0 auto;font-size: 18px;">Add Category</span>
+								  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								  </button>
+								</div>
+								<div class="modal-body">
+								<div class="form-login">
+									<form class="text-center border border-light p-5"
+									action="addCate" method="POST" enctype="multipart/form-data">
+
+									<h4 class="text-black-50  text-left">Category Name:</h4>
+									<input type="text" name="name" id="addcategory"
+										class="form-control mb-4" placeholder="natural" required>
+
+									<div class="custom-file mb-4">
+										<label for="customFileCategory" class="label-choose-image">Choose
+											image</label> <input type="file" name="file"
+											class="custom-file-input" id="customFileCategory">
+									</div>
+									</br>
+									<button class="btn btn-info btn-outline-info" type="submit"> Add Category
+										<i class="fas fa-plus-circle btn-add-icon"></i>
+									</button>
+									</form>
+								</div>
+								</div>
+							
+							  </div>
+							</div>
+						
+						  </div>
+						
+					</div>
+						<!-- <div id="btn-upload--category" class="btn btn-primary upload">Add
 							Category</div>
-						<!-- modal add category -->
 						
 						<div class="modal" id="modal__layout-addCategory">
 							<div class="modal__overlay"></div>
@@ -101,7 +140,7 @@
 								</form>
 							</div>
 						</div>
-					</div>
+					</div> -->
 				</div>
 				<div class="col-md-12">
 					<div class="table-responsive">
