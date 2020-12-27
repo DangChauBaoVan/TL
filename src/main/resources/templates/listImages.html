@@ -23,53 +23,55 @@
 <body id="page-top">
 
 	<div id="wrapper">
+		<nav
+		class="navbar navbar-expand navbar-light topbar mb-2 static-top shadow">
+		<div class="d-sm-flex align-items-center justify-content-between">
+			<a href="/listImages"> <img th:src="@{/images/logo.png}" alt=""
+				class="img-logo"></a> <a href="/listImages"
+				class="web-title mb-0 "> Photo Management </a>
+		</div>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"><a class="nav-link"
+					href="/home">Home<span class="sr-only">(current)</span>
+				</a></li>
+				<li class="nav-item active"><a class="nav-link"
+					href="/listImages">Library</a></li>
+				<li class="nav-item active"><a class="nav-link"
+					href="/category">Category</a></li>
+					
+			</ul>
+		</div>
+		<button id="sidebarToggleTop"
+			class="btn btn-link d-md-none rounded-circle mr-3">
+			<i class="fa fa-bars"></i>
+		</button>
+		<ul class="navbar-nav ">
+			<li class="nav-item dropdown no-arrow d-sm-none"><a
+				class="nav-link dropdown-toggle" href="/listImages" id="searchDropdown"
+				role="button" data-toggle="dropdown" aria-haspopup="true"
+				aria-expanded="false"> <i class="fas fa-search fa-fw"></i>
+			</a>
+				<div class="topbar-divider d-none d-sm-block"></div>
+			<li class="nav-item dropdown no-arrow">
+				<div class="dropdown-toggle not-link" id="userDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false">
+					<span class="mr-2 d-none d-lg-inline name-user" style="font-size: 14px;"
+						th:text="Hi + ' ' + ${user.lastName}+ ' ' +${user.Name}">
+					</span> <img class="img-profile rounded-circle"
+						th:src="${(user.image != null) ? 'data:image/jpeg;base64,'+{user.image} : '/images/avt/default.png'}">
+				</div>
+				<div class="dropdown-menu" aria-labelledby="userDropdown">
+					<a class="dropdown-item" href="/userInfo">Thông tin tài
+						khoản</a> <a class="dropdown-item" href="/login">Đăng xuất</a>
+				</div>
+			</li>
+		</ul>
+	</nav>
 		<div class="container">
 			<div id="content-wrapper" class="d-flex flex-column">
 				<div id="content">
-					<nav
-						class="navbar navbar-expand navbar-light bg-white topbar mb-2 static-top shadow">
-						<div class="d-sm-flex align-items-center justify-content-between">
-							<a href="/listImages"> <img th:src="@{/images/logo.png}" alt=""
-								class="img-logo"></a> <a href="/listImages"
-								class="web-title mb-0 "> Photo Management </a>
-						</div>
-						<div class="collapse navbar-collapse" id="navbarSupportedContent">
-							<ul class="navbar-nav mr-auto">
-								<li class="nav-item active"><a class="nav-link"
-									href="/home">Home <span class="sr-only">(current)</span>
-								</a></li>
-								<li class="nav-item active"><a class="nav-link"
-									href="/category">Category</a></li>
-							</ul>
-						</div>
-						<button id="sidebarToggleTop"
-							class="btn btn-link d-md-none rounded-circle mr-3">
-							<i class="fa fa-bars"></i>
-						</button>
-						<ul class="navbar-nav ">
-							<li class="nav-item dropdown no-arrow d-sm-none"><a
-								class="nav-link dropdown-toggle" href="/listImages" id="searchDropdown"
-								role="button" data-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="false"> <i class="fas fa-search fa-fw"></i>
-							</a>
-								<div class="topbar-divider d-none d-sm-block"></div>
-							<li class="nav-item dropdown no-arrow">
-								<div class="dropdown-toggle not-link" id="userDropdown"
-									role="button" data-toggle="dropdown" aria-haspopup="true"
-									aria-expanded="false">
-									<span class="mr-2 d-none d-lg-inline text-gray-600 small"
-										th:text="Hi + ' ' + ${user.lastName}+ ' ' +${user.Name}">
-									</span> <img class="img-profile rounded-circle"
-										th:src="${(user.image != null) ? 'data:image/jpeg;base64,'+{user.image} : '/images/avt/default.png'}">
-								</div>
-								<div class="dropdown-menu" aria-labelledby="userDropdown">
-									<a class="dropdown-item" href="/userInfo">Thông tin tài
-										khoản</a> <a class="dropdown-item" href="/login">Đăng xuất</a>
-								</div>
-							</li>
-						</ul>
-					</nav>
-
 					<div class="container-fluid generalClass">
 						<div id="btn-upload" class="btn btn-primary upload">Upload
 							Image</div>
@@ -84,7 +86,6 @@
 									<form class="border border-light p-4 upload-form" th:action="@{/addI}"
 										th:method="POST" enctype="multipart/form-data">
 
-<<<<<<< HEAD
 									<h4 class="text-black-50  text-left">Title</h4>
 									<input type="text" name="title" id="title"
 										class="form-control mb-4" placeholder="Logo Google" required>
@@ -96,7 +97,8 @@
 									<input type="text" name="nameDescription" id=""
 									class="form-control mb-4" placeholder="" required>
 									<h4 class="text-black-50  text-left">Category</h4>
-									<select name="category" class="form-control mb-4" >
+
+									<select name="category" class="form-control mb-4">
 										<option th:each="cate : ${cate}" th:value="*{cate.name}">[[*{cate.name}]]</option>
 									</select>
 									<div class="custom-file mb-4 dispaly-block">
@@ -109,41 +111,11 @@
 											class="custom-file-input" id="customFile">
 									</div>
 								</br>
-									<button class="btn btn-info" type="submit"> Add to Library
+									<button class="btn btn-info btn-outline-info" type="submit"> Add to library
 										<i class="fas fa-plus-circle btn-add-icon"></i>
 									</button>
 									
 								</form>
-=======
-										<h4 class="text-black-50  text-left">Title</h4>
-										<input type="text" name="title" id="title"
-											class="form-control mb-4" placeholder="Logo Google" required>
-										<h4 class="text-black-50  text-left">
-											<label class="required">* (Enter keywords related to
-												your image) </label>
-										</h4>
-										<input type="text" name="nameDescription" id=""
-											class="form-control mb-4" placeholder="" required>
-										<h4 class="text-black-50  text-left">Category</h4>
-										<select name="category" id="category"
-											class="form-control mb-4">
-											<option th:each="cate : ${cate}" th:value="*{cate.name}">[[*{cate.name}]]</option>
-										</select>
-										<div class="custom-file mb-4 dispaly-block">
-											<label style="display: block;" class="text-black-50">*
-												(.png, .jpg, .jpeg)</label> <label for="customFile"
-												class="label-choose-image" style="display: block;">
-												Choose image <i class="far fa-file-image"></i>
-											</label> <input type="file" accept=".png, .jpg, .jpeg" name="file"
-												class="custom-file-input" id="customFile">
-										</div>
-										</br>
-										<button class="btn btn-info" type="submit">
-											Add to Library <i class="fas fa-plus-circle btn-add-icon"></i>
-										</button>
-
-									</form>
->>>>>>> 7ff8caa35ca9ae1c087b423ad7cc1d1714c63b4c
 								</div>
 
 							</div>
@@ -175,20 +147,14 @@
 				<div class="col-md-12">
 					<div class="table-responsive">
 						<button id="btn-delete" class="btn-delete" disabled>Delete</button>
-<<<<<<< HEAD
 						<label>Select Categogy</label>
-						<select name="category" id="category" class="form-control mb-4" style="width: 202px;
+						<select name="category" id="category" onchange="myCate()" class="form-control mb-4" style="width: 202px;
 						display: inline-flex;">
-						     <!-- <option value="" selected disabled hidden>Choose here</option> -->
-=======
-						<label>Select Categogy</label> <select name="category"
-							id="category" class="form-control mb-4"
-							style="width: 202px; display: inline-flex;">
->>>>>>> 7ff8caa35ca9ae1c087b423ad7cc1d1714c63b4c
+						      <option value="" selected>All </option> 
 							<option th:each="cate : ${cate}" th:value="*{cate.name}">[[*{cate.name}]]</option>
 						</select> <input type="text" id="myInput" class="form-control mb-4"
 							style="width: 202px; display: inline-flex;"
-							onkeyup="myFunction()" placeholder="Filter for names..">
+							onkeyup="myFunction()" placeholder="Search for names..">
 						<table id="mytable" class="table table-bordred table-striped">
 							<div th:if="${images.pageList.empty}" class="not-images">
 								<img th:src="@{/images/unnamed.png}" alt="" class="img-not-found">
@@ -215,48 +181,74 @@
 									<td>[[*{image.title}]]</td>
 									<td>[[*{image.category}]]</td>
 									<td>[[*{image.datetime}]]</td>
-									<!-- th:href="@{/image/edit/{id}(id=${image.id})}" -->
 									<td>
-										<!-- <button id="btn-edit--image"
-										class="btn btn-edit mt-4">Edit</button>
-										<div class="modal" id="modal__layout-editCategory">
-											<div class="modal__overlay"></div>
-											<div class="modal__body">
-												<button id="btn-close-cate">x</button>
-												<form class="text-center border border-light p-5"
-												th:action="@{/updateImage/{id}(id=${image.id})}" method="POST" th:object="${image}" enctype="multipart/form-data">
-				
-													<h4 class="text-black-50  text-left">Title:</h4>
-													<input type="text"  th:field="*{title}"
-														class="form-control mb-4" required>
-	
-													<h4 class="text-black-50  text-left">Category:</h4>
-													<input type="text"   th:field="*{category}"
-														class="form-control mb-4" required>
-													<h4 class="text-black-50  text-left">Date:</h4>
-													<input type="text"   th:field="*{datetime}"
-														class="form-control mb-4" required>
+										<a 	th:attr="data-target='#modal-edit'+${image.id}" data-toggle="modal" data-target="#modal-edit"
+										 class="btn btn-edit"><i class="far fa-edit" style="color:#fff"></i></a>
+										<div class="modal modal-warning fade"
+											th:id="modal-edit+${image.id}">
+											<div class="modal-dialog">
+												<div class="modal-content">
+													<div class="modal-header" style="background-color: #e85e6c;">
+														<h4 style="color: #fff; margin: 0 auto; font-size: 20px;">Edit Image</h4>
+														<button type="button" data-dismiss="modal"
+															aria-label="Close"style="font-size: 18px;padding: 0px 8px;border: 1px solid #ccc; background-color: #fff; cursor: pointer;
+															float: right;">x</button>
+													</div>
+													<div class="modal-body" id="modal-body" >
+														<form th:action="@{/updateImage/{id}(id=${image.id})}" method="post" >
+
+															<h4 class="text-black-50  text-left">Title:</h4>
+															<input type="text"  th:value="*{image.title}" name="title"
+																class="form-control mb-4" required>
 			
-													<button class="btn btn-info btn-block" type="submit">Update</button>
-												</form>
+															<h4 class="text-black-50  text-left">Category:</h4>
+															<select name="category" class="form-control mb-4">
+																<option th:value="*{image.category}" selected>[[*{image.category}]] </option> 
+																<option th:each="cate : ${cate}" th:value="*{cate.name}">[[*{cate.name}]]</option>
+															</select>
+															
+															<h4 class="text-black-50  text-left">Published date:</h4>
+															<input type="text"   th:value="*{image.datetime}" name="datetime" readonly
+																class="form-control mb-4" required>
+														</div>
+														<div class="modal-footer">
+															<button type="button" class="btn btn-outline pull-left"
+																data-dismiss="modal">Close</button>
+																<button type="submit" class="btn btn-outline pull-right btn-yes" style="margin-left: 23px;
+																background-color: antiquewhite;">Update</button>
+														</form>
+													
+													</div>
+												</div>
 											</div>
-										</div> -->
+										</div>
 									</td>
-
-									<td><a data-toggle="modal" data-target="#modal-warning"
+									<td>
+										<a data-toggle="modal" data-target="#modal-warning"
 										th:attr="data-target='#modal-warning'+${image.id}"
-										class="btn btn-danger mt-4">Delete</a>
-
+										class="btn btn-danger">
+										<i class="fas fa-trash" style="color:#fff"></i>
+										</a>
 										<div class="modal modal-warning fade"
 											th:id="modal-warning+${image.id}">
 											<div class="modal-dialog">
 												<div class="modal-content">
-													<div class="modal-header">
-														<button type="button" class="close" data-dismiss="modal"
-															aria-label="Close" style="font-size: 25px;">X</button>
+													<div class="modal-header" style="background-color:#e85e6c;">
+														<h4 style="color: #fff; margin: 0 auto; font-size: 20px;">Delete Image</h4>
+														<button type="button" data-dismiss="modal"
+															aria-label="Close" style="font-size: 18px;padding: 0px 8px;border: 1px solid #ccc; background-color: #fff; cursor: pointer;
+															float: right;">x</button>
 													</div>
-													<div class="modal-body" id="modal-body">Are you sure
-														want to delete this image?</div>
+													<div class="modal-body" id="modal-body" style="color: black; display: block; text-align: center;">
+														<i class="fas fa-exclamation"style="padding: 24px 31px;
+														border: 2px solid;
+														border-radius: 50%;
+														margin: 10px 0 20px 0;
+														color: rgb(245, 164, 13);"></i>
+														<div>	Are you sure
+															want to delete this image?</div>
+													
+													</div>
 													<div class="modal-footer">
 														<button type="button" class="btn btn-outline pull-left"
 															data-dismiss="modal">Close</button>
@@ -267,7 +259,8 @@
 													</div>
 												</div>
 											</div>
-										</div></td>
+										</div>
+									</td>
 
 								</tr>
 
@@ -309,7 +302,7 @@
 							th:class="${currentIndex == totalPageCount}? 'page-item disabled':'page-item'">
 							<a class="page-link" th:href="@{|${baseUrl}${totalPageCount}|}">Last</a>
 						</li>
-					</ul>
+			</ul>
 
 		</div>
 		<footer class="bg-white footer">
@@ -320,14 +313,12 @@
 			</div>
 		</footer>
 	</div>
-
-
-<<<<<<< HEAD
-	<script src="vendor/jquery/jquery.slim.min.js"></script>
-	<script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script th:src="@{/vendor/jquery/jquery.slim.min.js}"></script>
+	<script th:src="@{/vendor/bootstrap/dist/js/bootstrap.min.js}"></script>
 	<script>
 		var table = document.getElementById("mytable");
 		var tr = table.getElementsByTagName("tr");
+
 		function myFunction() {
 		var input, filter, td, i, txtValue;
 		input = document.getElementById("myInput");
@@ -344,49 +335,25 @@
 			}
 		}
 	}
-
-	
-	</script>
-	<script>  
-		$(document).ready(function(){
-			 alert('hi');
-		console.log("hihi");
-		});
-	</script>
-	<script src="vendor/js/main.js"></script>
-	
-=======
-	<script th:src="@{/vendor/jquery/jquery.slim.min.js}"></script>
-	<script th:src="@{/vendor/bootstrap/dist/js/bootstrap.min.js}"></script>
-	<script th:src="@{/vendor/js/main.js}"></script>
-	<script>
-		$("#modal__layout").on("show", function() {
-			$("body").addClass("modal-open");
-		}).on("hidden", function() {
-			$("body").removeClass("modal-open")
-		});
-		function myFunction() {
-			var input, filter, table, tr, td, i, txtValue;
-			input = document.getElementById("myInput");
-			filter = input.value.toUpperCase();
-			table = document.getElementById("mytable");
-			tr = table.getElementsByTagName("tr");
-
-			for (i = 0; i < tr.length; i++) {
-				td = tr[i].getElementsByTagName("td")[1];
-				if (td) {
-					txtValue = td.textContent || td.innerText;
-					if (txtValue.toUpperCase().indexOf(filter) > -1) {
-						tr[i].style.display = "";
-					} else {
-						tr[i].style.display = "none";
-					}
+	function myCate() {
+	var cate = document.getElementById("category").value;
+		console.log(cate);
+		var filter, td, i, txtValue;
+		filter = cate.toUpperCase();
+		for (i = 0; i < tr.length; i++) {
+			td = tr[i].getElementsByTagName("td")[2];
+			if (td) {
+				txtValue = td.textContent || td.innerText;
+				if (txtValue.toUpperCase().indexOf(filter) > -1) {
+				tr[i].style.display = "";
+				} else {
+				tr[i].style.display = "none";
 				}
 			}
 		}
+	}
 	</script>
-
->>>>>>> 7ff8caa35ca9ae1c087b423ad7cc1d1714c63b4c
+	<script th:src="@{/vendor/js/main.js}"></script>
 </body>
 
 </html>

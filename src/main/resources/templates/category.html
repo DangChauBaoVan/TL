@@ -19,23 +19,23 @@
 <body>
 
 	<div id="wrapper">
-		<div class="container">
-			<div id="content-wrapper" class="d-flex flex-column">
-				<div id="content">
-					<nav
-						class="navbar navbar-expand navbar-light bg-white topbar mb-2 static-top shadow">
+		<nav
+						class="navbar navbar-expand navbar-light  topbar mb-2 static-top shadow">
 						<div class="d-sm-flex align-items-center justify-content-between">
 							<a href="listImages"> <img src="images/logo.png" alt=""
 								class="img-logo"></a> <a href="listImages"
-								class="web-title mb-0 "> Photos </a>
+								class="web-title mb-0 "> Photo Management </a>
 						</div>
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul class="navbar-nav mr-auto">
-								<li class="nav-item active"><a class="nav-link" href="home">Home
-										<span class="sr-only">(current)</span>
+								<li class="nav-item active"><a class="nav-link"
+									href="/home">Home<span class="sr-only">(current)</span>
 								</a></li>
 								<li class="nav-item active"><a class="nav-link"
-									href="category">Category</a></li>
+									href="/listImages">Library</a></li>
+								<li class="nav-item active"><a class="nav-link"
+									href="/category">Category</a></li>
+									
 							</ul>
 						</div>
 						<button id="sidebarToggleTop"
@@ -54,7 +54,7 @@
 									class="dropdown-toggle not-link" id="userDropdown"
 									role="button" data-toggle="dropdown" aria-haspopup="true"
 									aria-expanded="false">
-									<span class="mr-2 d-none d-lg-inline text-gray-600 small" th:text="${user.lastName}+ ' ' +${user.Name}"></span>
+									<span class="mr-2 d-none d-lg-inline name-user small" th:text="${user.lastName}+ ' ' +${user.Name}"></span>
 									<img
 								th:src="${(user.image != null) ? 'data:image/jpeg;base64,'+{user.image} : '/images/avt/default.png'}"
 								alt="not found"  class="img-profile rounded-circle">
@@ -65,6 +65,10 @@
 								</div></li>
 						</ul>
 					</nav>
+		<div class="container">
+			<div id="content-wrapper" class="d-flex flex-column">
+				<div id="content">
+					
 					<div class="container-fluid generalClass">
 						<div id="btn-upload--category" class="btn btn-primary upload">Add
 							Category</div>
@@ -73,6 +77,8 @@
 							<div class="modal__overlay"></div>
 							<div class="modal__body">
 								<button id="btn-close-cate">x</button>
+								<h3 class="add-image" style="width: 100px; margin: 12px auto;">Add
+									Category</h3>
 								<form class="text-center border border-light p-5"
 									action="addCate" method="POST" enctype="multipart/form-data">
 
@@ -99,6 +105,7 @@
 						<label>Select Categogy</label> 
 						<select name="category" id="category" class="form-control mb-4" style="width: 202px;
 						display: inline-flex;">
+						  <option th:value="none" selected>All </option> 
 							<option th:each="category : ${categories}" th:value="*{category.name}">[[*{category.name}]]</option>
 						</select>
 						<input type="text" id="myInput" class="form-control mb-4" style="width: 202px;
@@ -129,14 +136,13 @@
 											data-target="#myModal"><i class="far fa-edit"></i></button>
 										<div class="modal fade" id="myModal" role="dialog">
 											<div class="modal-dialog">
-
-												<!-- Modal content-->
 												<div class="modal-content">
 													<div class="modal-header">
 														<h4 class="modal-title">Edit Category</h4>
 													</div>
 													<div class="modal-body">
-														<h1 style="color:red;">Hello</h1>
+
+														
 													</div>
 													<div class="modal-footer">
 														<button type="button" class="btn btn-default"
@@ -146,7 +152,8 @@
 
 											</div>
 										</div></td>
-									<td><a th:href="@{/deleteCate/{id}(id=${category.id})}"
+									<td>
+										<a th:href="@{/deleteCategory/{id}(id=${category.id})}"
 										class="btn btn-danger mt-4"><i class="fas fa-trash"></i></a></td>
 								</tr>
 							</tbody>
@@ -174,6 +181,7 @@
 	<script>
 		var x = document.getElementById("category").value;
 		console.log(x);
+
 		function myFunction() {
 		var input, filter, table, tr, td, i, txtValue;
 		input = document.getElementById("myInput");

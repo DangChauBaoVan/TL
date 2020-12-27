@@ -27,7 +27,10 @@
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-				<a class="navbar-brand" href="/home">Daily Photos</a>
+				<a class="navbar-brand" href="/home">
+				<img th:src="@{/images/logo.png} " class="img-logo" alt=""></a>
+				<a href="/listImages" class="nav-link username">Library </a>
+
 				<div class="header-search">
 					<form action="/home" class="header-search-input-wrap">
 						<input type="text" class="header-search-input" name="keyword"
@@ -52,13 +55,26 @@
 
 				</div>
 			</div>
-
-			<ul class="navbar-nav">
-				<li class="nav-item active nav-item--user"><a
-					href="/listImages" class="nav-link username">Photo Management </a> <img
+			<li class="nav-item dropdown no-arrow">
+				<div class="dropdown-toggle not-link" id="userDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false">
+					<span class="mr-2 d-none d-lg-inline name-user" style="font-size: 14px;"
+						th:text="Hi + ' ' + ${user.lastName}+ ' ' +${user.Name}">
+					</span> <img class="img-profile rounded-circle"
+						th:src="${(user.image != null) ? 'data:image/jpeg;base64,'+{user.image} : '/images/avt/default.png'}">
+				</div>
+				<div class="dropdown-menu" aria-labelledby="userDropdown">
+					<a class="dropdown-item" href="/userInfo">Thông tin tài
+						khoản</a> <a class="dropdown-item" href="/login">Đăng xuất</a>
+				</div>
+			</li>
+			<!-- <ul class="navbar-nav">
+				<li class="nav-item active nav-item--user">
+					 <img
 					class="img-profile rounded-circle" th:src="${(user.image != null) ? 'data:image/jpeg;base64,'+{user.image} : '/images/avt/default.png'}">
 				</li>
-			</ul>
+			</ul> -->
 		</nav>
 	</div>
 	<div class="container">
@@ -84,11 +100,11 @@
 				</a>
 			</div>
 			<div class="grid">
-				<div class="grid-col grid-col--1 wow fadeInUp" data-wow-delay="0.2s"></div>
+				<div class="grid-col grid-col--1 wow fadeInUp" data-wow-delay="0.1s"></div>
 				<div class="grid-col grid-col--2 wow fadeInUp" data-wow-delay="0.35s"></div>
-				<div class="grid-col grid-col--3 wow fadeInUp" data-wow-delay="0.55s"></div>
+				<div class="grid-col grid-col--3 wow fadeInUp" data-wow-delay="0.5s"></div>
 				<div class="grid-col grid-col--4 wow fadeInUp" data-wow-delay="0.7s"></div>
-				<div class="grid-col grid-col--5 wow fadeInUp" data-wow-delay="0.9s"></div>
+				<div class="grid-col grid-col--5 wow fadeInUp" data-wow-delay="0.8s"></div>
 				<div class="grid-item" th:each="image : ${images}">
 					<div class="title-image">[[*{image.title}]]</div>
 					<div class="favourite ">

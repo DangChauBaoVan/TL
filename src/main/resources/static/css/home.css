@@ -156,9 +156,9 @@ body.modal-open {
     z-index: 5;
 }
 
-.header-search-input:focus ~.header-search-history{
+/* .header-search-input:focus ~.header-search-history{
     display: block;
-}
+} */
 
 .header-search-history-heading{
     color: rgba(0,0,0,0.3);
@@ -429,6 +429,9 @@ body.modal-open {
 .navbar-light .navbar-nav .active>.nav-link {
     color: white;
 }
+.navbar-light .navbar-nav .active>.nav-link:hover {
+    color: var(--main-color);
+}
 .navbar-light .navbar-brand {
     color: white;
 }
@@ -572,6 +575,10 @@ body.modal-open {
 .username {
     display: block;
 }
+.dropdown-toggle {
+    display: flex;
+    margin-left: 20px;
+}
 /* Modify scrollbar */
 ::-webkit-scrollbar {
     width: 5px;
@@ -603,6 +610,7 @@ body.modal-open {
       display: block;
     }
 }
+
 @media (min-width: 992px){
     .navbar-expand-lg {
         padding: 0.5rem 15px !important;

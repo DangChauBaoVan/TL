@@ -121,9 +121,6 @@ public class ImageController {
 		return "listImages";
 	}
 	
-	
-
-
 	@RequestMapping(value = { "/home"}, method = RequestMethod.GET) 
 	public ModelAndView homeImages(Model model, @Param("keyword") String keyword, @Param("name") String name) {
 		Authentication authentication =SecurityContextHolder.getContext().getAuthentication(); 

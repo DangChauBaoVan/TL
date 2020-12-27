@@ -37,14 +37,11 @@ body {
     width: 126px;
 }
 .btn.btn-info {
-    color: #fff;
-    font-size: 18px;
+    font-size: 15px;
     margin-top: 30px;
     margin-left: auto;
     margin-right: auto;
-    width: 165px;
-    background-color: #17a2b8;
-    border-color: #17a2b8;
+    width: 141px;
 }
 .btn.btn-upload-2 {
    margin: 0 auto;
@@ -148,7 +145,9 @@ div.table-responsive>div.dataTables_wrapper>div.row:first-child>div[class^="col-
 .topbar .dropdown .dropdown-menu {
     background-color: #eeebeb;
     font-size: 1.3rem !important;
+    top: 124%;
 }
+
 p {
     margin: 0;
 }
@@ -243,9 +242,16 @@ p {
     width: 50px;
     border-radius: 6px;
 }
+.navbar {
+    background-color: #1c2b44;
+    height: 70px;
+}
 .navbar-expand .navbar-nav .nav-link {
     padding-right: .5rem;
     padding-left: 1.5rem;
+}
+.navbar-light .navbar-nav .active>.nav-link {
+    color: #fff;
 }
 .navbar-expand .navbar-nav .nav-link:hover {
     color: var(--main-color);
@@ -254,23 +260,27 @@ p {
    cursor: pointer;
 }
 .web-title {
-    color: #1c2b44;
+    color: #fff;
     font-weight: 700;
     font-size: 26px;
     margin-left: 10px;
 }
 .web-title:hover {
     text-decoration: none;
-    color: #1c2b44;
+    color: #fff;
 }
 .container-fluid {
     margin-top: 16px;
 }
 
+
 h3{
     width: 100px !important;
     margin: 12px auto !important;
     font-size: 1.75rem;
+}
+.add-image {
+    width: 130px !important;
 }
 .select-cate{
     width: 202px;
@@ -281,4 +291,55 @@ h3{
 }
 .dispaly-block {
     display: block;
+}
+.pagination {
+    width: 314px;
+    margin: 12px auto !important;
+    padding: 0;
+}
+.page-link {
+    color: black;
+    padding: 1rem 1.5rem;
+}
+.table td {
+    vertical-align: middle;
+}
+.dropdown-item {
+    padding: 0.7rem 1.5rem;
+}
+.dropdown-menu::before {
+    content: "";
+    border-width: 14px 16px;
+    border-style: solid;
+    color: var(--white-color);
+    border-color: transparent transparent #eeebeb transparent;
+    position: absolute;
+    right: 3px;
+    top: -25px
+}
+.name-user {
+    color: var(--main-color);
+}
+.page-link:hover {
+    color: black;
+}
+body.open-modal {
+    overflow: hidden;
+    position: fixed;
+}
+.modal-body {
+    padding: 2rem 1rem;
+}
+.modal.fade .modal-dialog {
+    transition: transform .3s ease-out, -webkit-transform .3s ease-out;
+
+}
+.modal-dialog {
+    top: 100px;
+}
+a {
+    color: var(--main-color);
+}
+a:hover {
+    color: var(--main-color);
 }

@@ -19,12 +19,12 @@
       <div class="container grid">
         <div class="navbar--">
           <h2 class="title">Daily Photos</h2>
-          <div class="wrapper-navbar">
+          <!-- <div class="wrapper-navbar">
             <a class="btn btn-login" id="login-button" href="/login"> Login</a>
             <a class="btn btn-signup" id="register-button" href="/register">
               Sign up</a
             >
-          </div>
+          </div> -->
         </div>
         <div class="formlogin form-sign-up">
           <h4 class="title-login">Sign up</h4>
@@ -133,15 +133,15 @@
       var lnameInValid = document.getElementById("lnameInValid");
       var confirmPasswordInvalid = document.getElementById("confirmPasswordInValid");
       function ValidateEmail() {
-        var mailformat = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
+        var mailformat = /^([A-Za-z0-9._%+-])+@([A-Za-z0-9.-])+\.([A-Za-z]{2,4})$/;
         if(email.value.length === 0) {
           emailInValid.style.visibility = 'visible';
           emailInValid.innerHTML = 'Email is required.'
         }
         else if (email.value.match(mailformat)) {
-          emailInValid.style.visibility = "hidden";
+          emailInValid.style.visibility = 'hidden';
         } else {
-          email.style.visibility = "visible";
+          emailInValid.style.visibility = "visible";
           emailInValid.innerHTML = 'Please enter a valid email !'
         }
       }
