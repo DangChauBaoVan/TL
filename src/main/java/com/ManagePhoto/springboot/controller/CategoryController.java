@@ -56,16 +56,15 @@ public class CategoryController {
     }
     
    
-    @GetMapping("/deleteCategory/{id}")
+    @GetMapping("/deleteCate/{id}")
     public String deleteCategory(@PathVariable("id") int id)
     {
     	cateService.deleteCategoryById(id);
     	return "redirect:/category";
     }
-    @PostMapping("/updateCategory")
-    public String updateCategory(@RequestParam("id") int id,
+    @PostMapping("/updateCate/{id}")
+    public String updateCategory(@PathVariable(value = "id") int id,
             @RequestParam("name") String name
-          
             ) {
         
         cateService.updateCate(id,name);

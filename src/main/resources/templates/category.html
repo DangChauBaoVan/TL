@@ -54,7 +54,7 @@
 									class="dropdown-toggle not-link" id="userDropdown"
 									role="button" data-toggle="dropdown" aria-haspopup="true"
 									aria-expanded="false">
-									<span class="mr-2 d-none d-lg-inline name-user small" th:text="${user.lastName}+ ' ' +${user.Name}"></span>
+									<span class="mr-2 d-none d-lg-inline name-user small" th:text="Hi +' ' +${user.lastName}+ ' ' +${user.Name}"></span>
 									<img
 								th:src="${(user.image != null) ? 'data:image/jpeg;base64,'+{user.image} : '/images/avt/default.png'}"
 								alt="not found"  class="img-profile rounded-circle">
@@ -71,7 +71,7 @@
 		<div class="container">
 			<div id="content-wrapper" class="d-flex flex-column">
 				<div id="content">
-					
+
 					<div class="container-fluid generalClass">
 						<div id="btn-upload--category" class="btn btn-primary upload">Add
 							Category</div>
@@ -105,14 +105,15 @@
 				<div class="col-md-12">
 					<div class="table-responsive">
 						<button class="btn-delete" disabled>Delete</button>
-						<label>Select Categogy</label> 
-						<select name="category" id="category" class="form-control mb-4" style="width: 202px;
-						display: inline-flex;">
-						  <option th:value="none" selected>All </option> 
-							<option th:each="category : ${categories}" th:value="*{category.name}">[[*{category.name}]]</option>
-						</select>
-						<input type="text" id="myInput" class="form-control mb-4" style="width: 202px;
-						display: inline-flex;" onkeyup="myFunction()" placeholder="Search for names..">
+						<label>Select Categogy</label> <select name="category"
+							id="category" class="form-control mb-4"
+							style="width: 202px; display: inline-flex;">
+							<option th:value="none" selected>All</option>
+							<option th:each="category : ${categories}"
+								th:value="*{category.name}">[[*{category.name}]]</option>
+						</select> <input type="text" id="myInput" class="form-control mb-4"
+							style="width: 202px; display: inline-flex;"
+							onkeyup="myFunction()" placeholder="Search for names..">
 						<table id="mytable" class="table table-bordred table-striped">
 							<div th:if="${categories.empty}" class="not-images">
 								<img src="images/unnamed.png" alt="" class="img-not-found">
@@ -125,7 +126,6 @@
 								<th><input type="checkbox" id="checkAllItem"></th>
 								<th>Image</th>
 								<th>Name</th>
-								<th>Edit</th>
 								<th>Delete</th>
 							<tbody>
 								<tr th:each="category : ${categories}">
@@ -135,29 +135,41 @@
 										th:src="*{'data:image/jpeg;base64,'+{category.image}}"
 										style="width: 100px; height: 100px;"></th>
 									<td>[[*{category.name}]]</td>
-									<td><button class="btn btn-edit mt-4" data-toggle="modal"
-											data-target="#myModal"><i class="far fa-edit"></i></button>
-										<div class="modal fade" id="myModal" role="dialog">
+									<td><a data-toggle="modal" data-target="#modal-warning"
+										th:attr="data-target='#modal-warning'+${category.id}"
+										class="btn btn-danger"> <i class="fas fa-trash"
+											style="color: #fff"></i>
+									</a>
+										<div class="modal modal-warning fade"
+											th:id="modal-warning+${category.id}">
 											<div class="modal-dialog">
 												<div class="modal-content">
-													<div class="modal-header">
-														<h4 class="modal-title">Edit Category</h4>
+													<div class="modal-header"
+														style="background-color: #e85e6c;">
+														<h4 style="color: #fff; margin: 0 auto; font-size: 20px;">Delete
+															Category</h4>
+														<button type="button" data-dismiss="modal"
+															aria-label="Close"
+															style="font-size: 18px; padding: 0px 8px; border: 1px solid #ccc; background-color: #fff; cursor: pointer; float: right;">x</button>
 													</div>
-													<div class="modal-body">
+													<div class="modal-body" id="modal-body"
+														style="color: black; display: block; text-align: center;">
+														<i class="fas fa-exclamation"
+															style="padding: 24px 31px; border: 2px solid; border-radius: 50%; margin: 10px 0 20px 0; color: rgb(245, 164, 13);"></i>
+														<div>Are you sure want to delete this Category?</div>
 
-														
 													</div>
 													<div class="modal-footer">
-														<button type="button" class="btn btn-default"
+														<button type="button" class="btn btn-outline pull-left"
 															data-dismiss="modal">Close</button>
+														<a type="button"
+															class="btn btn-outline pull-right btn-yes"
+															th:href="@{/deleteCate/{id}(id=${category.id})}"><i
+															class="fas fa-check-circle"></i>&nbsp;Yes</a>
 													</div>
 												</div>
-
 											</div>
 										</div></td>
-									<td>
-										<a th:href="@{/deleteCategory/{id}(id=${category.id})}"
-										class="btn btn-danger mt-4"><i class="fas fa-trash"></i></a></td>
 								</tr>
 							</tbody>
 							</thead>
@@ -178,9 +190,9 @@
 		</footer>
 	</div>
 
-	<script src="vendor/jquery/jquery.slim.min.js"></script>
-	<script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="vendor/js/category.js"></script>
+	<script th:src="@{/vendor/jquery/jquery.slim.min.js}"></script>
+	<script th:src="@{/vendor/bootstrap/dist/js/bootstrap.min.js}"></script>
+	<script th:src="@{/vendor/js/category.js}"></script>
 	<script>
 		var x = document.getElementById("category").value;
 		console.log(x);
