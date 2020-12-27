@@ -29,7 +29,7 @@
 			<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
 				<a class="navbar-brand" href="/home">
 				<img th:src="@{/images/logo.png} " class="img-logo" alt=""></a>
-				<a href="/listImages" class="nav-link username">Library </a>
+				<span  class="nav-link username">Photo Management </span>
 
 				<div class="header-search">
 					<form action="/home" class="header-search-input-wrap">
@@ -59,14 +59,21 @@
 				<div class="dropdown-toggle not-link" id="userDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false">
-					<span class="mr-2 d-none d-lg-inline name-user" style="font-size: 14px;"
+					<span class="name-user"
 						th:text="Hi + ' ' + ${user.lastName}+ ' ' +${user.Name}">
-					</span> <img class="img-profile rounded-circle"
+					</span> 
+					<div>
+						<img class="img-profile rounded-circle"
 						th:src="${(user.image != null) ? 'data:image/jpeg;base64,'+{user.image} : '/images/avt/default.png'}">
+					</div>
+				
 				</div>
 				<div class="dropdown-menu" aria-labelledby="userDropdown">
-					<a class="dropdown-item" href="/userInfo">Thông tin tài
-						khoản</a> <a class="dropdown-item" href="/login">Đăng xuất</a>
+					<a class="dropdown-item" href="/userInfo">Thông tin tài khoản</a>
+					<a class="dropdown-item" href="/login">Đăng xuất</a>
+					<a class="dropdown-item" href="/home">Home</a>
+					<a class="dropdown-item" href="/listImages">Library</a>
+
 				</div>
 			</li>
 			<!-- <ul class="navbar-nav">

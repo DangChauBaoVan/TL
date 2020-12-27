@@ -31,7 +31,7 @@
 				class="web-title mb-0 "> Photo Management </a>
 		</div>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav mr-auto">
+			<!-- <ul class="navbar-nav mr-auto">
 				<li class="nav-item active"><a class="nav-link"
 					href="/home">Home<span class="sr-only">(current)</span>
 				</a></li>
@@ -40,7 +40,7 @@
 				<li class="nav-item active"><a class="nav-link"
 					href="/category">Category</a></li>
 					
-			</ul>
+			</ul> -->
 		</div>
 		<button id="sidebarToggleTop"
 			class="btn btn-link d-md-none rounded-circle mr-3">
@@ -63,8 +63,10 @@
 						th:src="${(user.image != null) ? 'data:image/jpeg;base64,'+{user.image} : '/images/avt/default.png'}">
 				</div>
 				<div class="dropdown-menu" aria-labelledby="userDropdown">
-					<a class="dropdown-item" href="/userInfo">Thông tin tài
-						khoản</a> <a class="dropdown-item" href="/login">Đăng xuất</a>
+					<a class="dropdown-item" href="/userInfo">Thông tin tài khoản</a>
+					<a class="dropdown-item" href="/login">Đăng xuất</a>
+					<a class="dropdown-item" href="/home">Home</a>
+					<a class="dropdown-item" href="/listImages">Library</a>
 				</div>
 			</li>
 		</ul>
@@ -74,14 +76,14 @@
 				<div id="content">
 					<div class="container-fluid generalClass">
 						<div id="btn-upload" class="btn btn-primary upload">Upload
-							Image</div>
+							Photo</div>
 						<!-- modal add image -->
 						<div class="modal" id="modal__layout">
 							<div class="modal__overlay"></div>
 							<div class="modal__body">
 								<button id="btn-close">x</button>
 								<h3 class="add-image" style="width: 100px; margin: 12px auto;">Add
-									Image</h3>
+									Photo</h3>
 								<div class="form-login">
 									<form class="border border-light p-4 upload-form" th:action="@{/addI}"
 										th:method="POST" enctype="multipart/form-data">
@@ -89,23 +91,25 @@
 									<h4 class="text-black-50  text-left">Title</h4>
 									<input type="text" name="title" id="title"
 										class="form-control mb-4" placeholder="Logo Google" required>
+										<h4 class="text-black-50  text-left">Category</h4>
+
+										<select name="category" class="form-control mb-4">
+											<option th:each="cate : ${cate}" th:value="*{cate.name}">[[*{cate.name}]]</option>
+										</select>
 									<h4 class="text-black-50  text-left">
 										<label class="required" >*
 												(Enter keywords related to your image)
 										</label>
 									</h4>
 									<input type="text" name="nameDescription" id=""
-									class="form-control mb-4" placeholder="" required>
-									<h4 class="text-black-50  text-left">Category</h4>
-
-									<select name="category" class="form-control mb-4">
-										<option th:each="cate : ${cate}" th:value="*{cate.name}">[[*{cate.name}]]</option>
-									</select>
+									class="form-control mb-4" placeholder="keywords" required>
+									
 									<div class="custom-file mb-4 dispaly-block">
 										<label style =" display: block;" class="text-black-50">*
 												(.png, .jpg, .jpeg, .gif)</label>
+									
 										<label for="customFile" class="label-choose-image" style="display: block;">
-											Choose image <i class="far fa-file-image"></i>
+											Browse </i>
 										</label>
 										<input type="file"accept=".png, .jpg, .jpeg, .gif" name="file"
 											class="custom-file-input" id="customFile">
@@ -147,6 +151,7 @@
 				<div class="col-md-12">
 					<div class="table-responsive">
 						<button id="btn-delete" class="btn-delete" disabled>Delete</button>
+						<a th:href="@{/category}" class="btn gotoCategory">Go to Category</a>
 						<label>Select Categogy</label>
 						<select name="category" id="category" onchange="myCate()" class="form-control mb-4" style="width: 202px;
 						display: inline-flex;">
@@ -315,6 +320,17 @@
 	</div>
 	<script th:src="@{/vendor/jquery/jquery.slim.min.js}"></script>
 	<script th:src="@{/vendor/bootstrap/dist/js/bootstrap.min.js}"></script>
+	<script>
+ 
+		$('#BSbtninfo').filestyle({
+		 
+		buttonName : 'btn-info',
+		 
+		buttonText : 'Choose image'
+		 
+		});
+		 
+		</script>
 	<script>
 		var table = document.getElementById("mytable");
 		var tr = table.getElementsByTagName("tr");

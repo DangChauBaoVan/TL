@@ -14,7 +14,7 @@
 }
 .nav-item {
     font-size: 14px;
-    font-weight: bold;
+    display: flex;
 }
 .nav-item--user {
     display: flex;
@@ -25,13 +25,23 @@ body.modal-open {
     height: 100vh;
     overflow-y: hidden;
 }
+.dropdown-menu {
+    top: 129%;
+    font-size: 13.5px;
+    left: 48px;
+    background-color: #eeebeb;
+}
+.dropdown-menu::before {
+    border-width: 14px 15px;
+    right: 21px;
+}
+
 .header-search {
     height: 43px;
     background-color: #efefef;
     border-radius: 20px;
     border: 1px solid #efefef;
     display: flex;
-   
     flex: 1;
     /* position: fixed;*/
  } 
@@ -47,7 +57,6 @@ body.modal-open {
     flex: 1;
     height: 100%;
     position: relative;
-
 }
 .header-search-input {
     border: none;
@@ -570,10 +579,15 @@ body.modal-open {
     height: 42px;
     display: block;
     width: 42px;
-    margin-left: 5px;
+    margin-left: 10px;
 }
 .username {
     display: block;
+    color: var(--main-color);
+    font-size: 26px;
+}
+.name-user {
+    line-height: 38px;
 }
 .dropdown-toggle {
     display: flex;
