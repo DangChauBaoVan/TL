@@ -75,77 +75,63 @@
 			<div id="content-wrapper" class="d-flex flex-column">
 				<div id="content">
 					<div class="container-fluid generalClass">
-						<div id="btn-upload" class="btn btn-primary upload">Upload
-							Photo</div>
-						<!-- modal add image -->
-						<div class="modal" id="modal__layout">
-							<div class="modal__overlay"></div>
-							<div class="modal__body">
-								<button id="btn-close">x</button>
-								<h3 class="add-image" style="width: 100px; margin: 12px auto;">Add
-									Photo</h3>
+						<button type="button" class="btn btn-primary upload" data-toggle="modal" data-target="#exampleModal">
+							Upload Photo
+						  </button>
+						  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+							  <div class="modal-content">
+								<div class="modal-header">
+								  <h3 class="modal-title" id="exampleModalLabel">Add Photo</h3>
+								  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								  </button>
+								</div>
+								<div class="modal-body">
 								<div class="form-login">
 									<form class="border border-light p-4 upload-form" th:action="@{/addI}"
-										th:method="POST" enctype="multipart/form-data">
-
-									<h4 class="text-black-50  text-left">Title</h4>
-									<input type="text" name="title" id="title"
-										class="form-control mb-4" placeholder="Logo Google" required>
-										<h4 class="text-black-50  text-left">Category</h4>
-
-										<select name="category" class="form-control mb-4">
-											<option th:each="cate : ${cate}" th:value="*{cate.name}">[[*{cate.name}]]</option>
-										</select>
-									<h4 class="text-black-50  text-left">
-										<label class="required" >*
-												(Enter keywords related to your image)
-										</label>
-									</h4>
-									<input type="text" name="nameDescription" id=""
-									class="form-control mb-4" placeholder="keywords" required>
-									
-									<div class="custom-file mb-4 dispaly-block">
-										<label style =" display: block;" class="text-black-50">*
-												(.png, .jpg, .jpeg, .gif)</label>
-									
-										<label for="customFile" class="label-choose-image" style="display: block;">
-											Browse </i>
-										</label>
-										<input type="file"accept=".png, .jpg, .jpeg, .gif" name="file"
-											class="custom-file-input" id="customFile">
-									</div>
-								</br>
-									<button class="btn btn-info btn-outline-info" type="submit"> Add to library
-										<i class="fas fa-plus-circle btn-add-icon"></i>
-									</button>
-									
-								</form>
+											th:method="POST" enctype="multipart/form-data">
+										<h4 class="text-black-50  text-left">Title</h4>
+										<input type="text" name="title" id="title"
+											class="form-control mb-4" placeholder="Logo Google" required>
+											<h4 class="text-black-50  text-left">Category</h4>
+	
+											<select name="category" class="form-control mb-4">
+												<option th:each="cate : ${cate}" th:value="*{cate.name}">[[*{cate.name}]]</option>
+											</select>
+										<h4 class="text-black-50  text-left">
+											<label class="required" >*
+													(Enter keywords related to your image)
+											</label>
+										</h4>
+										<input type="text" name="nameDescription" id=""
+										class="form-control mb-4" placeholder="keywords" required>
+										
+										<div class="custom-file mb-4 dispaly-block">
+											<label style =" display: block;" class="text-black-50">*
+													(.png, .jpg, .jpeg, .gif)</label>
+										
+											<label for="customFile" class="label-choose-image" style="display: block;">
+												Browse </i>
+											</label>
+											<input type="file"accept=".png, .jpg, .jpeg, .gif" name="file"
+												class="custom-file-input" id="customFile">
+										</div>
+									</br>
+										<button class="btn btn-info btn-outline-info" type="submit"> Add to library
+											<i class="fas fa-plus-circle btn-add-icon"></i>
+										</button>
+									</form>
 								</div>
-
+								
+								</div>
+							
+							  </div>
 							</div>
+						
+						  </div>
 						</div>
-						<div class="modal" id="modal__layout-addCategory">
-							<div class="modal__overlay"></div>
-							<div class="modal__body">
-								<button id="btn-close-cate">x</button>
-								<form class="text-center border border-light p-5"
-									action="addCate" th:method="POST" enctype="multipart/form-data">
-									<h4 class="text-black-50  text-left">Category Name:</h4>
-
-									<input type="text" name="name" id="addcategory"
-										class="form-control mb-4" placeholder="natural" required>
-
-									<div class="custom-file mb-4">
-										<input type="file" name="file" class="custom-file-input"
-											id="customFileCategory"> <label
-											class="custom-file-label" for="customFileCategory" required>Chose
-											Image</label>
-									</div>
-
-									<button class="btn btn-info btn-block" type="submit">Add</button>
-								</form>
-							</div>
-						</div>
+						
 					</div>
 				</div>
 				<div class="col-md-12">
