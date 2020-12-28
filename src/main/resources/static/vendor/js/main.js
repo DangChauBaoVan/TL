@@ -1,4 +1,18 @@
 window.addEventListener("load", function(){
+  function myScroll() {
+    var navbar = document.getElementById("navbar");
+    console.log(navbar);
+    var sticky = navbar.offsetTop;
+  
+    if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+    } else {
+    navbar.classList.remove("sticky");
+    }
+  }
+  window.onscroll = function() {
+    myScroll()
+  };
    var modalid=  document.getElementById("modal__layout");
    var btnupload = document.getElementById("btn-upload");
    var btnupload2 = document.getElementById("upload-2");
@@ -28,9 +42,9 @@ window.addEventListener("load", function(){
 
    }
 
-  //  btnupload2.addEventListener('click',function(){
-  //   modalid.style.display='flex' ;
-  //  });
+   btnupload2.addEventListener('click',function(){
+    modalid.style.display='flex' ;
+   });
    
 
  });

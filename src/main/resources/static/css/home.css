@@ -596,7 +596,7 @@ body.modal-open {
 
 .sticky + .container {
     padding-top: 70px;
-  }
+}
 .sticky {
     position: fixed;
     top: 0;

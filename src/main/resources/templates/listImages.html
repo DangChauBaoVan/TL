@@ -22,9 +22,9 @@
 
 <body id="page-top">
 
-	<div id="wrapper">
+	<div id ="wrapper">
 		<nav
-			class="navbar navbar-expand navbar-light topbar mb-2 static-top shadow">
+			class="navbar navbar-expand navbar-light topbar mb-2 static-top shadow" id="navbar">
 			<div class="d-sm-flex align-items-center justify-content-between">
 				<a href="/listImages"> <img th:src="@{/images/logo.png}" alt=""
 					class="img-logo"></a> <a href="/listImages"
@@ -318,15 +318,7 @@
 	</div>
 	<script th:src="@{/vendor/jquery/jquery.slim.min.js}"></script>
 	<script th:src="@{/vendor/bootstrap/dist/js/bootstrap.min.js}"></script>
-	<script>
-		$('#BSbtninfo').filestyle({
 
-			buttonName : 'btn-info',
-
-			buttonText : 'Choose image'
-
-		});
-	</script>
 	<script>
 		var table = document.getElementById("mytable");
 		var tr = table.getElementsByTagName("tr");
@@ -347,23 +339,27 @@
 				}
 			}
 		}
-		function myCate() {
-			var cate = document.getElementById("category").value;
-			console.log(cate);
-			var filter, td, i, txtValue;
-			filter = cate.toUpperCase();
-			for (i = 0; i < tr.length; i++) {
-				td = tr[i].getElementsByTagName("td")[2];
-				if (td) {
-					txtValue = td.textContent || td.innerText;
-					if (txtValue.toUpperCase().indexOf(filter) > -1) {
-						tr[i].style.display = "";
-					} else {
-						tr[i].style.display = "none";
-					}
-				}
-			}
-		}
+		// function myCate() {
+		// 	var cate = document.getElementById("category").value;
+		// 	console.log(cate);
+		// 	var filter, td, i, txtValue;
+		// 	filter = cate.toUpperCase();
+		// 	for (i = 0; i < tr.length; i++) {
+		// 		td = tr[i].getElementsByTagName("td")[2];
+		// 		if (td) {
+		// 			txtValue = td.textContent || td.innerText;
+		// 			if (txtValue.toUpperCase().indexOf(filter) > -1) {
+		// 				tr[i].style.display = "";
+		// 			} else {
+		// 				tr[i].style.display = "none";
+		// 			}
+		// 		}
+		// 	}
+		// }
+	
+		
+	
+	
 	</script>
 	<script th:src="@{/vendor/js/main.js}"></script>
 </body>
