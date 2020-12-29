@@ -30,7 +30,7 @@ public class ImageService {
 		return imageRepo.findAllImagesByUserName(username);
 	}
 	
-	public void saveImageToDB(MultipartFile file ,String title, String category) {
+	public void saveImageToDB(MultipartFile file ,String title, String category,String keyword) {
 		Image p = new Image();
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 		if(fileName.contains(".."))
@@ -47,6 +47,7 @@ public class ImageService {
 		}
 		p.setTitle(title);
 		p.setCategory(category);
+		p.setKeyword(keyword);
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 		String username = userDetails.getUsername();
@@ -58,10 +59,11 @@ public class ImageService {
 	{
 		imageRepo.deleteById(id);
 	}
-	public void updateImage(Long id,String title, String category) {
+	public void updateImage(Long id,String title, String category,String keyword) {
 		Image image= imageRepo.findById(id).get();
 		image.setCategory(category);
 		image.setTitle(title);
+		image.setKeyword(keyword);
 		imageRepo.save(image);
 	}
 	public Image getImageById(long id) {
@@ -79,13 +81,11 @@ public class ImageService {
 		return imageRepo.findAllImagesByCategory(name,userName);
 	}
 	
-	public List<Image> listAll(String name,String keyword, String cateName) {
+	public List<Image> listAll(String name,String keyword) {
         if (keyword != null) {
-            return imageRepo.search(name,keyword);
+            return imageRepo.searchByKeyword(name, keyword);
         }
-        if(cateName != null) {
-        	return imageRepo.findAllImagesByCategory(cateName,name);
-        }
+        
         return imageRepo.findAllImagesByUserName(name);
     }
 	
