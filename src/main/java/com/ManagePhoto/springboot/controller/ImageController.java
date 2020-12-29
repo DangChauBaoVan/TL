@@ -143,6 +143,10 @@ public class ImageController {
 		
 		ModelAndView modelAndView = new ModelAndView(); 
 		modelAndView.setViewName("home"); 
+		
+		Long LikeImage = imageService.countLikeImage(username);
+		model.addAttribute("likeImage", LikeImage);
+		
 		return modelAndView; 
 	}
 

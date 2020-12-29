@@ -39,6 +39,9 @@ public interface ImageRepositry extends JpaRepository<Image, Long> {
 	 @Query("SELECT COUNT(p) FROM Image p WHERE p.user_name= :user_name")
 	 Long countImage(@Param("user_name") String user_name);
 	 
+	 @Query("SELECT COUNT(p) FROM Image p WHERE p.user_name= :user_name AND p.like_status=1" )
+	 Long countLikeImage(@Param("user_name") String user_name);
+	 
 	
 
 }
