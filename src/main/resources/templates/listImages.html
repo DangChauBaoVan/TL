@@ -22,9 +22,10 @@
 
 <body id="page-top">
 
-	<div id ="wrapper">
+	<div id="wrapper">
 		<nav
-			class="navbar navbar-expand navbar-light topbar mb-2 static-top shadow" id="navbar">
+			class="navbar navbar-expand navbar-light topbar mb-2 static-top shadow"
+			id="navbar">
 			<div class="d-sm-flex align-items-center justify-content-between">
 				<a href="/listImages"> <img th:src="@{/images/logo.png}" alt=""
 					class="img-logo"></a> <a href="/listImages"
@@ -111,7 +112,7 @@
 													<label class="required">* (Enter keywords related
 														to your image) </label>
 												</h4>
-												<input type="text" name="nameDescription" id=""
+												<input type="text" name="keyword" id="keyword"
 													class="form-control mb-4" placeholder="keywords" required>
 
 												<div class="custom-file mb-4 dispaly-block">
@@ -165,6 +166,7 @@
 								<th>Title</th>
 								<th>Categogy</th>
 								<th>Published On</th>
+								<th>Key Word</th>
 								<th class="th-btn">Edit</th>
 								<th class="th-btn">Delete</th>
 							<tbody>
@@ -177,6 +179,7 @@
 									<td>[[*{image.title}]]</td>
 									<td>[[*{image.category}]]</td>
 									<td>[[*{image.datetime}]]</td>
+									<td>[[*{image.keyword}]]</td>
 									<td><a th:attr="data-target='#modal-edit'+${image.id}"
 										data-toggle="modal" data-target="#modal-edit"
 										class="btn btn-edit"><i class="far fa-edit"
@@ -211,9 +214,14 @@
 															<h4 class="text-black-50  text-left">Published date:</h4>
 															<input type="text" th:value="*{image.datetime}"
 																name="datetime" readonly class="form-control mb-4"
-																required> 
+																required>
+
+															<h4 class="text-black-50  text-left">KeyWord:</h4>
+															<input type="text" th:value="*{image.keyword}" name="keyword"
+																class="form-control mb-4" required>
+
 															<h4 class="text-black-50  text-left">Photo:</h4>
-																<img alt=""
+															<img alt=""
 																th:src="*{'data:image/jpeg;base64,'+{image.image}}"
 																style="width: 100px; height: 100px;">
 													</div>

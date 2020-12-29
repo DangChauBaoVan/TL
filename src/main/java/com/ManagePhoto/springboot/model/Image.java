@@ -39,6 +39,9 @@ public class Image {
 	@Column(name="user_name")
 	private String user_name;
 	
+	@Column(name="keyword")
+	private String keyword;
+	
 	public Long getId() {
 		return id;
 	}
@@ -81,6 +84,15 @@ public class Image {
 
 	public void setUser_name(String user_name) {
 		this.user_name = user_name;
+	}
+	
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
 	}
 
 	@Override

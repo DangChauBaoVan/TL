@@ -45,9 +45,11 @@ public class ImageController {
 	private CategoryService cateService;
 
 	@PostMapping("/addI")
-	public String saveImage(@RequestParam("file") MultipartFile file, @RequestParam("title") String title,
-			@RequestParam("category") String category) {
-			imageService.saveImageToDB(file, title, category);
+	public String saveImage(@RequestParam("file") MultipartFile file,
+			@RequestParam("title") String title,
+			@RequestParam("category") String category,
+			@RequestParam("keyword") String keyword) {
+			imageService.saveImageToDB(file, title, category,keyword);
 		return "redirect:/listImages";
 			
 	}
@@ -122,7 +124,7 @@ public class ImageController {
 	}
 	
 	@RequestMapping(value = { "/home"}, method = RequestMethod.GET) 
-	public ModelAndView homeImages(Model model, @Param("keyword") String keyword, @Param("name") String name) {
+	public ModelAndView homeImages(Model model, @Param("keyword") String keyword) {
 		Authentication authentication =SecurityContextHolder.getContext().getAuthentication(); 
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
 		String username = userDetails.getUsername();
@@ -133,7 +135,7 @@ public class ImageController {
 		model.addAttribute("user", user);
 
 		model.addAttribute("keyword", keyword);
-		List<Image> images = imageService.listAll(username, keyword, name);
+		List<Image> images = imageService.listAll(username, keyword);
 		model.addAttribute("images", images);
 	
 		List<Category> cate2 = cateService.getRandomElement(5);
@@ -177,9 +179,9 @@ public class ImageController {
 
 	@PostMapping("/updateImage/{id}")
 	public String updateImage(@PathVariable(value = "id") long id, @RequestParam("title") String title,
-			@RequestParam("category") String category) {
+			@RequestParam("category") String category,@RequestParam("keyword") String keyword) {
 
-		imageService.updateImage(id, title, category);
+		imageService.updateImage(id, title, category,keyword);
 		return "redirect:/listImages";
 	}
 	
