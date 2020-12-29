@@ -171,6 +171,20 @@ public class ImageController {
 		model.addAttribute("cate", cate);
 		return "home";
 	}
+	
+	@GetMapping("/likeImage")
+	public String showLikeImage(Model model) {
+		Authentication authentication =SecurityContextHolder.getContext().getAuthentication(); 
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
+		String username = userDetails.getUsername(); 
+		User user = userService.getUsername(username);
+		model.addAttribute("user", user);
+		List<Image> images = imageService.showLikeImage(username);
+		model.addAttribute("images", images);
+		List<Category> cate = cateService.GetAllCategory();
+		model.addAttribute("cate", cate);
+		return "home";
+	}
 
 
 	@GetMapping("/image/edit/{id}")
