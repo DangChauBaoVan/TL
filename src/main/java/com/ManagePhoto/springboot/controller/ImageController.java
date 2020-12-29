@@ -185,5 +185,16 @@ public class ImageController {
 		return "redirect:/listImages";
 	}
 	
+	@GetMapping("/onLikeStatus/{id}")
+	public String onLikeStatus(@PathVariable(value = "id") long id) {
+		imageService.onLikeStatus(id);
+		return "redirect:/home";
+	}
+	
+	@GetMapping("/offLikeStatus/{id}")
+	public String offLikeStatus(@PathVariable(value = "id") long id) {
+		imageService.offLikeStatus(id);
+		return "redirect:/home";
+	}
 
 }

@@ -15,6 +15,7 @@ import javax.persistence.Lob;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
 
@@ -41,6 +42,9 @@ public class Image {
 	
 	@Column(name="keyword")
 	private String keyword;
+	
+	@Column(name="like_status",nullable = false,columnDefinition = "int default 0")
+	private int like_status;
 	
 	public Long getId() {
 		return id;
@@ -93,6 +97,16 @@ public class Image {
 
 	public void setKeyword(String keyword) {
 		this.keyword = keyword;
+	}
+	
+
+
+	public int getLike_status() {
+		return like_status;
+	}
+
+	public void setLike_status(int like_status) {
+		this.like_status = like_status;
 	}
 
 	@Override

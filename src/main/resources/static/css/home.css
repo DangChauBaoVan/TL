@@ -517,7 +517,7 @@ body.modal-open {
     color: black;
 }
 .favourite--active {
-    background-color: var(--color-2);
+    background-color: #ff6600;
 }
 .favourite:hover {
     background-color: #ff6600;
@@ -563,6 +563,7 @@ body.modal-open {
     box-shadow: none;
     text-decoration: none;
 }
+
 .category__img {
     width: 36px;
     height: 36px;

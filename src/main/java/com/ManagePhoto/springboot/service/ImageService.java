@@ -92,6 +92,18 @@ public class ImageService {
 	public long countImage(String username) {
 		return imageRepo.countImage(username);
 	}
+	
+	public void onLikeStatus(Long id) {
+		Image image= imageRepo.findById(id).get();
+		image.setLike_status(1);
+		imageRepo.save(image);
+	}
+	
+	public void offLikeStatus(Long id) {
+		Image image= imageRepo.findById(id).get();
+		image.setLike_status(0);
+		imageRepo.save(image);
+	}
 
 
 }

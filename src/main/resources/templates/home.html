@@ -115,9 +115,12 @@
 				<div class="grid-col grid-col--5 wow fadeInUp" data-wow-delay="0.8s"></div>
 				<div class="grid-item" th:each="image : ${images}">
 					<div class="title-image">[[*{image.title}]]</div>
-					<div class="favourite ">
+					<a th:if="${image.like_status==1}" class="favourite favourite--active" title="yêu thích" th:href="@{/offLikeStatus/{id}(id=${image.id})}">
 						<i class="far fa-heart heart--transparent"></i>
-					</div>
+					</a>
+					<a th:if="${image.like_status==0}" class="favourite" title="yêu thích" th:href="@{/onLikeStatus/{id}(id=${image.id})}">
+						<i class="far fa-heart heart--transparent"></i>
+					</a>
 					<img th:src="*{'data:image/jpeg;base64,'+{image.image}}"
 						class="card-img-top" alt="picture">
 				</div>
