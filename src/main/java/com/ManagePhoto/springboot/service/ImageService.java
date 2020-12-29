@@ -83,7 +83,7 @@ public class ImageService {
 	
 	public List<Image> listAll(String name,String keyword) {
         if (keyword != null) {
-            return imageRepo.searchByKeyword(name, keyword);
+            return imageRepo.searchSmart(name, keyword);
         }
         
         return imageRepo.findAllImagesByUserName(name);
