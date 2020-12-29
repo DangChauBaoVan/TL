@@ -143,10 +143,11 @@
 					<div class="table-responsive">
 						<button id="btn-delete" class="btn-delete" disabled>Delete</button>
 						<a th:href="@{/category}" class="btn gotoCategory">Go to
-							Category</a> <label>Select Categogy</label> <select name="category"
+							Category</a> <label>Select Categogy</label> 
+							<select name="category"
 							id="category" onchange="myCate()" class="form-control mb-4"
 							style="width: 202px; display: inline-flex;">
-							<option value="" selected>All</option>
+							<option value="default" selected>All</option>
 							<option th:each="cate : ${cate}" th:value="*{cate.name}">[[*{cate.name}]]</option>
 						</select> <input type="text" id="myInput" class="form-control mb-4"
 							style="width: 202px; display: inline-flex;"
@@ -347,27 +348,25 @@
 				}
 			}
 		}
-		// function myCate() {
-		// 	var cate = document.getElementById("category").value;
-		// 	console.log(cate);
-		// 	var filter, td, i, txtValue;
-		// 	filter = cate.toUpperCase();
-		// 	for (i = 0; i < tr.length; i++) {
-		// 		td = tr[i].getElementsByTagName("td")[2];
-		// 		if (td) {
-		// 			txtValue = td.textContent || td.innerText;
-		// 			if (txtValue.toUpperCase().indexOf(filter) > -1) {
-		// 				tr[i].style.display = "";
-		// 			} else {
-		// 				tr[i].style.display = "none";
-		// 			}
-		// 		}
-		// 	}
-		// }
-	
-		
-	
-	
+		function myCate() {
+			var cate = document.getElementById("category").value;
+			console.log("cate có value:",cate);
+			var txtvalue, td2;
+			for (i = 0; i < tr.length; i++) {
+				td2 = tr[i].getElementsByTagName("td")[2];
+				if(td2) {
+					txtvalue = td2.textContent || td2.innerText;
+					if(cate === 'default') {
+						tr[i].style.display = "";
+					}
+					else if(txtvalue === cate ) {
+						tr[i].style.display = "";
+					} else {
+						tr[i].style.display = "none";
+					}
+				}
+			}
+		}
 	</script>
 	<script th:src="@{/vendor/js/main.js}"></script>
 </body>

@@ -20,7 +20,6 @@ window.addEventListener("load", function(){
     modaladdCategory.style.display = 'flex';
     document.body.classList.add("open-modal");
 
-
     })
     btnclose2.addEventListener('click', closeModalCate);
    function closeModalCate() {
