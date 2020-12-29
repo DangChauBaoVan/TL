@@ -169,6 +169,8 @@ public class ImageController {
 		model.addAttribute("images", images);
 		List<Category> cate = cateService.GetAllCategory();
 		model.addAttribute("cate", cate);
+		Long LikeImage = imageService.countLikeImage(username);
+		model.addAttribute("likeImage", LikeImage);
 		return "home";
 	}
 	
@@ -183,6 +185,8 @@ public class ImageController {
 		model.addAttribute("images", images);
 		List<Category> cate = cateService.GetAllCategory();
 		model.addAttribute("cate", cate);
+		Long LikeImage = imageService.countLikeImage(username);
+		model.addAttribute("likeImage", LikeImage);
 		return "home";
 	}
 
