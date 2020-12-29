@@ -585,6 +585,7 @@ body.modal-open {
     display: block;
     color: var(--main-color);
     font-size: 26px;
+    font-weight: 700;
 }
 .name-user {
     line-height: 38px;

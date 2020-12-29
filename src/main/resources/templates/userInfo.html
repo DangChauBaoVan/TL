@@ -20,83 +20,139 @@
 </head>
 <body>
 	<div id="wrapper">
+		<nav
+		class="navbar navbar-expand navbar-light  topbar mb-2 static-top shadow" id="navbar">
+		<div class="d-sm-flex align-items-center justify-content-between">
+			<a href="listImages"> <img src="images/logo.png" alt=""
+				class="img-logo"></a> <a href="listImages"
+				class="web-title mb-0 "> Photo Management </a>
+		</div>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<!-- <ul class="navbar-nav mr-auto">
+							<li class="nav-item active"><a class="nav-link"
+								href="/home">Home<span class="sr-only">(current)</span>
+							</a></li>
+							<li class="nav-item active"><a class="nav-link"
+								href="/listImages">Library</a></li>
+							<li class="nav-item active"><a class="nav-link"
+								href="/category">Category</a></li>
+								
+						</ul> -->
+		</div>
+		<button id="sidebarToggleTop"
+			class="btn btn-link d-md-none rounded-circle mr-3">
+			<i class="fa fa-bars"></i>
+		</button>
+
+		<ul class="navbar-nav ">
+			<li class="nav-item dropdown no-arrow d-sm-none"><a
+				class="nav-link dropdown-toggle" href="#" id="searchDropdown"
+				role="button" data-toggle="dropdown" aria-haspopup="true"
+				aria-expanded="false"> <i class="fas fa-search fa-fw"></i>
+			</a>
+				<div class="topbar-divider d-none d-sm-block"></div>
+			<li class="nav-item dropdown no-arrow"><div
+					class="dropdown-toggle not-link" id="userDropdown" role="button"
+					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<span class="mr-2 d-none d-lg-inline name-user small"
+						th:text="Hi +' ' +${user.lastName}+ ' ' +${user.Name}"></span> <img
+						th:src="${(user.image != null) ? 'data:image/jpeg;base64,'+{user.image} : '/images/avt/default.png'}"
+						alt="not found" class="img-profile rounded-circle">
+				</div>
+				<div class="dropdown-menu" aria-labelledby="userDropdown">
+					<a class="dropdown-item" href="/userInfo">Thông tin tài khoản</a>
+					<a class="dropdown-item" href="/home">Home</a> <a
+						class="dropdown-item" href="/listImages">Library</a> <a
+						class="dropdown-item" href="/logout">Đăng xuất</a>
+
+				</div></li>
+		</ul>
+	</nav>
 		<div class="container">
 			<div class="infor">
 				<div class="row">
-					<div class="col-6 col-md-6 user__left">
-						<form action="/saveI" method="POST" enctype="multipart/form-data">
-
-							<img
-								th:src="${(user.image != null) ? 'data:image/jpeg;base64,'+{user.image} : '/images/avt/default.png'}"
-								alt="not found" class="user__img">
-
-							<button class="user__btn-upload" type="button"
-								id="user__btn-upload" data-toggle="modal" data-target="#myModal">
-								<i class="fas fa-camera"></i>
-							</button>
-
-							<div class="modal fade" id="myModal" role="dialog">
-								<div class="modal-dialog">
-
-									<!-- Modal content-->
-									<div class="modal-content">
-										<div class="modal-header">
-											<button type="button" class="close" data-dismiss="modal">&times;
-												Close
-											</button>
-											
-										</div>
-										<div class="modal-body">
-											<div class="custom-file mb-4">
-												<label for="customFile" class="label-choose-image">Choose
-													image<i class="far fa-file-image icon-file"></i></label> <input type="file" name="file"
-													class="custom-file-input" id="customFile">
+					<div class="my-form">
+						<div class="col-12 user__left">
+							<form action="/saveI" method="POST" enctype="multipart/form-data">
+								<img
+									th:src="${(user.image != null) ? 'data:image/jpeg;base64,'+{user.image} : '/images/avt/default.png'}"
+									alt="not found" class="user__img">
+								<button class="user__btn-upload" type="button"
+									id="user__btn-upload" data-toggle="modal" data-target="#myModal">
+									<i class="fas fa-camera"></i>
+								</button>
+								<div class="modal fade" id="myModal" role="dialog">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">&times;
+													Close
+												</button>
+												
 											</div>
-											<button class="btn btn-info" type="submit">Add<i class="fas fa-plus-circle icon-file"></i></button>
+											<div class="modal-body">
+												<div class="custom-file mb-4">
+													<label for="customFile" class="label-choose-image">Choose
+														image<i class="far fa-file-image icon-file"></i></label> <input type="file" name="file"
+														class="custom-file-input" id="customFile">
+												</div>
+												<button class="btn btn-info" type="submit">Add<i class="fas fa-plus-circle icon-file"></i></button>
+											</div>
+											<div class="modal-footer">
+												
+											</div>
 										</div>
-										<div class="modal-footer">
-											
+	
+									</div>
+								</div>
+							</form>
+							<div class="user__name"
+								th:text=" ${user.lastName}+ ' ' +${user.Name}"></div>
+							<div class="user__photos" th:text=" ${nImage} +' '+ Photos">
+							</div>
+							<div class="user__description" th:text="${user.decription}"></div>
+						</div>
+						<div class="col-12 ">
+							<div class="form-update">
+							<form action="/updateUser" method="POST" th:object="${user}">
+								<div class="row">
+									<div class="col-6">
+										<div class="user__group-input ">
+											<label for="" class="label-name label-name--block">First Name</label>
+											 <input class="user__input-name"
+											type="text" name="firstname" th:field="*{name}">
 										</div>
 									</div>
-
+									<div class="col-6">
+										<div class="user__group-input ">
+											<label for="" class="label-name label-name--block">Last Name</label> <input class="user__input-name"
+												type="text" name="lastname" th:field="*{lastName}">
+										</div>
+									</div>
 								</div>
-							</div>
-						</form>
-						<div class="user__name"
-							th:text=" ${user.lastName}+ ' ' +${user.Name}"></div>
-						<div class="user__photos" th:text=" ${nImage} +' '+ Photo">
+								
+								
+								<div class="user__group-input">
+									<label for="" class="label-name">Email</label> <input class="user__input-name"
+										type="email" name="name" th:field="*{email}" disabled>
+								</div>
+								<div class="user__group-input">
+									<label for="" class="label-name">Description</label>
+									<textarea row="6" class="user__input-name user__input-textarea"
+										name="decription" th:field="*{decription}">
+									</textarea>
+								</div>
+								<a href="listImages" class="btn btn-cancel "><i
+									class="fas fa-long-arrow-alt-left user-icon"></i>Back</a>
+								<button class="btn btn--update btn--primary" type="submit">
+									<i class="far fa-edit"></i>
+									Update</button>
+	
+							</form>
 						</div>
-						<div class="user__description" th:text="${user.decription}"></div>
+						</div>
 					</div>
-					<div class="col-6 col-md-6">
-						<form action="/updateUser" method="POST" th:object="${user}">
-							<div class="user__group-input">
-								<label for="">First Name</label> <input class="user__input-name"
-									type="text" name="firstname" th:field="*{name}">
-							</div>
-							<div class="user__group-input">
-								<label for="">Last Name</label> <input class="user__input-name"
-									type="text" name="lastname" th:field="*{lastName}">
-							</div>
-							<div class="user__group-input">
-								<label for="">Email</label> <input class="user__input-name"
-									type="email" name="name" th:field="*{email}" disabled>
-							</div>
-							<div class="user__group-input">
-								<label for="">Description</label>
-								<textarea row="6" class="user__input-name user__input-textarea"
-									name="decription" th:field="*{decription}">
-
-                                </textarea>
-
-
-							</div>
-							<a href="listImages" class="btn btn-cancel "><i
-								class="fas fa-long-arrow-alt-left user-icon"></i>Back</a>
-							<button class="btn btn--update" type="submit">Update</button>
-
-						</form>
-					</div>
+					
 				</div>
 			</div>
 		</div>
@@ -105,6 +161,20 @@
 	<script th:src="@{/vendor/bootstrap/dist/js/bootstrap.min.js}"></script>
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {
+			window.onscroll = function() {
+        myScroll()
+    };
+    
+    var navbar = document.getElementById("navbar");
+    var sticky = navbar.offsetTop;
+    
+    function myScroll() {
+      if (window.pageYOffset >= sticky) {
+        navbar.classList.add("sticky")
+      } else {
+        navbar.classList.remove("sticky");
+      }
+    }
 			var btn = document.getElementById("user__btn-upload");
 			var modal = document.getElementById("modal__upload-image");
 			btn.addEventListener('click', function() {

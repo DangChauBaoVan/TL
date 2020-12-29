@@ -98,8 +98,8 @@
 													class="form-control mb-4" placeholder="natural" required>
 
 												<div class="custom-file mb-4">
-													<label for="customFileCategory" class="label-choose-image">Choose
-														image</label> <input type="file" name="file"
+													<label for="customFileCategory"  class="label-choose-image">Choose
+														image</label> <input type="file" name="file" accept=".png, .jpg, .jpeg, .gif"
 														class="custom-file-input" id="customFileCategory">
 												</div>
 												</br>
@@ -237,10 +237,7 @@
 	<script th:src="@{/vendor/bootstrap/dist/js/bootstrap.min.js}"></script>
 	<script th:src="@{/vendor/js/category.js}"></script>
 	<script>
-	
 		var x = document.getElementById("category").value;
-		console.log(x);
-
 		function myFunction() {
 		var input, filter, table, tr, td, i, txtValue;
 		input = document.getElementById("myInput");
@@ -249,18 +246,17 @@
 		tr = table.getElementsByTagName("tr");
 	
 		for (i = 0; i < tr.length; i++) {
-		td = tr[i].getElementsByTagName("td")[1];
-		if (td) {
-			txtValue = td.textContent || td.innerText;
-			if (txtValue.toUpperCase().indexOf(filter) > -1) {
-			tr[i].style.display = "";
-			} else {
-			tr[i].style.display = "none";
+			td = tr[i].getElementsByTagName("td")[1];
+			if (td) {
+				txtValue = td.textContent || td.innerText;
+				if (txtValue.toUpperCase().indexOf(filter) > -1) {
+				tr[i].style.display = "";
+				} else {
+				tr[i].style.display = "none";
+				}
 			}
 		}
-		}
-  }
-  
+ 	}
 	</script>
 </body>
 </html>
