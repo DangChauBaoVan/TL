@@ -89,6 +89,10 @@ public class ImageService {
         return imageRepo.findAllImagesByUserName(name);
     }
 	
+	public List<Image> showLikeImage(String username){
+		return imageRepo.showLikeImage(username);
+	}
+	
 	public long countImage(String username) {
 		return imageRepo.countImage(username);
 	}

@@ -25,11 +25,9 @@ public interface ImageRepositry extends JpaRepository<Image, Long> {
 	 @Query("SELECT p FROM Image p WHERE p.user_name = :user_name AND p.keyword LIKE %:keyword% ")
 	 List<Image> searchByKeyword1(@Param("user_name") String user_name,@Param("keyword") String keyword);
 	 
-		/*
-		 * @Query("SELECT p FROM Image p WHERE p.user_name = :user_name AND  p.title,p.category,p.keyword) LIKE CONCAT('%',:keyword,'%')"
-		 * ) List<Image> searchByKeyword(@Param("user_name") String
-		 * user_name,@Param("keyword") String keyword);
-		 */
+	 @Query("SELECT p FROM Image p WHERE p.user_name = :user_name AND p.like_status=1")
+	 List<Image> showLikeImage(@Param("user_name") String user_name);
+	 
 	 @Query("SELECT p FROM Image p WHERE p.user_name = :user_name AND (p.title LIKE %:keyword%"
 			 					+ " OR p.category LIKE %:keyword%"
 			 					+ " OR p.keyword LIKE %:keyword%)")
