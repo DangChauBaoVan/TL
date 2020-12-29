@@ -34,7 +34,7 @@
 				<div class="header-search">
 					<form action="/home" class="header-search-input-wrap">
 						<input type="text" class="header-search-input" name="keyword"
-							id="keyword" th:value="${keyword}" placeholder="Tìm kiếm">
+							id="keyword" th:value="${keyword}" placeholder="Search">
 						<!-- search history -->
 						<div class="header-search-history">
 							<h4 class="header-search-history-heading">Lịch sử tìm kiếm</h4>
@@ -56,12 +56,17 @@
 				</div>
 			</div>
 			<li class="nav-item dropdown no-arrow">
+				<a href="/showLikeImage" class="btn--favourite">
+					<i class="fas fa-heart heart--transparent--2"></i>
+					<span>favourites</span>
+					<span class="header-cart-notice--2" th:text="${likeImage}">
+					</span>
+				</a>
 				<div class="dropdown-toggle not-link" id="userDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false" >
-					<span class="name-user"
-						th:text="Hi + ' ' + ${user.lastName}+ ' ' +${user.Name}">
-					</span> 
+					
+					
 					<div>
 						<img class="img-profile rounded-circle"
 						th:src="${(user.image != null) ? 'data:image/jpeg;base64,'+{user.image} : '/images/avt/default.png'}">

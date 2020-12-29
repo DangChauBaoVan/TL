@@ -45,7 +45,7 @@ body {
 }
 .btn.btn-info {
     font-size: 15px;
-    margin-top: 30px;
+    margin-top: 92px;
     margin-left: auto;
     margin-right: auto;
     width: 141px;
@@ -366,4 +366,18 @@ a:hover {
     top: 0;
     z-index: 1000;
     width: 100%;
+  }
+  .modal-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .modal-header {
+    background-color: var(--main-color);
+  }
+  .modal-dialog-edit {
+      top: 52px;
+  }
+  .modal-dialog--add {
+      top: 0px;
   }

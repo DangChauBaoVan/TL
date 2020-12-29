@@ -62,7 +62,9 @@
 						<span class="mr-2 d-none d-lg-inline name-user"
 							style="font-size: 14px;"
 							th:text="Hi + ' ' + ${user.lastName}+ ' ' +${user.Name}">
-						</span> <img class="img-profile rounded-circle"
+						</span> 
+						
+						<img class="img-profile rounded-circle"
 							th:src="${(user.image != null) ? 'data:image/jpeg;base64,'+{user.image} : '/images/avt/default.png'}">
 					</div>
 					<div class="dropdown-menu" aria-labelledby="userDropdown">
@@ -85,10 +87,10 @@
 						<div class="modal fade" id="exampleModal" tabindex="-1"
 							role="dialog" aria-labelledby="exampleModalLabel"
 							aria-hidden="true">
-							<div class="modal-dialog" role="document">
+							<div class="modal-dialog modal-dialog--add" role="document">
 								<div class="modal-content">
 									<div class="modal-header">
-										<h3 class="modal-title" id="exampleModalLabel">Add Photo</h3>
+										<h3 class="modal-title" id="exampleModalLabel">ADD PHOTO</h3>
 										<button type="button" class="close" data-dismiss="modal"
 											aria-label="Close">
 											<span aria-hidden="true">&times;</span>
@@ -120,8 +122,10 @@
 														(.png, .jpg, .jpeg, .gif)</label> <label for="customFile"
 														class="label-choose-image" style="display: block;">
 														Browse </i>
-													</label> <input type="file" accept=".png, .jpg, .jpeg, .gif"
-														name="file" class="custom-file-input" id="customFile">
+													</label>
+													 <input type="file" accept="image/*" 
+														name="file" class="custom-file-input" id="customFile"  onchange="loadFile(event)">
+														<img id="output"/>
 												</div>
 												</br>
 												<button class="btn btn-info btn-outline-info" type="submit">
@@ -187,10 +191,10 @@
 											style="color: #fff"></i></a>
 										<div class="modal modal-warning fade"
 											th:id="modal-edit+${image.id}">
-											<div class="modal-dialog">
+											<div class="modal-dialog modal-dialog-edit">
 												<div class="modal-content">
 													<div class="modal-header"
-														style="background-color: #e85e6c;">
+														style="background-color: var(--main-color);">
 														<h4 style="color: #fff; margin: 0 auto; font-size: 20px;">Edit
 															Image</h4>
 														<button type="button" data-dismiss="modal"
@@ -367,6 +371,14 @@
 				}
 			}
 		}
+		var loadFile = function(event) {
+    var reader = new FileReader();
+    reader.onload = function(){
+      var output = document.getElementById('output');
+      output.src = reader.result;
+    };
+    reader.readAsDataURL(event.target.files[0]);
+  };
 	</script>
 	<script th:src="@{/vendor/js/main.js}"></script>
 </body>

@@ -148,10 +148,11 @@
 				<div class="col-md-12">
 					<div class="table-responsive">
 						<button class="btn-delete" disabled>Delete</button>
-						<label>Select Categogy</label> <select name="category"
+						<label>Select Categogy</label>
+						 <select name="category"  onchange="myCate()"
 							id="category" class="form-control mb-4"
 							style="width: 202px; display: inline-flex;">
-							<option th:value="none" selected>All</option>
+							<option th:value="default" selected>All</option>
 							<option th:each="category : ${categories}"
 								th:value="*{category.name}">[[*{category.name}]]</option>
 						</select> <input type="text" id="myInput" class="form-control mb-4"
@@ -176,7 +177,8 @@
 									</td>
 									<th scope="row"><img alt=""
 										th:src="*{'data:image/jpeg;base64,'+{category.image}}"
-										style="width: 100px; height: 100px;"></th>
+										style="width: 100px; height: 100px;">
+									</th>
 									<td>[[*{category.name}]]</td>
 									<td><a data-toggle="modal" data-target="#modal-warning"
 										th:attr="data-target='#modal-warning'+${category.id}"
@@ -256,7 +258,28 @@
 				}
 			}
 		}
- 	}
+	 }
+	 var table = document.getElementById("mytable");
+		var tr = table.getElementsByTagName("tr");
+	 function myCate() {
+			var cate = document.getElementById("category").value;
+			console.log("cate có value:",cate);
+			var txtvalue, td2;
+			for (i = 0; i < tr.length; i++) {
+				td2 = tr[i].getElementsByTagName("td")[1];
+				if(td2) {
+					txtvalue = td2.textContent || td2.innerText;
+					if(cate === 'default') {
+						tr[i].style.display = "";
+					}
+					else if(txtvalue === cate ) {
+						tr[i].style.display = "";
+					} else {
+						tr[i].style.display = "none";
+					}
+				}
+			}
+		}
 	</script>
 </body>
 </html>

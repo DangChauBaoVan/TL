@@ -26,6 +26,7 @@ window.addEventListener("load", function(){
         $(':checkbox').prop('checked', false);
       }
   });
+ 
   //  btnupload.addEventListener('click',function(){
   //   modalid.style.display='flex' ;
   //   document.body.classList.add("open-modal");
