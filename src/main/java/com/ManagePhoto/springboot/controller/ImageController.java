@@ -109,7 +109,7 @@ public class ImageController {
 		request.getSession().setAttribute("imageList", pages);
 		int current = pages.getPage() + 1;
 		int begin = Math.max(1, current - list.size());
-		int end = Math.min(begin + 5, pages.getPageCount());
+		int end = Math.min(begin + (pages.getPageCount()-1), pages.getPageCount());
 		int totalPageCount = pages.getPageCount();
 		String baseUrl = "/listImages/page/";
 

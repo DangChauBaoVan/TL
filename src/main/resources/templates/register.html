@@ -89,6 +89,8 @@
                   required
                   onblur="minPassword()"
                 />
+              <i class="fas fa-eye open-eye2" id="open-eye"></i>
+
               </div>
               <div class="emailInValid" id="passwordInValid">
               </div>
@@ -203,6 +205,13 @@
           confirmPasswordInvalid.style.visibility = 'hidden';
         }
       }
+      $(document).on('click', '#open-eye', function() {
+
+  $(this).toggleClass("fa-eye fa-eye-slash");
+
+  var input = $("#password");
+  input.attr('type') === 'password' ? input.attr('type','text') : input.attr('type','password')
+  });
     </script>
   </body>
 </html>

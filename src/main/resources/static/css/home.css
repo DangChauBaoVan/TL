@@ -28,12 +28,12 @@ body.modal-open {
 .dropdown-menu {
     top: 129%;
     font-size: 13.5px;
-    left: 48px;
+    left: 96px;
     background-color: #eeebeb;
 }
 .dropdown-menu::before {
     border-width: 14px 15px;
-    right: 21px;
+    right: 24px;
 }
 
 .header-search {

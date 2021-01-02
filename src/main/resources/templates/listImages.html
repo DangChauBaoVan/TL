@@ -123,9 +123,9 @@
 														class="label-choose-image" style="display: block;">
 														Browse </i>
 													</label>
-													 <input type="file" accept="image/*" 
-														name="file" class="custom-file-input" id="customFile"  onchange="loadFile(event)">
-														<img id="output"/>
+													 <input type="file" accept=".gif,.jpg,.jpeg,.png" 
+														name="file" class="custom-file-input" id="customFile" />
+														
 												</div>
 												</br>
 												<button class="btn btn-info btn-outline-info" type="submit">
@@ -318,6 +318,7 @@
 					th:class="${currentIndex == totalPageCount}? 'page-item disabled':'page-item'">
 					<a class="page-link" th:href="@{|${baseUrl}${totalPageCount}|}">Last</a>
 				</li>
+				
 			</ul>
 
 		</div>
