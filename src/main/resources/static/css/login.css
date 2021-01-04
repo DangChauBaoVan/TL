@@ -96,6 +96,7 @@ img {
 }
 .wrapper-input-sign-up {
     margin-bottom: 6px;
+    position: relative;
 }
 .input-email {
     width: 350px;
@@ -172,4 +173,17 @@ img {
 }
 .form-sign-up {
     height: 556px;
+}
+.input--passwrod {
+    position: relative;
+}
+.open-eye {
+    right: 15px;
+    position: absolute;
+    top: 11px;
+}
+.open-eye2 {
+    right: 27px;
+    position: absolute;
+    top: 28px;
 }
