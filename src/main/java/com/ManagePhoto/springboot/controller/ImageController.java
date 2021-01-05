@@ -94,7 +94,7 @@ public class ImageController {
 		model.addAttribute("cate", cate); 
 		
 		PagedListHolder<?> pages = (PagedListHolder<?>) request.getSession().getAttribute("imageList");
-		int pagesize = 5;
+		int pagesize = 4;
 		List<Image> list =(List<Image>) imageService.getAllImagesByUser(username);
 		System.out.println(list.size());
 		if (pages == null) {
