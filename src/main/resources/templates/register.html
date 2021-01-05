@@ -89,7 +89,7 @@
                   required
                   onblur="minPassword()"
                 />
-              <i class="fas fa-eye open-eye2" id="open-eye"></i>
+              <!-- <i class="fas fa-eye open-eye2" id="open-eye"></i> -->
 
               </div>
               <div class="emailInValid" id="passwordInValid">
@@ -101,8 +101,8 @@
                   type="password"
                   id="confirmpassword"
                   required
-                  onblur="confimPassword()"
                 />
+                <!--  onblur="confimPassword()" -->
               </div>
               <div class="emailInValid" id="confirmPasswordInValid">
               </div>
@@ -148,7 +148,7 @@
         }
       }
       function allLetter() {
-        var letters = /^[A-Za-z]+$/;
+        var letters = /^[a-zA-Z ]*$/;
         if(lname.value.length === 0) {
           lnameInValid.style.visibility = 'visible';
           lnameInValid.innerHTML = 'Last name is required.'
@@ -164,7 +164,7 @@
         }
       }
       function allLetter2() {
-        var letters = /^[A-Za-z]+$/;
+        var letters =  /^[a-zA-Z ]*$/;
         if(fname.value.length === 0) {
           fnameInValid.style.visibility = 'visible';
           fnameInValid.innerHTML = 'Firt name is required.'
